@@ -9,13 +9,13 @@
 
 <form action="https://www.google.com/inputtools/try/">
   <label for="firstname">First Name:</label>
-  <input type="text" id="firstname" placeholder="">
+  <input type="text" id="firstname" placeholder="John" required>
 
   <label for="lastname">Last Name:</label>
-  <input type="text" id="lastname" placeholder="">
+  <input type="text" id="lastname" placeholder="Smith" required>
   <br>
   <label for="male">Male </label>
-  <input type="radio" id="male" name="pick_sex" value="Male">
+  <input type="radio" id="male" name="pick_sex" value="Male" required>
 
   <label for="female">Female </label>
   <input type="radio" id="female" name="pick_sex" value="Female">
@@ -24,10 +24,10 @@
   <input type="radio" id="other" name="pick_sex" value="Other">
   <br>
   <label for="email">Email:</label>
-  <input type="email" id="email" name="email">
+  <input type="email" id="email" name="email" placeholder="your email" required>
 
   <label for="password">Password:</label>
-  <input type="password" id="password" name="password">
+  <input type="password" id="password" name="password" placeholder="your password" required>
   <br>
   <label for="birthday">Birthday:</label>
   <select name="month">
@@ -43,7 +43,7 @@
   </select>
   <br>
   <label for="term_and_condition">I agree to the term and conditions</label>
-  <input type="checkbox" id="term_and_condition" name="agree_term" value="agree">
+  <input type="checkbox" id="term_and_condition" name="agree_term" value="agree" required>
   <br>
   <input type="submit" value="submit">
 </form>
