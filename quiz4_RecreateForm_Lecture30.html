@@ -9,48 +9,57 @@
 
 <form action="https://www.google.com/inputtools/try/">
   <label for="firstname">First Name:</label>
-  <input type="text" id="firstname" placeholder="John" required>
+  <input type="text" name="firstname" id="firstname" placeholder="John" required>
 
   <label for="lastname">Last Name:</label>
-  <input type="text" id="lastname" placeholder="Smith" required>
+  <input type="text" name="lastname" id="lastname" placeholder="Smith" required>
+  
+  <!-- in the tutorial he suggested using `div` (generic block tag) or `p` (paragraph -block) -->
   <br>
-  <label for="male">Male </label>
+  
+  <label for="male">Male</label>
   <input type="radio" id="male" name="pick_sex" value="Male" required>
 
-  <label for="female">Female </label>
+  <label for="female">Female</label>
   <input type="radio" id="female" name="pick_sex" value="Female">
 
-  <label for="other">Other </label>
+  <label for="other">Other</label>
   <input type="radio" id="other" name="pick_sex" value="Other">
-  <br>
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" placeholder="your email" required>
 
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" pattern="\S{5,10}" title="Length of 5-10 characters are required." placeholder="your password" required>
-  <br>
-  <label for="birthday">Birthday:</label>
-  <select name="month" required>
-    <option value="">Month</option>
-    <option value="January">Jan</option>
-    <option value="February">Feb</option>
-  </select>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="your email" required>
 
-  <select name="day" required>
-    <option value="">Day</option>
-    <option value="18">18</option>
-    <option value="19">19</option>
-  </select>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" pattern="\S{5,10}" title="Length of 5-10 characters are required." placeholder="your password" required>
+  </div>
 
-  <select name="year" required>
-    <option value="">Year</option>
-    <option value="1989">1989</option>
-    <option value="1990">1990</option>
-  </select>
-  <br>
-  <label for="term_and_condition">I agree to the term and conditions</label>
-  <input type="checkbox" id="term_and_condition" name="agree_term" value="agree" required>
-  <br>
+  <div>
+    <label for="birthday">Birthday:</label>
+    <select name="month" id="birthday" required>
+      <option value="">Month</option>
+      <option value="January">Jan</option>
+      <option value="February">Feb</option>
+    </select>
+
+    <select name="day" required>
+      <option value="">Day</option>
+      <option>18</option>
+      <option>19</option>
+    </select>
+
+    <select name="year" required>
+      <option value="">Year</option>
+      <option>1989</option>
+      <option>1990</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="term_and_condition">I agree to the term and conditions</label>
+    <input type="checkbox" id="term_and_condition" name="agree_term" value="agree" required>
+  </div>
+
   <input type="submit" value="submit">
 </form>
 
