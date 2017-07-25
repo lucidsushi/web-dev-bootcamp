@@ -81,23 +81,52 @@ selector{
 -can style via style tags (css sytax)
 -ultimately style via link tag + separate .css file
 
-Coloring:
-	names (147 choices)
+Properties:
+	Coloring:
+		names (147 choices)
+		color: red
 
-	hexadecimal color:  0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
-	color: #_ _ (R) _ _ (G) _ _ (B)
+		hexadecimal color:  0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+		color: #_ _ (R) _ _ (G) _ _ (B)
 
-	rgb: each 0-255
-	color: rgb(r, g, b)
+		rgb: each 0-255
+		color: rgb(r, g, b)
 
-	rgba: adds alpha ( 0.0-1.0 )
-	color: rgba(r, g, b, a)
+		rgba: adds alpha ( 0.0-1.0 )
+		color: rgba(r, g, b, a)
 
-Background:
-	background: color
-	background: url()
-	background-repeat: no-repeat;
-	background-size: cover
+	Background:
+		background: color
+		background: url("http://blah.jpg")
+		background-repeat: no-repeat;
+		background-size: cover
 
+	Border:
+		border-color: purple;
+		border-wide: 5px;
+		border-style: solid;
 
+		border: 5px solid purple;
 
+	Text Decoration:
+		text-decoration: line-through;
+
+Selectors:
+	element:
+		element{}
+
+	id:
+		<p id="blah">
+		"This attribute assigns a name to an element. This name must be unique in a document"
+		#id_name { }
+
+	class:
+		<p class="blah">
+		.class_name { }
+
+	star:
+		* { }
+
+	descendent selection: "can be chained with other elements/selectors"
+		li a { }
+		"any anchor tag inside an li"
