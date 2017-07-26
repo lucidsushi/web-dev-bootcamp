@@ -112,6 +112,8 @@ Properties:
 		text-decoration: line-through;
 
 Selectors:
+#https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048
+#( but not really )
 	element:
 		element{}
 
@@ -124,9 +126,39 @@ Selectors:
 		<p class="blah">
 		.class_name { }
 
-	star:
+	star: "applies to everything?"
 		* { }
 
-	descendent selection: "can be chained with other elements/selectors"
+	descendent selector: "can be chained with other elements/selectors"
 		li a { }
+		ul lik .blah { }
 		"any anchor tag inside an li"
+
+	adjacent selector: "apply property to tags right after (not within) the parent"
+		h1 + ul { blah }  "blah applied to ul(s) after all h1(s)"
+
+	attribute selector: "apply property to tags with said attribute"
+		a[href="http://blahz"] { blah } "blah applied to all anchors with href blahz"
+
+		input[type="text"] { blah }
+
+	nth of type:
+		ul:nth-of-type(3) { blah } "apply property blah to every third ul"
+		li:nth-of-type(3) { blah } "applies blah to the 'only third' li in each ol/ul (an ul with 6 li don't get blah applied twice "
+		li:nth-of-type(even) { blah } "applies blah to EVERY 2nd li (multiple occurence in same ul/ol"
+
+
+Specificity:
+	"selectors step over each other and the most specific one gets applied"
+
+	"from least powerful to most powerful (in multiple power of 10s":
+
+		#type selectors
+			h1 + ul more powerful than h1
+		#class , attribute, pseudo class selectors
+			.hello{}
+			input[type='text'] {}
+			a:hover / input:checked
+		#id selectors
+			#hello
+
