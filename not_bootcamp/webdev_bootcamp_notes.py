@@ -129,13 +129,17 @@ Selectors:
 	star: "applies to everything?"
 		* { }
 
+	combinators:
 	descendent selector: "can be chained with other elements/selectors"
 		li a { }
-		ul lik .blah { }
-		"any anchor tag inside an li"
+		ul li .blah { } "any anchor tag inside an li"
+
 
 	adjacent selector: "apply property to tags right after (not within) the parent"
 		h1 + ul { blah }  "blah applied to ul(s) after all h1(s)"
+	child selector:
+		div:nth-of-type(3) > p {} "all p  inside third div"
+
 
 	attribute selector: "apply property to tags with said attribute"
 		a[href="http://blahz"] { blah } "blah applied to all anchors with href blahz"
@@ -145,8 +149,12 @@ Selectors:
 	nth of type:
 		ul:nth-of-type(3) { blah } "apply property blah to every third ul"
 		li:nth-of-type(3) { blah } "applies blah to the 'only third' li in each ol/ul (an ul with 6 li don't get blah applied twice "
+		li:nth-of-type(3n) { blah } "same as above but repeated applies to every third"
 		li:nth-of-type(even) { blah } "applies blah to EVERY 2nd li (multiple occurence in same ul/ol"
 
+	pseudo class "specific state of class (hover, checked, visited"
+
+	pseudo element "specific part of the element (first letter)"
 
 Specificity:
 	"selectors step over each other and the most specific one gets applied"
