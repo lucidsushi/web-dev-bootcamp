@@ -51,6 +51,11 @@ sublime short cuts:
 
 
 ###Intro to HTML:
+- write properly structured html
+- write closing/self-closing tags
+- recreate simple website base on photo
+
+
 elements: block/inline
 
 lorem + tab (in html) to get random block text
@@ -63,11 +68,22 @@ attributes:
 	<a href=""></a>
 	<img src="">
 
+
 ###Intermediate HTML:
+-write valid html table
+-write valid html forms using <form> <input> <select> <label>
+
 html table
 html form
 
+
 ###Intro to CSS:
+-general rule of css
+-correctly include css in html
+-select elements by tag name, class and ID
+-style elements with basic properties
+-using chrome inspector tool to debug html/css
+
 CSS samples:      http://www.csszengarden.com/
 CSS color names:  http://colours.neilorangepeel.com/
 
@@ -170,3 +186,8 @@ Specificity:
 		#id selectors
 			#hello
 
+
+###Intermediate CSS:
+- manipulate common font and text properties using css
+- include external fonts using Google Fonts
+- define and manipulate the four components of the Box Model
