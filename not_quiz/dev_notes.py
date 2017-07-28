@@ -191,3 +191,9 @@ Specificity:
 - manipulate common font and text properties using css
 - include external fonts using Google Fonts
 - define and manipulate the four components of the Box Model
+
+p {
+	font-family: Arial;   # quotes needed if not one word
+	font-size: 200px;
+	font-size: 2.0em; #dynamic sizing (in this case double of parent)
+}
