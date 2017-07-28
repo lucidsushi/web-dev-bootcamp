@@ -25,6 +25,7 @@ li {
 /*Change the background on every paragraph to be yellow*/
 p {
 	background: yellow;
+	font-family: Lemonada;
 }
 
 /*Make all inputs have a 3px red border*/
