@@ -196,4 +196,35 @@ p {
 	font-family: Arial;   # quotes needed if not one word
 	font-size: 200px;
 	font-size: 2.0em; #dynamic sizing (in this case double of parent)
+	font-weight: bold; 100/200-800 (some fonts only);
+	line-height: 2; #line spacing multiple base on font size
+	text-align: right;center;
+	text-decoration: underline;/line-through;
 }
+
+
+Google fonts: https://fonts.google.com/
+-can find embedded links that can be used in your <head> (before your own css link <- optional or not?)
+-dont select more font weights than you need as it adds page load time
+
+HTML: <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
+CSS : p { font-family: Lemonada; }
+
+
+The Box Model:
+- each element is represented as a rectangular box with four edges: margin edge, border edge, padding edge, content edge
+
+p {
+	border: 2px solid blue;
+	padding: 10px;
+	padding-left; 10px;
+	margin: 50px;
+	margin-top; 50px;
+	margin: top right bottom left;
+	margin: top/bottom right/left;   <-?
+	margin top auto right auto; <- confirm what auto does
+	0 dont need px
+}
+
+
+
