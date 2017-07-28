@@ -1,0 +1,19 @@
+body {
+	background: orange;
+}
+
+li {
+	border: 2px solid red;
+}
+
+#singled_out_special {
+	background: yellow;
+}
+
+.striked {
+	text-decoration: line-through;
+}
+
+li:nth-of-type(3) {
+	border: 4px solid blue;
+}
