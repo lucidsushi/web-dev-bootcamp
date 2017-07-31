@@ -1,9 +1,25 @@
+h1	{
+	margin: 0 auto;
+}
+
+table {
+	margin: 0 auto;
+}
+
 td {
 	width: 100px;
 	height: 100px;
 }
 
-tr {
-	border-left: 2px solid black;
-	border-bottom: 2px solid black;
+
+.topline td {
+	border-top: 2px solid black;
+}
+
+tr td {
+	border-right: 2px solid black;
+}
+
+td:last-child {
+	border-right: none;
 }
