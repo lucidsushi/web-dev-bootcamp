@@ -1,0 +1,9 @@
+td {
+	width: 100px;
+	height: 100px;
+}
+
+tr {
+	border-left: 2px solid black;
+	border-bottom: 2px solid black;
+}
