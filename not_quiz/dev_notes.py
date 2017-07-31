@@ -142,6 +142,8 @@ Selectors:
 		<p class="blah">
 		.class_name { }
 
+		# class="A B" (multiple classes A and B)
+
 	star: "applies to everything?"
 		* { }
 

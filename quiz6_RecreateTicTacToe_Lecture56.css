@@ -1,9 +1,9 @@
 h1	{
-	margin: 0 auto;
+	text-align: center;
 }
 
 table {
-	margin: 0 auto;
+	margin: auto;
 }
 
 td {
@@ -12,14 +12,13 @@ td {
 }
 
 
-.topline td {
-	border-top: 2px solid black;
-}
-
-tr td {
+td:nth-of-type(2) {
+	border-left: 2px solid black;
 	border-right: 2px solid black;
 }
 
-td:last-child {
-	border-right: none;
+
+tr:nth-of-type(2) td {
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
 }
