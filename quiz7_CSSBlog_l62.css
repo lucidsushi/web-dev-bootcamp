@@ -1,0 +1,22 @@
+* {
+	font-family: "Source Sans Pro";
+}
+
+body {
+	border: 18px solid rgb(185, 179, 177);
+	margin: 1% 16%;
+}
+
+p {
+	padding: 14px;
+}
+
+.date {
+	text-transform: uppercase;
+	font-size: 16px;
+}
+
+.article_title {
+	font-size: 24px;
+	font-weight: 700;
+}
