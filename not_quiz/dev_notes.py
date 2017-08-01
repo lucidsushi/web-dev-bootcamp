@@ -127,6 +127,9 @@ Properties:
 	Text Decoration:
 		text-decoration: line-through;
 
+	float: left/right..etc (pulls element out of doc flow and floats it in a direction
+		until it touches the border of the "containing box" or another floating element)
+
 Selectors:
 #https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048
 #( but not really )
