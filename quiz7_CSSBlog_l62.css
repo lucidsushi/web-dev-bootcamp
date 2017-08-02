@@ -8,7 +8,7 @@ body {
 }
 
 p {
-	padding: 14px;
+	margin: 14px 14px;
 }
 
 .date {
@@ -17,6 +17,13 @@ p {
 }
 
 .article_title {
-	font-size: 24px;
+	font-size: 32px;
 	font-weight: 700;
+}
+
+.p_after_title {
+	float: left;
+	height: 60px;
+	margin: 0 4 0 14;
+	border-left: 6px solid rgb(185, 179, 177);
 }
