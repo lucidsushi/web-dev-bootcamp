@@ -1,40 +1,37 @@
-* {
-	font-family: "Source Sans Pro";
-}
+/*instead of putting font-family in multiple places, setting it in the body lets every text in the body get it*/
+
+/*instead of setting margin in multiple places, used natural margin from <p> element.. ?*/
 
 body {
-	border: 20px solid rgb(185, 179, 177);
-	margin: 1% 16%;
+	font-family: "Source Sans Pro";
+	width: 80%;
+	max-width: 700px;
+	border: 20px solid rgb(208, 208, 208);
+	margin: 20px auto;
+	padding: 20px;
 }
 
-p {
-	margin: 14px 14px;
+.date {
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 0.2rem;
+	color: #0DA5B2;
+}
+
+.title {
+	font-size: 2.0rem;
+	font-weight: bold;
+}
+
+.p_after_title {
+	padding-left: 6px;
+	border-left: 6px solid rgb(208, 208, 208);
+}
+
+.post {
+	margin-bottom: 20px;
 }
 
 hr	{
 	border: 2px solid rgb(218, 223, 223);
-	margin: 14px 14px;
 }
-
-.p_date {
-	text-transform: uppercase;
-	font-size: 16px;
-	font-weight: 700;
-	letter-spacing: 2px;
-	color: #0DA5B2;
-}
-
-.p_title {
-	font-size: 32px;
-	font-weight: 700;
-}
-
-.p_after_title {
-	margin: 0 14;
-	padding-left: 6px;
-	border-left: 6px solid rgb(185, 179, 177);
-}
-
-
-	/*float: left;*/
-	/*height: 60px;*/

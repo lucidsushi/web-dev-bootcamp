@@ -201,6 +201,7 @@ p {
 	font-family: Arial;   # quotes needed if not one word
 	font-size: 200px;
 	font-size: 2.0em; #dynamic sizing (in this case double of parent)
+			   2.0rem; #rem is relative to html (root) font-size
 	font-weight: bold; 100/200-800 (some fonts only);
 	line-height: 2; #line spacing multiple base on font size
 	text-align: right;center;
