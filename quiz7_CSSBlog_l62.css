@@ -3,7 +3,7 @@
 }
 
 body {
-	border: 18px solid rgb(185, 179, 177);
+	border: 20px solid rgb(185, 179, 177);
 	margin: 1% 16%;
 }
 
@@ -11,19 +11,30 @@ p {
 	margin: 14px 14px;
 }
 
-.date {
-	text-transform: uppercase;
-	font-size: 16px;
+hr	{
+	border: 2px solid rgb(218, 223, 223);
+	margin: 14px 14px;
 }
 
-.article_title {
+.p_date {
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	color: #0DA5B2;
+}
+
+.p_title {
 	font-size: 32px;
 	font-weight: 700;
 }
 
 .p_after_title {
-	float: left;
-	height: 60px;
-	margin: 0 4 0 14;
+	margin: 0 14;
+	padding-left: 6px;
 	border-left: 6px solid rgb(185, 179, 177);
 }
+
+
+	/*float: left;*/
+	/*height: 60px;*/
