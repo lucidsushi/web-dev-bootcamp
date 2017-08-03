@@ -254,3 +254,12 @@ container (div - place items with div in a margin-ed container)
 form-group (div -makes grouped items closer to each other)
 form-control (input -style and place inputs under labels)
 form-inline (form - make items in form display in a line)
+
+http://getbootstrap.com/components/#navbar
+
+nav- navbar navbar-default
+div - navbar-header
+a - navbar-brand
+div - collapse navbar-collapse
+ul - nav navbar-nav
+ul - nav navbar-nav navbar-right
