@@ -50,6 +50,7 @@ sublime short cuts:
 	html + tab gives html structure
 
 
+
 ###Intro to HTML:
 - write properly structured html
 - write closing/self-closing tags
@@ -69,12 +70,14 @@ attributes:
 	<img src="">
 
 
+
 ###Intermediate HTML:
 -write valid html table
 -write valid html forms using <form> <input> <select> <label>
 
 html table
 html form
+
 
 
 ###Intro to CSS:
@@ -192,6 +195,7 @@ Specificity:
 			#hello
 
 
+
 ###Intermediate CSS:
 - manipulate common font and text properties using css
 - include external fonts using Google Fonts
@@ -234,3 +238,12 @@ p {
 
 
 
+###Bootstrap:
+- define bootstrap and explain why we use it (library)
+- include bootstrap locally (download) and by using a CDN
+- use common bootstrap components like navs and buttons
+- build layout using bootstrap grid system
+
+http://getbootstrap.com/
+
+http://expo.getbootstrap.com/ #see how bootstrap is being used
