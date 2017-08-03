@@ -247,3 +247,10 @@ p {
 http://getbootstrap.com/
 
 http://expo.getbootstrap.com/ #see how bootstrap is being used
+
+bootstrap classes:
+jumbotron (div - makes items within div a jumbotron)
+container (div - place items with div in a margin-ed container)
+form-group (div -makes grouped items closer to each other)
+form-control (input -style and place inputs under labels)
+form-inline (form - make items in form display in a line)
