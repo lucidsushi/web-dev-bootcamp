@@ -271,10 +271,23 @@ the grid system:
 	<div> class="col-md-3 pink">col lg 3</div>
 - four sizes: lg, md, sm, xs
 - use class="row" for nesting grid
-	
+- use div-class="thumbnail" to constrain image size (this may not just work the way you want when you have various image sizes)
+https://www.udemy.com/the-web-developer-bootcamp/learn/v4/t/lecture/6195846?start=0
 
-	Alan on padding vs margin:
-
+	~~ Alan on padding vs margin: ~~
 	rule of thumb is "who is responsible", the parent or child
 If you want spacing around your children, then padding on the parent...
-if each element needs to space themselves, it's margin
+if each element needs to space themselves, it is margin
+
+- sometimes you will have to use inspector to find the selector thats having the effect on the style and use it to add the override you need (Specificity conflicts)
+
+- bootstrap comes with usable icons:
+	Glyphicons
+- for more options theres also a bunch of icons available at fontsawesome:
+
+	https://www.bootstrapcdn.com/fontawesome/
+	http://fontawesome.io/icon/shower/
+
+
+
+

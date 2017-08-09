@@ -1,0 +1,22 @@
+.main-content {
+    margin-top: 80px;
+   }
+
+.jumbotron {
+  color: #2c3e50;
+  background-color: #ecf0f1;
+}
+
+.navbar-inverse {
+  background: #2c3e50;
+}
+
+/*taking/copied from inspector*/
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+}
+
+/*taking/copied from inspector*/
+.navbar-inverse .navbar-brand {
+  color: white;
+  }
