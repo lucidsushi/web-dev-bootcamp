@@ -272,3 +272,9 @@ the grid system:
 - four sizes: lg, md, sm, xs
 - use class="row" for nesting grid
 	
+
+	Alan on padding vs margin:
+
+	rule of thumb is "who is responsible", the parent or child
+If you want spacing around your children, then padding on the parent...
+if each element needs to space themselves, it's margin
