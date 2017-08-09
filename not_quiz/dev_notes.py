@@ -269,3 +269,6 @@ the grid system:
 - set size for parents: (example shows lg does not need to be set if you want it to be
 	3 as well)
 	<div> class="col-md-3 pink">col lg 3</div>
+- four sizes: lg, md, sm, xs
+- use class="row" for nesting grid
+	
