@@ -136,8 +136,14 @@ Properties:
 Selectors:
 #https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048
 #( but not really )
+	#sharing attribute
+	selector1, selector2 {
+		attribute
+	}
+
+
 	element:
-		element{}
+		element	{ }
 
 	id:
 		<p id="blah">
@@ -287,7 +293,6 @@ if each element needs to space themselves, it is margin
 
 	https://www.bootstrapcdn.com/fontawesome/
 	http://fontawesome.io/icon/shower/
-
 
 
 

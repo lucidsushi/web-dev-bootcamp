@@ -1,3 +1,4 @@
+/* He set color in body because other items will be overwritten back by their calss methods which will have more specificity  */
 body {
   background: url("https://source.unsplash.com/hdnsLAU35kY");
   background-size: cover;
@@ -6,9 +7,13 @@ body {
   color: white;
 }
 
+/* text-shadow offset-x | offset-y | blur-radius | color */
 #content {
   text-align: center;
   margin-top: 22%;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+               0px 8px 13px rgba(0,0,0,0.1),
+               0px 18px 23px rgba(0,0,0,0.1);
 }
 
 h1 {
@@ -16,11 +21,13 @@ h1 {
   font-size: 5em;
 }
 
+/* He used border-bottom to add a "shadow" effect  */
 hr {
-  width: 310px;
+  width: 150px;
   border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
+/* He used this for the image to scale properly because the html portion didn't actually span the whole page, but that did not happen in my case, unless this is a browser specific issue, not 100% sure at this point  */
 /*html {
   height:100%;
 }*/
