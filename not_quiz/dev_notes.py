@@ -334,3 +334,28 @@ prompt(value):
 - while/for loops
 - translate between while/for loops
 
+boolean:
+
+== (5 == "5" is true)
+=== (equal value and type, 5 === "5" is false)
+!== (not equal value or equal type, 5 !== "5" is true)
+
+type coercion for ==
+
+99 == "99" true
+99 === "999" false
+
+null == undefined true
+null === undefind false
+
+logical operators:
+
+&& AND, || OR, ! NOT
+
+falsy values:
+false, 0, "", null, undefind, NaN
+
+conditionals:
+
+if(condition) {doSomething}
+else if(condition) {doSomething}
