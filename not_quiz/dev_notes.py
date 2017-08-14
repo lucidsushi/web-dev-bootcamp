@@ -297,3 +297,32 @@ if each element needs to space themselves, it is margin
 
 
 ###Into to JS:
+- evaluate js in chrome dev console
+- 5 js primitives
+- define use variables (var keyword)
+- use built-in methods console.log, alert, prompt
+
+variable declartion:
+var var_name = var_value;
+
+variable naming:
+favors camelCase
+
+undefined:
+var defined but never given a value
+
+null:
+var defined explicitly as empty/nothingness
+
+
+some built-in methods:
+alert(value):
+	an annoying print
+
+console.log(value):
+	print
+
+prompt(value):
+	prompt with "value", does return the entered value therefore can store
+	as another var
+
