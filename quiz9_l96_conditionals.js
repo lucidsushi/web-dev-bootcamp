@@ -1,10 +1,14 @@
-var age = prompt("What is your age?");
+var age = Number(prompt("What is your age?"));
 
 if(age < 0) {
 	console.log("Error: age cannot be a negative number");
 }
 
-if(age % 2 === 1) {
+else if(age === 21) {
+	console.log("happy 21st birthday!");
+}
+
+else if(age % 2 === 1) {
 	console.log("your age is odd!");
 }
 
@@ -18,10 +22,6 @@ else if(age < 18) {
 
 else if(age < 21) {
 	console.log("You can enter, but cannot drink");
-}
-
-else if(age === 21) {
-	console.log("happy 21st birthday!");
 }
 
 else {
