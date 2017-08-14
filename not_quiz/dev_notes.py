@@ -326,3 +326,11 @@ prompt(value):
 	prompt with "value", does return the entered value therefore can store
 	as another var
 
+
+
+###JS control flow:
+- evaluate logical expressions
+- 3-part conditional statements
+- while/for loops
+- translate between while/for loops
+
