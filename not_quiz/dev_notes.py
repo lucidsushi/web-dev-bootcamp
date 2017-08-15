@@ -362,7 +362,8 @@ else if(condition) {doSomething}
 else {doSomething}
 
 loops:
-
-DRY (dont repeat yourself)
+#DRY (dont repeat yourself)
 
 while(condition) {doSomething}
+
+for(init; condition; step) {doSomething}
