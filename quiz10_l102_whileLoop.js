@@ -1,17 +1,4 @@
-var number = Number(prompt("Guess a number"));
-
-var secretNumber = 4;
-
-
-
-if(number === secretNumber) {
-	alert("You got it right!")
-}
-
-else if(number > secretNumber) {
-	alert("You guessed too high!")
-}
-
-else {
-	alert("You guessed too low!")
-}
+console.log("Print all numbers between -10 and 19")
+console.log("Print all even numbers between 10 and 40")
+console.log("Print all odd numbers between 300 and 333")
+console.log("Print all numbers divisible by 5 AND 3 between 5 and 50")
