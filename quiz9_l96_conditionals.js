@@ -27,3 +27,7 @@ else if(age < 21) {
 else {
 	console.log("Come on in. You can drink.")
 }
+
+// probably wanna use these intead for the future
+// Math.pow()
+// Math.sqrt()

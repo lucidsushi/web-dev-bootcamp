@@ -360,3 +360,9 @@ conditionals:
 if(condition) {doSomething}
 else if(condition) {doSomething}
 else {doSomething}
+
+loops:
+
+DRY (dont repeat yourself)
+
+while(condition) {doSomething}
