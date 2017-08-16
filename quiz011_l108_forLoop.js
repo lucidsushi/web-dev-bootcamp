@@ -1,5 +1,5 @@
-var i = 'test';
-console.log(i);
+// var i = 'test';
+// console.log(i);
 
 console.log("Print all numbers between -10 and 19")
 for(var i=-10; i<=19; i++) {
@@ -26,4 +26,4 @@ for(var i=5; i<=50; i++) {
 	}
 }
 
-console.log(i);
+// console.log(i);

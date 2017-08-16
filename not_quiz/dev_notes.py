@@ -366,10 +366,19 @@ loops:
 
 while(condition) {doSomething}
 
-for(init; condition; step) {doSomething}
+for(var init; condition; step) {doSomething}
 
 var blah = "abcd"
 
 
 blah.indexOf("a") => 0
 blah.indexOf("e") => -1
+
+
+
+###JS basic functions:
+-function declartions, function expressions
+-console.log vs return
+-define functions to take multiple arguments
+-scope, higher functions
+
