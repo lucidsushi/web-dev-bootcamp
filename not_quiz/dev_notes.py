@@ -367,3 +367,9 @@ loops:
 while(condition) {doSomething}
 
 for(init; condition; step) {doSomething}
+
+var blah = "abcd"
+
+
+blah.indexOf("a") => 0
+blah.indexOf("e") => -1
