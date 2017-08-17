@@ -377,8 +377,27 @@ blah.indexOf("e") => -1
 
 
 ###JS basic functions:
--function declartions, function expressions
+-function declarations, function expressions
 -console.log vs return
 -define functions to take multiple arguments
 -scope, higher functions
 
+function functionName() {}
+functionName();
+
+in JS if an arg is not given it is just taken as an undefined, instead of giving
+errors.
+
+
+example with built-in methods:
+
+#function declaration
+function capitalize(str) {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+
+#function expression (can later override what capitalize is)
+var capitalize = function(str) {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
