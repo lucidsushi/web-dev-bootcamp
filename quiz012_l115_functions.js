@@ -6,7 +6,7 @@ function isEven(num){
 	// else {
 	// 	return false
 	// }
-	return num % 2 === 0
+	return num % 2 === 0;
 }
 
 // factorial() takes a number and return its factorial
@@ -16,11 +16,11 @@ function factorial(num){
 	// 	factorial *= num;
 	// 	num--;
 	// }
-	var factorial = 1;
+	var result = 1;
 	for(var i = 2; i <= num; i++){
-		factorial *= i;
+		result *= i;
 	}
-	return factorial
+	return result;
 }
 
 // kebabToSnake() replace "-"s with "_"s in input string
@@ -28,6 +28,6 @@ function kebabToSnake(str){
 	// while(str.indexOf("-") > 0) {
 	// 	str = str.replace("-", "_");
 	// }
-	return str.replace(/-/g, "_")
+	return str.replace(/-/g, "_");
 
 }
