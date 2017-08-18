@@ -172,7 +172,7 @@ Selectors:
 
 
 	attribute selector: "apply property to tags with said attribute"
-		a[href="http://blahz"] { blah } "blah applied to all anchors with href blahz"
+		a[href="http://blah"] { blah } "blah applied to all anchors with href blah"
 
 		input[type="text"] { blah }
 
@@ -416,7 +416,7 @@ scope (the context that code is executed in)
    function, it wont overwrite the test outside '''
 
 Higher Order functions
-#take(as arg) or return a function 
+#take(as arg) or return a function
 
 setInterval(function, millisecond) #returns a number
 
@@ -431,4 +431,20 @@ function() {doSomething}
 - define and add data to arrays
 - utilize built-in array methods
 - console todo list
+
+var arrayName = [blah, blah, blah];
+
+#can assign directly to none existant index to grow array?
+arrayName[4] = blah;
+
+arrayName => [blah, blah, undefined x 1, blah]
+
+var arrayName = [];
+var arrayName = newArray(); #uncommon
+
+array methods:
+push/pop
+shift/unshift
+indexOf
+slice
 
