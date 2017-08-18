@@ -361,6 +361,12 @@ if(condition) {doSomething}
 else if(condition) {doSomething}
 else {doSomething}
 
+if() {
+	doSomething;
+} else {
+	doSomething;
+}
+
 loops:
 #DRY (dont repeat yourself)
 
@@ -401,3 +407,28 @@ function capitalize(str) {
 var capitalize = function(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+
+scope (the context that code is executed in)
+
+'''thats what var is for without any qualifier, a variable declared in a
+   function takes global scope. if you declare test as var test in the
+   function, it wont overwrite the test outside '''
+
+Higher Order functions
+#take(as arg) or return a function 
+
+setInterval(function, millisecond) #returns a number
+
+clearInterval(provide_returned_number_here_to_stop)
+
+#anyonymous function
+function() {doSomething}
+
+
+
+###JS arrays
+- define and add data to arrays
+- utilize built-in array methods
+- console todo list
+
