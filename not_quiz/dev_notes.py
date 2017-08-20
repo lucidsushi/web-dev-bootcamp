@@ -374,13 +374,6 @@ while(condition) {doSomething}
 
 for(var init; condition; step) {doSomething}
 
-var blah = "abcd"
-
-
-blah.indexOf("a") => 0
-blah.indexOf("e") => -1
-
-
 
 ###JS basic functions:
 -function declarations, function expressions
@@ -447,4 +440,27 @@ push/pop
 shift/unshift
 indexOf
 slice
+
+push: like python append but also returns length of array
+
+unshift: add to front of array and return legnth of array
+#array.insert(0, item)  item_array_ref.extend(array) in python?
+
+shift: remove first item in array and return the removed item
+# del array[0] in python?
+
+
+var blah = "abcd"
+
+blah.indexOf("a") => 0
+blah.indexOf("e") => -1
+
+#python blah.index("a")
+
+slice: slice(start(gets included), end(not included))
+[1,2,3].slice(1,2) => [2]  #python [1,2,3][1:2]
+
+list.slice() #make a copy
+
+
 
