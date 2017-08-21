@@ -5,6 +5,7 @@ function todo_list(){
 	while(option !== "quit"){
 		var option = prompt("Enter an option: \
 							 (new, delete, list or quit)");
+		option = option.toLowerCase();
 		if(option === "new"){
 			var new_todo = prompt("Enter a new todo...");
 			todos.push(new_todo);
@@ -30,6 +31,7 @@ function visualize_todos(todos){
 }
 
 function delete_todo(todos){
+	//ask for index of item to delete and delete it from todos
 	var visual_todo = visualize_todos(todos);
 	var index_to_delete = prompt("Enter index of item to delete:\n"
 								 + visual_todo);

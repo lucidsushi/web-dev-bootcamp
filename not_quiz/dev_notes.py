@@ -469,5 +469,10 @@ array.forEach(someFunction)
 # if someFunction is an anonymous function, WHATEVER argument_name you feed it will be each item in the array as it loops and run
 # above is for first argument, 2nd argument is "index"
 
+# remove an item of item_index from array ONCE(?)
+array.splice(index_to_delete, 1);
+	# filter a very good option as well as it actually can return an array without the item (instead of an array of the removed items)
+	# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+
 
 
