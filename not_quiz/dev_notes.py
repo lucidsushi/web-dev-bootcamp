@@ -415,7 +415,7 @@ setInterval(function, millisecond) #returns a number
 
 clearInterval(provide_returned_number_here_to_stop)
 
-#anyonymous function
+#anonymous function
 function() {doSomething}
 
 
@@ -462,5 +462,10 @@ slice: slice(start(gets included), end(not included))
 
 list.slice() #make a copy
 
+
+#array iteration
+
+array.forEach(someFunction)
+#if someFunction is an anonymous function, WHATEVER argument_name you feed it will be each item in the array as it loops and run
 
 
