@@ -466,6 +466,8 @@ list.slice() #make a copy
 #array iteration
 
 array.forEach(someFunction)
-#if someFunction is an anonymous function, WHATEVER argument_name you feed it will be each item in the array as it loops and run
+# if someFunction is an anonymous function, WHATEVER argument_name you feed it will be each item in the array as it loops and run
+# above is for first argument, 2nd argument is "index"
+
 
 
