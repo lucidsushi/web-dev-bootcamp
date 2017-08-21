@@ -3,7 +3,7 @@ function todo_list(){
 	var todos = [];
 
 	while(option !== "quit"){
-		var option = prompt("What would you like to do? \
+		var option = prompt("Enter an option: \
 							 (new, delete, list or quit)");
 		if(option === "new"){
 			var new_todo = prompt("Enter a new todo...");
