@@ -513,4 +513,8 @@ something["key1"] => value
 something.key1 => value
 	# dot notation limits: can't access key starting with number, with spacing
 
+#add method to object
+#namspacing
+#`this` keyword
+
 
