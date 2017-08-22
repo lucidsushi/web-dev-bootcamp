@@ -474,5 +474,43 @@ array.splice(index_to_delete, 1);
 	# filter a very good option as well as it actually can return an array without the item (instead of an array of the removed items)
 	# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
+# for testing uniform in array consider array.every()
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+
+#creating arrays
+Array.from({ length: 5 }, (_, i) => i);
+// => [0, 1, 2, 3, 4]
+
+Array.from(Array(20).keys())
+// =. [0, 1, ..., 20]
+#Array.from(Array(20).keys()).map(i => i + 1)   <= goes till 20
+
+
+#array function syntax
+() => {}
+is equiv to
+function() {}
+
+
+###JS objects (key-value pairs)
+
+#unlike arrays, objects have no order
+	#don't need string keys like in python dictionary
+
+#initialize object
+1)
+	var something = {};
+2)
+	var something = {
+		key1: value,
+		key2: value2
+	};
+3)
+	var something = new Object();
+
+#value retrieval
+something["key1"] => value
+something.key1 => value
+	# dot notation limits: can't access key starting with number, with spacing
 
 
