@@ -466,8 +466,8 @@ list.slice() #make a copy
 #array iteration
 
 array.forEach(someFunction)
-# if someFunction is an anonymous function, WHATEVER argument_name you feed it will be each item in the array as it loops and run
-# above is for first argument, 2nd argument is "index"
+# whether feeding a function or an anonymous function forEach by default expects
+# arguments of ( item_per_items, index_item, items(array) )
 
 # remove an item of item_index from array ONCE(?)
 array.splice(index_to_delete, 1);
