@@ -33,7 +33,7 @@ function sumArray(array){
 function max(array){
     max = array.pop();
     array.forEach(function(val){
-        if(val >= max){
+        if(val > max){
             max = val;
         }
     })
