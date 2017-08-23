@@ -518,3 +518,34 @@ something.key1 => value
 #`this` keyword
 
 
+
+#document object model: interface between js and html+css
+
+#warning console.dir(object) is a non-standard feature
+console.dir(document) reveals the document object
+
+#select and manipulate
+#changing color to pink for h1
+var h1 = document.querySelector("h1");
+hi.style.color = "pink";
+
+# five dom SELECTION methods
+document.getElementByID()
+# getElementsByClassName() returns an object (of objects) Nodelist?
+# that's not quite an array (no forEach method..etc)
+document.getElementsByClassName()
+document.getElementsByTagName()
+
+# querySelector methods pretty much replaces all getElement methods?
+# querySelector() returns first element that matches css-style selector
+document.querySelector("ul li")
+document.querySelectorAll()
+
+# manipulation
+- changing element style
+- add/remove classes
+- changing content of tag
+- changing attributes (src, href)
+
+
+
