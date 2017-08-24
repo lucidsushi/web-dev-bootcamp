@@ -581,12 +581,10 @@ document.querySelectorAll()
 - changing content of tag
 - changing attributes (src, href)
 
-# manipulate STYLE
-# one at a time
-#select
-var tag = document.getElementByID("blah");
-#manipulate
-tag.style.color = "blue";
+# manipulate STYLE one at a time
+var tag = document.getElementByID("blah"); #select
+
+tag.style.color = "blue";                  #manipulate
 tag.style.border = "10px solid red";
 tag.style.fontSize = "70px";
 
@@ -604,6 +602,31 @@ tag.style.fontSize = "70px";
 tag.classList.add("some-class")
              .remove
              .toggle #also returns true/false
+
+# manipulate text CONTENT
+<p>This is <strong>blah</strong> boo</p>
+
+var para = document.querySelector("p");
+para.textContent #"This is blah boo"  <- doesn't show html tags
+para.textContent = "boo boo boo"; # warning: this will not preserve origin html
+                                  #          tags (such as strong)
+para.innerHTML # "This is <strong>blah</strong> boo" <- shows html tags
+
+para.innerHTML = "<strong> boo boo boo</strong>" # html will take effect, but
+                                                 # no effect if assigned by
+                                                 # textContent
+
+# manipulate attributes
+<a href="blah.com">Im blah link</a>
+<img src="blah.png">
+
+var link  = document.querySelector("a");
+link.getAttribute("href"); #"blah.com"
+link.setAttribute("href", "boo.com");
+
+var img = document.querySelector("img");
+img.setAttribute("src", "booo.png");
+
 
 
 
