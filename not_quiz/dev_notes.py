@@ -575,7 +575,7 @@ document.getElementsByTagName()
 document.querySelector("ul li")
 document.querySelectorAll()
 
-# manipulation
+# MANIPULATION
 - changing element style
 - add/remove classes
 - changing content of tag
