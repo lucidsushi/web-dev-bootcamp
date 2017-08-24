@@ -581,5 +581,33 @@ document.querySelectorAll()
 - changing content of tag
 - changing attributes (src, href)
 
+# manipulate STYLE
+# one at a time
+#select
+var tag = document.getElementByID("blah");
+#manipulate
+tag.style.color = "blue";
+tag.style.border = "10px solid red";
+tag.style.fontSize = "70px";
+
+# above is too repetitive (not DRY), need to have "separation of concerns"
+# solution/alternative: define a new class then turn it on or off via js
+
+# css
+.some-class {
+    color: blue;
+    border: 10px solid red;
+    fontSize: 79px;
+}
+
+# read-only property, not an array
+tag.classList.add("some-class")
+             .remove
+             .toggle #also returns true/false
+
+
+
+
+
 
 
