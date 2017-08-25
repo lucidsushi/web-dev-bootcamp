@@ -598,7 +598,7 @@ tag.style.fontSize = "70px";
     fontSize: 79px;
 }
 
-# read-only property, not an array
+# read-only property, not an array (probably really means don't support forEach)
 tag.classList.add("some-class")
              .remove
              .toggle #also returns true/false
@@ -630,6 +630,21 @@ img.setAttribute("src", "booo.png");
 
 
 ### advanced dom manipulation
+
+# events
+# clicking button / drag and drop / keypress / hovering over link
+
+# add event listener to selected elements
+element.addEventListener(type, functionToCall);
+
+# another way to use `this`
+# in this case `this` represents lis[i]
+for(var i =  0; i < lis.length; i++){
+    lis[i].addEventListener("click", function(){
+        this.style.color = "pink";
+        });
+}
+
 
 
 
