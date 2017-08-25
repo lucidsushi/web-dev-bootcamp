@@ -598,7 +598,7 @@ tag.style.fontSize = "70px";
     fontSize: 79px;
 }
 
-# read-only property, not an array
+# read-only property, not an array (probably really means don't support forEach)
 tag.classList.add("some-class")
              .remove
              .toggle #also returns true/false
