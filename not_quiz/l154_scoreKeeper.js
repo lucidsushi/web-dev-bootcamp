@@ -20,9 +20,8 @@ function alterScoreMax(){
 function resetCount(pCounts){
 	p1.addEventListener("click", manageCountBindP1);
 	p2.addEventListener("click", manageCountBindP2);
-	p1Count.style.color = "black";
-	p2Count.style.color = "black";
 	pCounts.forEach(function(pCount){
+		pCount.style.color = "black";
 		pCount.textContent = 0;
 	});
 }
