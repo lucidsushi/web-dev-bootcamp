@@ -1,3 +1,9 @@
+/*
+- one counter between player 1 and 2 changes color when reaching max score
+- player 1 and 2 buttons no longer adds to count when reaching max score
+- number input changes max score
+- reset button resets count back to zero (and color changes) but does not have to reset max score input/display, at this point player buttons adds scores again
+*/
 var p1 = document.querySelector("#p1");
 var p2 = document.querySelector("#p2");
 var p1Count = document.querySelector("#p1Count");
