@@ -645,6 +645,10 @@ for(var i =  0; i < lis.length; i++){
         });
 }
 
+#https://developer.mozilla.org/en-US/docs/Web/Events
+hover example: mouseover / mouseout
+
+#irrelevant but interesting: wayback machine: https://web.archive.org/
 
 
 
