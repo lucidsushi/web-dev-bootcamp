@@ -15,12 +15,12 @@ var pCounts = [p1Count, p2Count];
 var pScores = {p1: 0, p2: 0};
 var gameover = false;
 
-p1.addEventListener("click", manageCount.bind(null, p1Count, pScores, "p1"));
-p2.addEventListener("click", manageCount.bind(null, p2Count, pScores, "p2"));
+p1.addEventListener("click", manageCount.bind(null, p1Count, "p1"));
+p2.addEventListener("click", manageCount.bind(null, p2Count, "p2"));
 scoreMaxManual.addEventListener("input", alterScoreMax);
-reset.addEventListener("click", resetCount.bind(null, pCounts));
+reset.addEventListener("click", resetCount);
 
-function manageCount(pCount, pScores, pKey){
+function manageCount(pCount, pKey){
 	if(!gameover){
 		pScores[pKey] += 1;
 		pScore = pScores[pKey];
@@ -31,7 +31,6 @@ function manageCount(pCount, pScores, pKey){
 		}
 		pCount.textContent = pScore;
 	}
-
 }
 
 function alterScoreMax(){
@@ -41,7 +40,7 @@ function alterScoreMax(){
 	}
 }
 
-function resetCount(pCounts){
+function resetCount(){
 	Object.keys(pScores).forEach(function(pKey, index){
 		pScores[pKey] = 0;
 		pCounts[index].textContent = 0;
