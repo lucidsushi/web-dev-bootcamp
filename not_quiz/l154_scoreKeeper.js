@@ -31,24 +31,22 @@ function manageCount(pCount, pScores, pKey){
 		}
 		pCount.textContent = pScore;
 	}
-	
+
 }
 
 function alterScoreMax(){
 	alteredValue = this.value;
 	if(alteredValue > 0){
-		scoreMax.textContent = alteredValue;	
-	}	
+		scoreMax.textContent = alteredValue;
+	}
 }
 
 function resetCount(pCounts){
-	pCounts.forEach(function(pCount){
-		pCount.textContent = 0;
-		pScores["p1"] = 0;
-		pScores["p2"] = 0;
+	Object.keys(pScores).forEach(function(pKey, index){
+		pScores[pKey] = 0;
+		pCounts[index].textContent = 0;
+		pCounts[index].classList.remove("gameOverColor");
 	});
-	p1Count.classList.remove("gameOverColor");
-	p2Count.classList.remove("gameOverColor");
 	gameover = false;
 }
 
