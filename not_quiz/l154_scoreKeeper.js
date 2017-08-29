@@ -21,10 +21,10 @@ scoreMaxManual.addEventListener("input", alterScoreMax);
 reset.addEventListener("click", resetCount.bind(null, pCounts));
 
 function manageCount(pCount, pScores, pKey){
-	pScores[pKey] += 1;
-	pScore = pScores[pKey];
-
 	if(!gameover){
+		pScores[pKey] += 1;
+		pScore = pScores[pKey];
+
 		if(pScore >= Number(scoreMax.textContent)){
 			gameover = true;
 			pCount.classList.add("gameOverColor");
