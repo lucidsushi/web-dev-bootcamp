@@ -1,0 +1,21 @@
+body {
+  background-color: rgb(25, 25, 25);
+}
+
+.square {
+  width: 30%;
+  background-color: white;
+  float: left;
+  margin: 1.66%;
+  padding-bottom: 30%;
+}
+
+#squaresContainer {
+  width: 700px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
