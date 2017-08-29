@@ -12,10 +12,13 @@ var scoreMax = document.querySelector("#scoreMax");
 var scoreMaxManual = document.querySelector("#scoreMaxManual");
 var reset = document.querySelector("#reset");
 //bind returns a new function object
-var manageCountBindP1 = manageCount.bind(null, p1Count);
-var manageCountBindP2 = manageCount.bind(null, p2Count);
 var pCounts = [p1Count, p2Count];
+var p1score = 0;
+var p2score = 0;
+var gameover = false;
 
+p1.addEventListener("click", manageCount.bind(null, p1Count, p1score));
+p2.addEventListener("click", manageCount.bind(null, p2Count, p2score));
 scoreMaxManual.addEventListener("input", alterScoreMax);
 reset.addEventListener("click", resetCount.bind(null, pCounts));
 
@@ -24,22 +27,25 @@ function alterScoreMax(){
 }
 
 function resetCount(pCounts){
-	p1.addEventListener("click", manageCountBindP1);
-	p2.addEventListener("click", manageCountBindP2);
 	pCounts.forEach(function(pCount){
 		pCount.style.color = "black";
 		pCount.textContent = 0;
+		p1score = 0;
+		p2score = 0;
 	});
 }
 
-function manageCount(pCount){
-	var numCount = parseInt(pCount.textContent);
-	pCount.textContent = numCount + 1;
-	//scoreMax reached
-	if(pCount.textContent === scoreMax.textContent){
+function manageCount(pCount, pScore){
+	pScore += 1;
+
+	if(pScore === parseInt(scoreMax.textContent)){
+		console.log("max is reached")
+		gameover = true;
 		pCount.style.color = "greenyellow";
-		p1.removeEventListener("click", manageCountBindP1);
-		p2.removeEventListener("click", manageCountBindP2);
+	}
+	if(!gameover){
+		console.log("not game over yet");
+		pCount.textContent = pScore;
 	}
 }
 
