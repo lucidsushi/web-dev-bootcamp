@@ -15,7 +15,18 @@ body {
   margin: 0 auto;
 }
 
-h1 {
-  color: white;
+#optionsStripe {
+  background-color: rgb(49, 113, 214);
+  height: 30px;
   text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+span {
+  color: white;
+  width: 50px;
 }
