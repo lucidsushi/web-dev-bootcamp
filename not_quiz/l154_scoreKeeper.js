@@ -23,7 +23,7 @@ reset.addEventListener("click", resetCount);
 function manageCount(pCount, pKey){
 	if(!gameover){
 		pScores[pKey] += 1;
-		pScore = pScores[pKey];
+		var pScore = pScores[pKey];
 
 		if(pScore >= Number(scoreMax.textContent)){
 			gameover = true;
@@ -34,7 +34,7 @@ function manageCount(pCount, pKey){
 }
 
 function alterScoreMax(){
-	alteredValue = this.value;
+	var alteredValue = this.value;
 	if(alteredValue > 0){
 		scoreMax.textContent = alteredValue;
 	}

@@ -650,8 +650,10 @@ hover example: mouseover / mouseout
 
 #irrelevant but interesting: wayback machine: https://web.archive.org/
 
+use style.backgroundColor instead of style.background (doesnt work in firefox?)
 
-
+# https://jsperf.com/concat-vs-plus-vs-join
+string concatenation is fast in js? (not part of lecture)
 
 
 
