@@ -11,15 +11,13 @@ var numSquares = {current: 6};
 
 
 function newGame(){
-  rgbGameDisplay.style.backgroundColor = "rgb(25, 25, 25)";
+  rgbGameDisplay.style.backgroundColor = "steelblue";
   resultDisplay.textContent = "";
   resetBtn.value = resetBtnOptions.newcolors;
 
   correctColor.index = Math.floor(Math.random() * numSquares.current);
 
-  resetBtn.addEventListener("click", function(freezeUpTest){
-    newGame();
-  });  
+  resetBtn.addEventListener("click", newGame);
   easyBtn.addEventListener("click", easyBtnEvent);
   hardBtn.addEventListener("click", hardBtnEvent);
 
