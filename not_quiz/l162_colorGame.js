@@ -3,8 +3,9 @@ var squares = document.querySelectorAll(".square");
 var rgbGameDisplay = document.querySelector("#rgbGameDisplay");
 var resultDisplay = document.querySelector("#resultDisplay");
 var resetBtn = document.querySelector("#resetColors");
-var hardBtn = document.querySelector("#hardBtn");
-var easyBtn = document.querySelector("#easyBtn");
+// var hardBtn = document.querySelector("#hardBtn");
+// var easyBtn = document.querySelector("#easyBtn");
+var modeBtns = document.querySelectorAll("#modeBtn");
 var correctColor = {index: null, color: null};
 var resetBtnOptions = {newcolors: "New Colors", playagain: "Play Again?"};
 var numSquares = {current: 6};
@@ -18,8 +19,11 @@ function newGame(){
   correctColor.index = Math.floor(Math.random() * numSquares.current);
 
   resetBtn.addEventListener("click", newGame);
-  easyBtn.addEventListener("click", easyBtnEvent);
-  hardBtn.addEventListener("click", hardBtnEvent);
+  for(var i = 0; i < modeBtns.length; i++){
+    modeBtns[i].addEventListener("click", modeBtnEvent);
+  }
+  // easyBtn.addEventListener("click", easyBtnEvent);
+  // hardBtn.addEventListener("click", hardBtnEvent);
 
   for(var i = 0; i < 6; i++){
     var rgb = randomRgb();
@@ -35,6 +39,14 @@ function newGame(){
       squares[i].style.display = "none";
     }
   }
+}
+
+function modeBtnEvent(){
+  modeBtns[0].classList.remove("selected");
+  modeBtns[1].classList.remove("selected");
+  this.classList.add("selected");
+  this.value === "Easy" ? numSquares.current = 3 : numSquares.current = 6;
+  newGame();
 }
 
 function easyBtnEvent(){
