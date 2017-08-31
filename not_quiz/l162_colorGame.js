@@ -17,7 +17,9 @@ function newGame(){
 
   correctColor.index = Math.floor(Math.random() * numSquares.current);
 
-  resetBtn.addEventListener("click", newGame);  
+  resetBtn.addEventListener("click", function(freezeUpTest){
+    newGame();
+  });  
   easyBtn.addEventListener("click", easyBtnEvent);
   hardBtn.addEventListener("click", hardBtnEvent);
 
