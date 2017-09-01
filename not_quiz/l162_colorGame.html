@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>l162_colorGame</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="l162_colorGame.css">
   <script type="text/javascript" src="l162_colorGame.js" defer></script>
 </head>
@@ -10,24 +11,30 @@
 <h1 id="rgbGameDisplay">
   <div>- Guess Which Color Is -</div>
   <span id="rgbDisplay">RBG</span>
-  
 </h1>
 
-<div id="optionsStripe">
+<div class="optionsStripe">
   <input type="button" id="resetColors" value="New Colors">
   <span id="resultDisplay"></span>
   <input type="button" id="modeBtn" value="Easy">
   <input type="button" id="modeBtn" value="Hard" class="selected">
-
 </div>
 
-<div id="squaresContainer">
+<div id="container">
   <div class="square"></div>
   <div class="square"></div>
   <div class="square"></div>
   <div class="square"></div>
   <div class="square"></div>
   <div class="square"></div>
+</div>
+
+<div class="optionsStripe">
+  <input type="button" id="hintBtn" value="Hint">
+</div>
+
+<div id="container">
+  <img id="hint" class="toggleDisplay" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/AdditiveColor.svg/2000px-AdditiveColor.svg.png">
 </div>
 
 </body>

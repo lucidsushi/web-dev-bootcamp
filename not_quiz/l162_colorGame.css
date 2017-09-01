@@ -5,38 +5,36 @@ body {
 }
 
 .square {
-  width: 30%;
+  width: 29%;
   background-color: white;
-  float: left;
+  /*float: left;*/
+  display: inline-block;
   margin: 1.66%;
-  padding-bottom: 30%;
+  padding-bottom: 29%;
   border-radius: 15%;
-  transition: background 0.5s;
-  -webkit-transition: background 0.5s;
-  -moz-transition: background 0.5s;
 }
 
 #rgbDisplay {
   font-size: 170%;
 }
 
-#optionsStripe {
+.optionsStripe {
   background-color: white;
   height: 35px;
   text-align: center;
 }
 
-#squaresContainer {
+#container {
   width: 700px;
-  margin: 10px auto;
+  margin: 15px auto;
+  text-align: center;
 }
 
-/* inline-block allowed the empty span to take up some width (if specified) */
+/* inline-block allows the empty span to take up some
+   fixed width(if specified) -> which helps anchor neighbour items */
 #resultDisplay{
   display: inline-block;
   width: 275px;
-  font-size: 110%;
-  font-weight: 700;
 }
 
 h1 {
@@ -47,10 +45,8 @@ h1 {
   text-transform: uppercase;
   line-height: 1.1;
   padding: 1.5% 0;
-  /*font-weight: normal;*/
 }
 
-/* transition gives the button the fade in/out affect */
 input {
   outline: none;
   border: none;
@@ -62,9 +58,6 @@ input {
   letter-spacing: 1px;
   color: steelblue;
   height: 100%;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
 }
 
 input:hover {
@@ -72,11 +65,28 @@ input:hover {
   background-color: steelblue;
 }
 
+#hintBtn {
+  font-weight: 900px;
+  font-size: 120%;
+}
+
+#hint {
+  height: 175px;
+  width: 175px;
+}
+
 .selected {
   color: white;
   background-color: steelblue;
 }
-/*span {
-  color: white;
-  width: 50px;
-}*/
+
+.toggleDisplay {
+  opacity: 0;
+}
+
+/* transition gives the button the fade in/out affect */
+#hint, input, .square {
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+}
