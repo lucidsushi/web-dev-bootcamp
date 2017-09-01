@@ -1,10 +1,8 @@
-var rgbDisplay = document.querySelector("#rgbDisplay");
 var squares = document.querySelectorAll(".square");
+var rgbDisplay = document.querySelector("#rgbDisplay");
 var rgbGameDisplay = document.querySelector("#rgbGameDisplay");
 var resultDisplay = document.querySelector("#resultDisplay");
 var resetBtn = document.querySelector("#resetColors");
-// var hardBtn = document.querySelector("#hardBtn");
-// var easyBtn = document.querySelector("#easyBtn");
 var modeBtns = document.querySelectorAll("#modeBtn");
 var correctColor = {index: null, color: null};
 var resetBtnOptions = {newcolors: "New Colors", playagain: "Play Again?"};
@@ -22,15 +20,12 @@ function newGame(){
   for(var i = 0; i < modeBtns.length; i++){
     modeBtns[i].addEventListener("click", modeBtnEvent);
   }
-  // easyBtn.addEventListener("click", easyBtnEvent);
-  // hardBtn.addEventListener("click", hardBtnEvent);
-
   for(var i = 0; i < 6; i++){
     var rgb = randomRgb();
     if(i === correctColor.index){
       correctColor.color = rgb;
+      rgbDisplay.textContent = correctColor.color;
     }
-    rgbDisplay.textContent = correctColor.color;
     if(i < numSquares.current){
       squares[i].style.display = "";
       squares[i].style.backgroundColor = rgb;
@@ -49,20 +44,6 @@ function modeBtnEvent(){
   newGame();
 }
 
-function easyBtnEvent(){
-  this.classList.add("selected");
-  hardBtn.classList.remove("selected");
-  numSquares.current = 3;
-  newGame();
-}
-
-function hardBtnEvent(){
-  this.classList.add("selected");
-  easyBtn.classList.remove("selected");
-  numSquares.current = 6;
-  newGame();
-}
-
 function randomRgb(){
   var rgbList = [];
   for(var i = 0; i < 3; i++){
@@ -73,19 +54,19 @@ function randomRgb(){
 
 function evalChoice(){
   if(this.style.backgroundColor === correctColor.color){
-    resultDisplay.textContent = "You've guessed correctly!";
+    resultDisplay.textContent = "CORRECT!";
     gameComplete();
   } else {
-    resultDisplay.textContent = "Wrong guess, try again!";
+    resultDisplay.textContent = "WRONG PICK.. TRY AGAIN!";
     this.style.backgroundColor = "rgb(25, 25, 25)";
   }
 }
 
 function gameComplete(){
-    //button text change
+    //button text change to play again
     resetBtn.value = resetBtnOptions.playagain;
 
-    //color change
+    //all squares change color to correct color
     rgbGameDisplay.style.backgroundColor = correctColor.color;
     for(var i = 0; i < squares.length; i++){
       squares[i].style.backgroundColor = correctColor.color;

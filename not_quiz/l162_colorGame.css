@@ -17,7 +17,7 @@ body {
 }
 
 #rgbDisplay {
-  font-size: 175%;
+  font-size: 170%;
 }
 
 #optionsStripe {
@@ -34,7 +34,9 @@ body {
 /* inline-block allowed the empty span to take up some width (if specified) */
 #resultDisplay{
   display: inline-block;
-  width: 20%;
+  width: 275px;
+  font-size: 110%;
+  font-weight: 700;
 }
 
 h1 {
