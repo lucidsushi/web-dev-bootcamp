@@ -657,3 +657,21 @@ string concatenation is fast in js? (not part of lecture)
 
 
 
+''' FIXES to fix for number game
+Object.keys(pScores).forEach(function(pKey, index){
+Object.keys doesnt necessarily return the keys of your object in the order you wrote them
+its the same thing as getting the keys of a python dictionary
+a more unified way to do this is replace var pScores = {p1: 0, p2: 0}; with a more complex object that stores the scores as well as the p1count/p2count elements
+like `var pState = {p1: {score: 0, element: p1Count}. p2: {score: 0, element: p2Count}}
+var pState = {p1: {score: 0, element: p1Count}. p2: {score: 0, element: p2Count}}
+var pState = {p1: {score: 0, element: p1Count}, p2: {score: 0, element: p2Count}}
+and then just update this state
+'''
+
+
+
+### intro to jquery
+-dom manipulation library
+    - select/manipulate/create/animate elements
+    - add event listenerr / effects
+    - make http requests (ajax)
