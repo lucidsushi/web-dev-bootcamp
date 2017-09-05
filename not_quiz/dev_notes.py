@@ -161,8 +161,8 @@ Selectors:
 
     combinators:
     descendent selector: "can be chained with other elements/selectors"
-        li a { }
-        ul li .blah { } "any anchor tag inside an li"
+        li a { }  "any anchor tag inside an li"
+        ul li .blah { } 
 
 
     adjacent selector: "apply property to tags right after (not within) the parent"
@@ -675,3 +675,76 @@ and then just update this state
     - select/manipulate/create/animate elements
     - add event listenerr / effects
     - make http requests (ajax)
+http://youmightnotneedjquery.com/
+
+#previous reasons for using jquery:
+    - fixes "broken" DOM api
+    - brevity/clarity
+    -cross-browser support
+    -ajax
+    -popular
+#why not use jquery
+    - DOM api no longer "broken"
+    - doesn't do anything you can't do on your own
+    - its an unnecessary dependency
+    - performance
+    - no longer popular
+
+#adding jquery
+- cdn: https://code.jquery.com/
+- or local script text/JavaScript src it
+
+check link by typing jQuery or $(a function) in console
+
+# Ian note  In order to view the element you must access it via $('div')[0];
+# https://stackoverflow.com/questions/13552432/show-elements-when-logging-jquery-object-in-chrome-dev-tools-console/13567689#13567689
+
+#jquery selectors
+$("selector") #returns ALL matching elements (a list even if one item)
+$(".class")
+$("#id")
+$("li a")
+
+#manipulating style of all selected (don't need a new for loop)
+$().css(property, value/object)
+$("#blah").css("border", "2px solid red")
+
+var styles = {
+    color: "red",
+    background: "pink",
+    border: "2px solid purple"
+}
+
+$("#blah").css("border", styles)
+
+$("#blah").css("border", {
+    color: "red",
+    background: "pink",
+    border: "2px solid purple"
+})
+
+# jQuery methods
+
+# val()
+
+# text()
+'Get the combined text contents of each element in the set of matched elements, including their descendants, or set the text contents of the matched elements.'
+note: cant be used to set html
+
+# attr()
+
+# html()
+'Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.'
+but it seems to return the combined html content as well like text() (not just the first element -kinda confused)
+
+
+# addClass()
+
+# removeClass()
+
+# toggleClass()
+
+
+
+
+
