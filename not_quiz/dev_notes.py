@@ -751,6 +751,31 @@ note: similiar to .css() can feed in an object to set multiple attributes at onc
 
 ### advanced jQuery
 
+# events (most common)
+
+# on() (MOST MOST COMMON?)
+
+# click()
+    # need to use jQuery version of "this" when "this" is desired
+$().click(function {
+    doSomething;
+    $(this).css.(something)
+    })
+
+# keyPress()
+the key pressed (shift + a ---> A)
+
+    #getting the key pressed
+    # event.which returns the key code http://keycode.info/
+    keyPress(function(event/e){
+        console.log(event.which)
+        });
+
+
+
+
+
+
 
 
 
