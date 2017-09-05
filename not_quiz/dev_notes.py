@@ -162,7 +162,7 @@ Selectors:
     combinators:
     descendent selector: "can be chained with other elements/selectors"
         li a { }  "any anchor tag inside an li"
-        ul li .blah { } 
+        ul li .blah { }
 
 
     adjacent selector: "apply property to tags right after (not within) the parent"
@@ -704,6 +704,8 @@ $("selector") #returns ALL matching elements (a list even if one item)
 $(".class")
 $("#id")
 $("li a")
+    #first/last
+    $().first(), $().last()
 
 #manipulating style of all selected (don't need a new for loop)
 $().css(property, value/object)
@@ -726,23 +728,34 @@ $("#blah").css("border", {
 # jQuery methods
 
 # val()
+note: same discription as attr() but for getting/setting value
+on input, select, textarea..etc
 
 # text()
 'Get the combined text contents of each element in the set of matched elements, including their descendants, or set the text contents of the matched elements.'
 note: cant be used to set html
 
 # attr()
+'Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.'
+note: similiar to .css() can feed in an object to set multiple attributes at once
 
 # html()
 'Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.'
-but it seems to return the combined html content as well like text() (not just the first element -kinda confused)
-
 
 # addClass()
-
 # removeClass()
-
 # toggleClass()
+    ~classList.methods() without the need of loops
+
+
+
+### advanced jQuery
+
+
+
+
+
+
 
 
 
