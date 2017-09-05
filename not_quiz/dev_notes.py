@@ -657,7 +657,7 @@ string concatenation is fast in js? (not part of lecture)
 
 
 
-''' FIXES to fix for number game
+''' FIXES to fix for number game  michael chen mchen
 Object.keys(pScores).forEach(function(pKey, index){
 Object.keys doesnt necessarily return the keys of your object in the order you wrote them
 its the same thing as getting the keys of a python dictionary
