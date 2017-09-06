@@ -673,7 +673,7 @@ and then just update this state
 ### intro to jquery
 -dom manipulation library
     - select/manipulate/create/animate elements
-    - add event listenerr / effects
+    - add event listener / effects
     - make http requests (ajax)
 http://youmightnotneedjquery.com/
 
@@ -754,6 +754,18 @@ note: similiar to .css() can feed in an object to set multiple attributes at onc
 # events (most common)
 
 # on() (MOST MOST COMMON?)
+ - similar to addEventListener in which it lets you specify 
+the type of even to listen for
+
+ - pretty much can use this for all events?
+
+ - click() only adds listener for existing elements
+
+ - on() will add listeners for all potential future elements
+
+ 
+
+
 
 # click()
     # need to use jQuery version of "this" when "this" is desired
