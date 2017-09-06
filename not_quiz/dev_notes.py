@@ -290,7 +290,7 @@ if each element needs to space themselves, it is margin
 - bootstrap comes with usable icons:
     Glyphicons
 - for more options theres also a bunch of icons available at fontsawesome:
-
+    font awesome
     https://www.bootstrapcdn.com/fontawesome/
     http://fontawesome.io/icon/shower/
 
@@ -754,7 +754,7 @@ note: similiar to .css() can feed in an object to set multiple attributes at onc
 # events (most common)
 
 # on() (MOST MOST COMMON?)
- - similar to addEventListener in which it lets you specify 
+ - similar to addEventListener in which it lets you specify
 the type of even to listen for
 
  - pretty much can use this for all events?
@@ -762,9 +762,6 @@ the type of even to listen for
  - click() only adds listener for existing elements
 
  - on() will add listeners for all potential future elements
-
- 
-
 
 
 # click()
@@ -784,12 +781,35 @@ the key pressed (shift + a ---> A)
         });
 
 
+# jQuery effects
+# https://api.jquery.com/category/effects/
+
+# fadeOut
+# http://api.jquery.com/fadeout/
+# 'fast' and 'slow' can be supplied to indicate durations of 200 and 600 milliseconds, default being 400
+
+.fadeOut( [duration ] [, complete ] )
+
+note:
+    - code does not wait for fadeOut to complete to run, therefore if
+        that is the desired behaviour you should use a callback function
+    for the [, complete] argument
+    - fadeout turns diplay to none and does not remove html like
+        $().remove() does
+
+
+.fadeToggle() : similiar to classList.toggle for fadeOut/fadeIn
+
+# slide: animates height, down to show up and up to go away
+.slideDown / slideUp / slideToggle
 
 
 
+### todo list  projects   jquery + html + css
+- jquery: new methods, parent(), append(), creating elements,
+    event delegation
 
-
-
+- css: fontawesome, box shadow, transition , gradient
 
 
 
