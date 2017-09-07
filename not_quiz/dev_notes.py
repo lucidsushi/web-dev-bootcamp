@@ -761,7 +761,10 @@ the type of even to listen for
 
  - click() only adds listener for existing elements
 
- - on() will add listeners for all potential future elements
+ - on() will add listeners for all potential future elements(
+    selector flag NEED TO BE specificed)
+    .on( events [, selector ] [, data ], handler )
+    # selector being a descendant of the element selected for on()
 
 
 # click()
@@ -810,6 +813,20 @@ note:
     event delegation
 
 - css: fontawesome, box shadow, transition , gradient
+
+
+# event bubbling event.stopProgpation()
+when you activate an event within parents/containers, the event can keep
+firing up until it hits <html>, ex: a click event on body and a button in
+body, clicking the button would trigger the button event, BUT also the body
+event (body is treated as being clicked as well)
+
+if this is undesirable the "event" object should be passed in the click
+function and you can call event.stopProgpation()
+
+
+
+
 
 
 
