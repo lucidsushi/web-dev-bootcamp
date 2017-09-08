@@ -27,7 +27,7 @@ function removeTodo(){
 
 function newToDo(){
 	if(event.which === 13){
-		$("ul").append(`<li><span>X</span> ${$(this).val()}</li>`);
+		$("ul").append(`<li><span><i class="fa fa-trash" aria-hidden="true"></i></span> ${$(this).val()}</li>`);
 		$(this).val("");
 	}
 }
