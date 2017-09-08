@@ -1,7 +1,25 @@
+body {
+	font-family: Roboto;
+}
+
+h1 {
+	background-color: rgb(73, 123, 209);
+	color: white;
+	margin: 0;
+	padding: 10px 15px;
+	text-transform: uppercase;
+}
+
 #container {
-	border: 2px solid gray;
 	width: 360px;
-	margin: 0 auto;
+	margin: 100px auto;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .checkedOff {
