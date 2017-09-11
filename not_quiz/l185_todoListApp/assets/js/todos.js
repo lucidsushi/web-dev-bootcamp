@@ -7,7 +7,7 @@ $("body").on("click", function(){
 $("ul").on("click", "li", checkedOff);
 
 //remove to do when "X"(span) is clicked on
-$("ul").on("click", "span", removeTodo);
+$("ul").on("click", "span .fa-trash", removeTodo);
 
 //adding a new todo
 $("input[type='text']").on("keypress", newToDo);
@@ -19,8 +19,10 @@ function checkedOff(){
 }
 
 function removeTodo(){
-	$(this).parent().fadeOut(function(){
-		$(this).remove;
+	//$(this).parent() = span
+	//$(this).parent().parent() = li
+	$(this).parent().parent().fadeOut(function(){
+		$(this).remove();
 	})
 	event.stopPropagation();
 }
