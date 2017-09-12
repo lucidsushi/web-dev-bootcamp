@@ -16,21 +16,19 @@ $("ul").on("click", "span", removeTodo);
 $("input[type='text']").on("keypress", newToDo);
 
 
-function checkedOff(){
+function checkedOff(event){
 	$(this).toggleClass("checkedOff");
-	return false;
-	// event.stopPropagation();
+	event.stopPropagation();
 }
 
-function removeTodo(){
+function removeTodo(event){
 	$(this).parent().fadeOut(function(){
 		$(this).remove();	
 	})
-	return false
-	// event.stopPropagation();
+	event.stopPropagation();
 }
 
-function newToDo(){
+function newToDo(event){
 	if(event.which === 13){
 		$("ul").append(`<li><span><i class="fa fa-trash" aria-hidden="true"></i></span> ${$(this).val()}</li>`);
 		$(this).val("");
