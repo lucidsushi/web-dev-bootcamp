@@ -3,11 +3,14 @@ $("body").on("click", function(){
 	console.log('event bubbled up to body, NOOO');
 });
 
+
 //check off todos when clicked
-$("ul").on("click", "li", checkedOff);
+$("ul").on("click", "li", function(){
+	$(this).toggleClass("checkedOff");
+});
 
 //remove to do when "X"(span) is clicked on
-$("ul").on("click", "span .fa-trash", removeTodo);
+$("ul").on("click", "span", removeTodo);
 
 //adding a new todo
 $("input[type='text']").on("keypress", newToDo);
@@ -15,16 +18,16 @@ $("input[type='text']").on("keypress", newToDo);
 
 function checkedOff(){
 	$(this).toggleClass("checkedOff");
-	event.stopPropagation();
+	return false;
+	// event.stopPropagation();
 }
 
 function removeTodo(){
-	//$(this).parent() = span
-	//$(this).parent().parent() = li
-	$(this).parent().parent().fadeOut(function(){
-		$(this).remove();
+	$(this).parent().fadeOut(function(){
+		$(this).remove();	
 	})
-	event.stopPropagation();
+	return false
+	// event.stopPropagation();
 }
 
 function newToDo(){
