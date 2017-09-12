@@ -10,6 +10,15 @@ body {
 
 }
 
+#container, input {
+	width: 360px;
+}
+
+#container {
+	margin: 100px auto;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
 h1 {
 	background-color: rgb(73, 123, 209);
 	color: white;
@@ -19,28 +28,31 @@ h1 {
 	text-transform: uppercase;
 }
 
-input {
-	width: 100%;
+input, li:nth-child(2n){
+	background-color: rgb(222, 227, 234);
+}
+
+input, li, .removeLi {
 	height: 40px;
+	line-height: 40px;
 	font-size: 20px;
+}
+
+input {
 	font-weight: bolder;
 	padding: 10px 10px;
-	background-color: rgb(222, 227, 234);
 	border: none;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
 
-input:focus {
+input:focus, li {
 	background-color: white;
-	border: 2px solid rgb(73, 123, 209);
-	outline: none;
 }
 
-#container {
-	width: 360px;
-	margin: 100px auto;
-	box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+input:focus {
+	border: 2px solid rgb(73, 123, 209);
+	outline: none;
 }
 
 ul {
@@ -54,7 +66,6 @@ ul {
 .removeLi {
 	background-color: red;
 	color: white;
-	height: 40px;
 	width: 0px;
 	opacity: 0;
 	text-align: center;
@@ -66,30 +77,20 @@ ul {
 
 }
 
-/*.editLi {
-	display: inline-block;
-	width: 40px;
-	text-align: center;
-	float: right;
-}*/
-
 li:hover span {
 	width: 40px;
 	opacity: 1;
-}
-
-li {
-	height: 40px;
-	line-height: 40px;
-	font-size: 20px;
-	background-color: white;
-}
-
-li:nth-child(2n) {
-	background-color: rgb(222, 227, 234);
 }
 
 .checkedOff {
 	color: rgb(73, 123, 209);
 	text-decoration: line-through;
 }
+
+
+/*.editLi {
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+	float: right;
+}*/
