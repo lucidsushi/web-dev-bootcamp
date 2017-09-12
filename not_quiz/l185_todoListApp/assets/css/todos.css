@@ -51,7 +51,7 @@ ul {
 	padding: 0;
 }
 
-span {
+.removeLi {
 	background-color: red;
 	color: white;
 	height: 40px;
@@ -59,12 +59,19 @@ span {
 	opacity: 0;
 	text-align: center;
 	display: inline-block;
-	margin-right: 10px;
+	margin-right: 15px;
   	transition: 0.2s linear;
   	-webkit-transition: 0.2s linear;
   	-moz-transition: 0.2s linear;
 
 }
+
+/*.editLi {
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+	float: right;
+}*/
 
 li:hover span {
 	width: 40px;
