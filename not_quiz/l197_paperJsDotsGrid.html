@@ -2,9 +2,16 @@
 <html>
 <head>
   <title>l197_paperJsDotsGrid</title>
+  <link rel="stylesheet" type="text/css" href="l197_paperJsDotsGrid.css">
   <script type="text/javascript" src="l197_paperJsDotsGrid.js" defer></script>
+  <script type="text/javascript" src="libs/paper-full.js"></script>
+  <script type="text/paperscript" canvas="canvas">
+  	var point = new Point(100, 50);
+  	console.log(point.x); // 10
+		console.log(point.y);  //5
+  </script>
 </head>
 <body>
-
+	<canvas id="canvas" resize></canvas>
 </body>
 </html>
