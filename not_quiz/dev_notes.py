@@ -830,6 +830,24 @@ https://uigradients.com/
 
 
 
+### patatap clone
+- more exposure to third party libaries: paper.js, howler.js
+
+# telling paperscript what id to look for(="canvas") for canvas
+<script type="text/paperscript" canvas="canvas">
+
+
+# l196 note:
+'''
+include paperscript code internally using script tag, if included as external
+.js file it will break the app due to "cross origin resource sharing"
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+'''
+
+
+
+
 
 
 
