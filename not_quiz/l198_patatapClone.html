@@ -3,7 +3,7 @@
 <head>
   <title>l198_patatapClone</title>
   <link rel="stylesheet" type="text/css" href="l198_patatapClone.css">
-
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
   <script type="text/javascript" src="libs/paper-full.js"></script>
   <script type="text/paperscript" canvas="canvas">
 
@@ -15,7 +15,7 @@
       var pointRandom = new Point.random();
 
       //for some reasons two object can multiply in value in this case
-      var circle = new Path.Circle(pointMax * pointRandom, 40);
+      var circle = new Path.Circle(pointMax * pointRandom, 200);
       circle.fillColor = 'blue';
       circles.push(circle);
     }
