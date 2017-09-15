@@ -845,6 +845,12 @@ include paperscript code internally using script tag, if included as external
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 '''
 
+# used paper.js for canvas operations, holwer.js for playing sounds
+
+
+
+### intro to backend
+- review internet basics, static vs dynamic sites, stacks/back end tech
 
 
 
