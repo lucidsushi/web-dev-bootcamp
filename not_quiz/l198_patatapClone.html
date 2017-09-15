@@ -3,14 +3,21 @@
 <head>
   <title>l198_patatapClone</title>
   <link rel="stylesheet" type="text/css" href="l198_patatapClone.css">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
+  <script type="text/javascript" src="libs/howler.js"></script>
   <script type="text/javascript" src="libs/paper-full.js"></script>
   <script type="text/paperscript" canvas="canvas">
+
+    var sound = new Howl({
+      src: ['libs/piano_sounds/39187__jobro__piano-ff-040.wav']
+    });
 
     var circles = [];
 
     function onKeyDown(event){
       //text.content = 'The ' + event.key + ' key was pressed!';
+
+      sound.play();
+
       var pointMax = new Point(view.size.width, view.size.height);
       var pointRandom = new Point.random();
 
