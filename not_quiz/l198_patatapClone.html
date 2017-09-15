@@ -7,32 +7,169 @@
   <script type="text/javascript" src="libs/paper-full.js"></script>
   <script type="text/paperscript" canvas="canvas">
 
-    var sound = new Howl({
-      src: ['libs/piano_sounds/39187__jobro__piano-ff-040.wav']
-    });
-
     var circles = [];
 
-    function onKeyDown(event){
-      //text.content = 'The ' + event.key + ' key was pressed!';
+    var keySoundData = {
+      u: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39211__jobro__piano-ff-063.wav']}),
+        color: randomRgb()
+      },
+      7: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39210__jobro__piano-ff-062.wav']}),
+        color: randomRgb()
+      },
+      y: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39209__jobro__piano-ff-061.wav']}),
+        color: randomRgb()
+      },
+      6: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39208__jobro__piano-ff-060.wav']}),
+        color: randomRgb()
+      },
+      t: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39207__jobro__piano-ff-059.wav']}),
+        color: randomRgb()
+      },
+      5: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39206__jobro__piano-ff-058.wav']}),
+        color: randomRgb()
+      },
+      r: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39205__jobro__piano-ff-057.wav']}),
+        color: randomRgb()
+      },
+      e: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39204__jobro__piano-ff-056.wav']}),
+        color: randomRgb()
+      },
+      3: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39203__jobro__piano-ff-055.wav']}),
+        color: randomRgb()
+      },
+      w: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39202__jobro__piano-ff-054.wav']}),
+        color: randomRgb()
+      },
+      2: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39201__jobro__piano-ff-053.wav']}),
+        color: randomRgb()
+      },
+      q: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39200__jobro__piano-ff-052.wav']}),
+        color: randomRgb()
+      },
+      m: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39199__jobro__piano-ff-051.wav']}),
+        color: randomRgb()
+      },
+      j: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39198__jobro__piano-ff-050.wav']}),
+        color: randomRgb()
+      },
+      n: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39197__jobro__piano-ff-049.wav']}),
+        color: randomRgb()
+      },
+      h: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39196__jobro__piano-ff-048.wav']}),
+        color: randomRgb()
+      },
+      b: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39195__jobro__piano-ff-047.wav']}),
+        color: randomRgb()
+      },
+      g: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39194__jobro__piano-ff-046.wav']}),
+        color: randomRgb()
+      },
+      v: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39193__jobro__piano-ff-045.wav']}),
+        color: randomRgb()
+      },
+      c: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39191__jobro__piano-ff-044.wav']}),
+        color: randomRgb()
+      },
+      d: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39190__jobro__piano-ff-043.wav']}),
+        color: randomRgb()
+      },
+      x: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39189__jobro__piano-ff-042.wav']}),
+        color: randomRgb()
+      },
+      s: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39188__jobro__piano-ff-041.wav']}),
+        color: randomRgb()
+      },
+      z: {
+        sound: new Howl({
+          src: ['libs/piano_sounds/39187__jobro__piano-ff-040.wav']}),
+        color: randomRgb()
+      }
+    }
 
-      sound.play();
+
+    function onKeyDown(event){
+      if(!keySoundData[event.key]){
+        return;
+      }
 
       var pointMax = new Point(view.size.width, view.size.height);
       var pointRandom = new Point.random();
 
       //for some reasons two object can multiply in value in this case
-      var circle = new Path.Circle(pointMax * pointRandom, 200);
-      circle.fillColor = 'blue';
+      var circle = new Path.Circle(pointMax * pointRandom, 300);
+      circle.fillColor = keySoundData[event.key].color;
+      keySoundData[event.key].sound.play();
+
       circles.push(circle);
     }
 
     function onFrame(event){
       for(var i = 0; i < circles.length; i++){
-        circles[i].scale(0.9);
+        circles[i].scale(0.92);
+        circles[i].fillColor.hue += 1;
+
+        if(circles[i].area < 1){
+          circles[i].remove();
+          circles.splice(i, 1);
+          i--;
+        }
+
       }
     }
 
+    function randomRgb(){
+      var rgbList = [];
+      for(var i = 0; i < 3; i++){
+        rgbList.push(Math.floor(Math.random() * 256));
+      }
+      return "rgb(" + rgbList[0] + ", " + rgbList[1] + ", " + rgbList[2] +")";
+    }
 
   </script>
 </head>
