@@ -6,12 +6,31 @@
 
   <script type="text/javascript" src="libs/paper-full.js"></script>
   <script type="text/paperscript" canvas="canvas">
-    for(i=0; i <= 100; i++){
-      var color = 'rgb(' + ' ' + (109+i) + ', ' + (80+i) + ', ' + (16+i) + ')';
-      var x = Math.floor(i/10)*100;
-      var y = i%10*100;
-      new Path.Circle(new Point(x, y), 10).fillColor = color;
+    function onKeyDown(event) {
+      //text.content = 'The ' + event.key + ' key was pressed!';
+      var pointMax = new Point(view.size.width, view.size.height);
+      var pointRandom = new Point.random();
+
+      //for some reasons two object can multiply in value in this case
+      var circle = new Path.Circle(pointMax * pointRandom, 10);
+      circle.fillColor = 'blue';
+
+
+      // introspection function that doesn't seem to introspect (no fillcolor)
+      // function getMethods(obj)
+      // {
+      //   var res = [];
+      //   for(var m in obj) {
+      //       if(typeof obj[m] != undefined) {
+      //           res.push(m)
+      //       }
+      //   }
+      //   return res;
+      // }
+      // console.log(getMethods(circle));
     }
+
+
   </script>
 </head>
 <body>
