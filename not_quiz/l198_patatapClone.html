@@ -6,28 +6,24 @@
 
   <script type="text/javascript" src="libs/paper-full.js"></script>
   <script type="text/paperscript" canvas="canvas">
-    function onKeyDown(event) {
+
+    var circles = [];
+
+    function onKeyDown(event){
       //text.content = 'The ' + event.key + ' key was pressed!';
       var pointMax = new Point(view.size.width, view.size.height);
       var pointRandom = new Point.random();
 
       //for some reasons two object can multiply in value in this case
-      var circle = new Path.Circle(pointMax * pointRandom, 10);
+      var circle = new Path.Circle(pointMax * pointRandom, 40);
       circle.fillColor = 'blue';
+      circles.push(circle);
+    }
 
-
-      // introspection function that doesn't seem to introspect (no fillcolor)
-      // function getMethods(obj)
-      // {
-      //   var res = [];
-      //   for(var m in obj) {
-      //       if(typeof obj[m] != undefined) {
-      //           res.push(m)
-      //       }
-      //   }
-      //   return res;
-      // }
-      // console.log(getMethods(circle));
+    function onFrame(event){
+      for(var i = 0; i < circles.length; i++){
+        circles[i].scale(0.9);
+      }
     }
 
 
