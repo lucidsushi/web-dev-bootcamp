@@ -852,7 +852,23 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 ### intro to backend
 - review internet basics, static vs dynamic sites, stacks/back end tech
 
+www.udemy.com -> 23.234.47.175
 
+# finding the right address
+- query submitted to isp, within isp, the DNS takes the domain name and turns it into ip address
+
+# going to that address
+- request sent to desired ip via HTTP, finds fastest path to server with specified ip, requires hoping around servers
+
+# udemy server responds
+- requested server figures out what we are asking for, server builds right content (often pulling info from database), server responds with any combination of html, css and js
+
+# static vs dynamic
+- static sites always give you the same html, css, and js
+
+
+# stacks
+- see what stack companies use: https://stackshare.io/
 
 
 
