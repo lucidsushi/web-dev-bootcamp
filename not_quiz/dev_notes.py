@@ -875,3 +875,16 @@ www.udemy.com -> 23.234.47.175
 
 
 
+# http requests
+postman chrome app (good for debugging)
+
+various http verbs (get (retrieval), post(add/submit usually via form) ..etc)
+
+3 components of a response:
+- body (content,pages source to be rendered into a web page?)
+- header (meta data about the response: content type, date, time, status )
+- status code(number that represents the response)
+
+
+get request can still feed in some inputs via query string (?q=blah&haha=meh)
+
