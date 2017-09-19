@@ -896,3 +896,5 @@ ls, cd, mkdir, touch, rm , rm -rf
 
 ### node js
 
+what is node:
+    what we use to run js on the server side
