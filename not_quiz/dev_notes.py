@@ -884,3 +884,15 @@ various http verbs (get (retrieval), post(add/submit usually via form) ..etc)
 
 get request can still feed in some inputs via query string (?q=blah&haha=meh)
 
+
+
+### the command line
+https://www.davidbaumgold.com/tutorials/command-line/
+
+ls, cd, mkdir, touch, rm , rm -rf
+# most of these you can do multiple operations at once with a space between the inputs
+
+
+
+### node js
+
