@@ -886,8 +886,23 @@ get request can still feed in some inputs via query string (?q=blah&haha=meh)
 
 
 
-
 ### the command line
 
 # all cloud9 solutions for bootcamp
 https://ide.c9.io/learnwithcolt/webdevbootcamp
+
+
+https://www.davidbaumgold.com/tutorials/command-line/
+
+ls, cd, mkdir, touch, rm , rm -rf
+# most of these you can do multiple operations at once with a space between the inputs
+
+
+
+### node js
+
+what is node:
+    what we use to run js on the server side
+
+
+node "filename.js" # running a .js file
