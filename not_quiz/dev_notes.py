@@ -884,3 +884,10 @@ various http verbs (get (retrieval), post(add/submit usually via form) ..etc)
 
 get request can still feed in some inputs via query string (?q=blah&haha=meh)
 
+
+
+
+### the command line
+
+# all cloud9 solutions for bootcamp
+https://ide.c9.io/learnwithcolt/webdevbootcamp
