@@ -906,3 +906,11 @@ what is node:
 
 
 node "filename.js" # running a .js file
+
+
+# what is npm: (latest movement is to use yarn?)
+    - package manager for js
+
+# why np is good:
+
+# packages we will be using:
