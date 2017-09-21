@@ -911,6 +911,10 @@ node "filename.js" # running a .js file
 # what is npm: (latest movement is to use yarn?)
     - package manager for js
 
-# why np is good:
+# why npm is good:
+    - easy to use "npm install"
 
 # packages we will be using:
+    - mongoose, express
+
+
