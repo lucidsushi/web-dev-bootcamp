@@ -926,6 +926,17 @@ node "filename.js" # running a .js file
 
 ### server side frameworks
 
+# what is a framework, how is it different from a library?
+    - inversion of control, the framework calls you (vesus you call a library)
+    - set ups where you fill in the predefined blank space
+
+# what is express?
+    - node web dev framework
+
+# why are we using express?
+    - light weight framework (vs rails is heavier)
+        - more do it yourself (more blank space to fill vs less)
+
 
 
 
