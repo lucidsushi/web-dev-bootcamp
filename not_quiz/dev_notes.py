@@ -915,6 +915,17 @@ node "filename.js" # running a .js file
     - easy to use "npm install"
 
 # packages we will be using:
-    - mongoose, express
+    - mongoose, express, faker (exercise)
+
+    - install packcage in the same directory as the file that is calling it (probably ways around this)
+
+    - require() to include package :
+      var faker = require('faker');
+
+
+
+### server side frameworks
+
+
 
 
