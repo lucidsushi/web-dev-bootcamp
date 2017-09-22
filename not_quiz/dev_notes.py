@@ -938,5 +938,8 @@ node "filename.js" # running a .js file
         - more do it yourself (more blank space to fill vs less)
 
 
+# routes
+    - code that are responsible for receiving/lisetning requests, and deciding
+      what to send back
 
 
