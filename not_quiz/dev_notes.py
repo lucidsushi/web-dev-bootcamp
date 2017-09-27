@@ -943,3 +943,48 @@ node "filename.js" # running a .js file
       what to send back
 
 
+# running the server
+# node app.js -> preview running app
+cloud 9 repo - https://ide.c9.io/lucidsushi/webdevbootcamp
+
+
+# explain `--save` flag to install packages
+'''`npm install <pkg> --save` afterwards to install a package and
+save it as a dependency in the package.json file`'''
+
+# explain package.json does
+meta data which also includes what other packages are needed for it to run
+(instead of including all the actual ingridients, give a list of ingridients)
+
+# use `npm init` to create a new package.json
+
+ '''
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg> --save` afterwards to install a package and
+save it as a dependency in the package.json file.
+'''
+
+
+# `*` route matcher will make everything
+# route order matters, nothing else will get matched if * goes first
+app.get("*", function(req, res) {
+    res.send("You are a STAR!");
+})
+
+# routes containing route parameters/variables
+# which makes the path not "hard coded"
+prepend the param/var with a ":"
+
+app.get("r/:something/blah/:boo");
+
+can be queried via req.params => req.params.something // req.params.boo
+
+
+# route order
+further app.get() will not run when one is matched (kind of like elif statements)
+
