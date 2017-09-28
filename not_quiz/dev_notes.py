@@ -988,3 +988,27 @@ can be queried via req.params => req.params.something // req.params.boo
 # route order
 further app.get() will not run when one is matched (kind of like elif statements)
 
+
+
+### Intermediate express
+
+# new tip: c9 app.js to open the file in editor on cloud 9
+- express looks in "views" folder (not an arbitrary foldler name) for ejs
+
+# use res.render() to render html from EJS file
+feeding variable to ejs via objects:
+    var thing = req.params.thing;
+    res.render("love.ejs", {thingVar: thing});
+
+# what/why EJS
+npm install ejs --save
+
+# pass variable to EJS template
+assign the special brackets + some var name =>  <%= varName %>
+<h1>you fell in love with: <%= thingVar %></h1>
+<%= thingVar.toUpperCase() %> #js methods support within brackets
+
+code within brackets is treated as js code, then the return is passed to html
+
+
+
