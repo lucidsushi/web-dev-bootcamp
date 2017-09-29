@@ -470,6 +470,10 @@ array.forEach(someFunction)
 # whether feeding a function or an anonymous function forEach by default expects
 # arguments of ( item_per_items, index_item, items(array) )
 
+# arr.forEach(function callback(currentValue, index, array) {
+#     //your iterator
+# }[, thisArg]);
+
 # remove an item of item_index from array ONCE(?)
 array.splice(index_to_delete, 1);
     # filter a very good option as well as it actually can return an array without the item (instead of an array of the removed items)
@@ -1000,7 +1004,7 @@ feeding variable to ejs via objects:
     var thing = req.params.thing;
     res.render("love.ejs", {thingVar: thing});
 
-# what/why EJS
+# what/why EJS https://www.npmjs.com/package/ejs
 npm install ejs --save
 
 # pass variable to EJS template
@@ -1009,6 +1013,11 @@ assign the special brackets + some var name =>  <%= varName %>
 <%= thingVar.toUpperCase() %> #js methods support within brackets
 
 code within brackets is treated as js code, then the return is passed to html
+
+# ejs control flow
+Escaped output with <%= %> (escape function configurable)
+Control flow with <% %>
+
 
 
 
