@@ -1001,8 +1001,8 @@ further app.get() will not run when one is matched (kind of like elif statements
 
 # use res.render() to render html from EJS file
 feeding variable to ejs via objects:
-    var thing = req.params.thing;
-    res.render("love.ejs", {thingVar: thing});
+    var name_in_current_scope = req.params.thing;
+    res.render("love.ejs", {name_in_ejs: name_in_current_scope});
 
 # what/why EJS https://www.npmjs.com/package/ejs
 npm install ejs --save
@@ -1017,6 +1017,16 @@ code within brackets is treated as js code, then the return is passed to html
 # ejs control flow
 Escaped output with <%= %> (escape function configurable)
 Control flow with <% %>
+
+# styles and partials
+- include public assets
+    #tell express to serve the content of the "public" directory
+    app.use(express.static("public"));
+
+- configurate app to use ejs
+    app.set("view engine", "ejs"); # now no longer need to  put .ext for file
+                                   # name inputs to res.render("file")
+- use partial to dry up code
 
 
 
