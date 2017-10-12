@@ -1024,9 +1024,10 @@ Control flow with <% %>
     app.use(express.static("public"));
 
 - configurate app to use ejs
-    app.set("view engine", "ejs"); # now no longer need to  put .ext for file
-                                   # name inputs to res.render("file")
+    app.set("view engine", "ejs");# now no longer need to  put .ext for file
+                                  # name inputs to res.render("file")
 - use partial to dry up code
+    -"partial" is a generic name
     - removes the need to repeatedly created the same html tag structure for each
       file in views
     - mkdir partials in 'views' folder
@@ -1041,6 +1042,8 @@ Control flow with <% %>
 - write post routes, test with postman
 - use a form to send post request
 - use body parser to get form data
+
+
 
 
 
