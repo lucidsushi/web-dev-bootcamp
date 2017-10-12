@@ -1027,7 +1027,20 @@ Control flow with <% %>
     app.set("view engine", "ejs"); # now no longer need to  put .ext for file
                                    # name inputs to res.render("file")
 - use partial to dry up code
+    - removes the need to repeatedly created the same html tag structure for each
+      file in views
+    - mkdir partials in 'views' folder
+    - create header/footer.ejs files (the html from start to <body> being header,
+                                      the html from </body> to </html> being footer)
 
+    - for files in views add include statements at top and bottom:
+        <% include partials/header %>
+        <% include partials/footer %>
+
+# post requests
+- write post routes, test with postman
+- use a form to send post request
+- use body parser to get form data
 
 
 
