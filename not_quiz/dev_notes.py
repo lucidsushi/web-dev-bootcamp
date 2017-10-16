@@ -993,10 +993,20 @@ can be queried via req.params => req.params.something // req.params.boo
 further app.get() will not run when one is matched (kind of like elif statements)
 
 
+# listen for requests (start server)
+'''
+// *** tell express to listen for requests (start server) ***
+// need to use process.env.PORT (returns a number) for cloud9 instead of a direct number
+// (os.environ['PORT'] in python)
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log("Server has started!!");
+});
+'''
+
 
 ### Intermediate express
 
-# new tip: c9 app.js to open the file in editor on cloud 9
+# new tip: `c9 app.js` to open the file in editor on cloud 9
 - express looks in "views" folder (not an arbitrary foldler name) for ejs
 
 # use res.render() to render html from EJS file
@@ -1045,8 +1055,4 @@ Control flow with <% %>
     use middleware body parser to parse "req.body" property for node js
     https://www.npmjs.com/package/body-parser
     npm install body-parser --save
-
-
-
-
 
