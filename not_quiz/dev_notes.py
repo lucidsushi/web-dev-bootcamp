@@ -1042,6 +1042,9 @@ Control flow with <% %>
 - write post routes, test with postman
 - use a form to send post request
 - use body parser to get form data
+    use middleware body parser to parse "req.body" property for node js
+    https://www.npmjs.com/package/body-parser
+    npm install body-parser --save
 
 
 
