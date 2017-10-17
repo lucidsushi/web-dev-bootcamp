@@ -1050,9 +1050,34 @@ Control flow with <% %>
 
 # post requests
 - write post routes, test with postman
+    app.post("/route", function)
+
 - use a form to send post request
+    <form action="/addfriend" method="post">
+
 - use body parser to get form data
-    use middleware body parser to parse "req.body" property for node js
+    'Parse incoming request bodies in a middleware (req.body?) before your'
+    'handlers, available under the req.body property.'
     https://www.npmjs.com/package/body-parser
     npm install body-parser --save
+
+    var bodyParser = require('body-parser');
+
+    // This object will contain key-value pairs, where the value can be a string or
+    //  array (when extended is false), or any type (when extended is true).
+    app.use(bodyParser.urlencoded({ extended: true }));
+
+    formData = req.body.name_of_input_in_form
+
+
+
+### Working with APIs
+# application programing interface
+https://ifttt.com/
+https://www.programmableweb.com/
+- wep apis usually accessed through http requests
+
+
+
+
 
