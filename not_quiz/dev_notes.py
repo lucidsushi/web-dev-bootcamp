@@ -1076,6 +1076,23 @@ Control flow with <% %>
 https://ifttt.com/
 https://www.programmableweb.com/
 - wep apis usually accessed through http requests
+- make http request to api -> get some data back
+
+# xml /json
+xml - extended markup language - syntacticly similar to HTML, but does
+not describe presentation like HTML does (ex: bold, strong)
+
+json viewer chrome:
+    https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh
+    or http://jsonviewer.stack.hu/
+
+# making api requests with node
+- making requests in command-line using curl https://tldr.ostera.io/curl
+- making requests in node using 'request': https://github.com/request/request
+
+
+
+
 
 
 
