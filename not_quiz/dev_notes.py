@@ -1090,6 +1090,11 @@ json viewer chrome:
 - making requests in command-line using curl https://tldr.ostera.io/curl
 - making requests in node using 'request': https://github.com/request/request
 
+# %20 is how you encode "space" in an url
+
+returned body could be just a string, therefore recast it to an objecting using:
+    parseData = JSON.parse(body);
+
 
 
 
