@@ -1095,6 +1095,9 @@ json viewer chrome:
 returned body could be just a string, therefore recast it to an objecting using:
     parseData = JSON.parse(body);
 
+# using api key for request..
+request vs request&apikey=thewdb
+
 
 
 
