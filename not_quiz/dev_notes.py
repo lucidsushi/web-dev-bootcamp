@@ -956,6 +956,8 @@ cloud 9 repo - https://ide.c9.io/lucidsushi/webdevbootcamp
 '''`npm install <pkg> --save` afterwards to install a package and
 save it as a dependency in the package.json file`'''
 
+install multiple at once with `npm install <pkg1> <pkg2> --save
+
 # explain package.json does
 meta data which also includes what other packages are needed for it to run
 (instead of including all the actual ingridients, give a list of ingridients)
@@ -969,8 +971,6 @@ It only covers the most common items, and tries to guess sensible defaults.
 See `npm help json` for definitive documentation on these fields
 and exactly what they do.
 
-Use `npm install <pkg> --save` afterwards to install a package and
-save it as a dependency in the package.json file.
 '''
 
 
@@ -1101,6 +1101,12 @@ request vs request&apikey=thewdb
 
 
 ### Yelp Camp Basics
+- add landing page
+- add campground page that lists all campgrounds
+
+    each campground has:
+        -name
+        -image
 
 
 
