@@ -1108,6 +1108,9 @@ request vs request&apikey=thewdb
         -name
         -image
 
+- create header/footer partials
+- add bootstrap
+
 
 
 
