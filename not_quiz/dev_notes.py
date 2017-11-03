@@ -1118,6 +1118,14 @@ request vs request&apikey=thewdb
     - setup route to show form
     - add basic unstyle form
 
+- style campground page
+    - add better header/title
+        - use double bootstrap containers as a trick to get the inner text to
+          maintain some sort of padding when the page is shrunk in
+    - make campgrounds display in a grid
+
+
+
 
 
 
