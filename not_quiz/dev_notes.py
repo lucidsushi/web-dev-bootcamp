@@ -1111,6 +1111,13 @@ request vs request&apikey=thewdb
 - create header/footer partials
 - add bootstrap
 
+- creating new campgrounds
+    - setup new campground POST route
+        share the same route name as get route to match REST convention/req
+    - add in body parser
+    - setup route to show form
+    - add basic unstyle form
+
 
 
 
