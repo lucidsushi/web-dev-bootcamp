@@ -1123,6 +1123,60 @@ request vs request&apikey=thewdb
         - use double bootstrap containers as a trick to get the inner text to
           maintain some sort of padding when the page is shrunk in
     - make campgrounds display in a grid
+        - <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+            - flex styling options used to make non-uniform images fit nicely
+
+- style the navbar and form
+    - add navbar to all template
+
+    - style new campground form
+        - use bootstrap built-in <div class="form-group"> to put some vertical
+        spacing between inputs
+
+
+
+### databases
+# intro to databases
+- what is a database
+    - collection of information/data
+    - has an interface to interact with (db.dogs.find())
+- sql (relational) vs. nosql (non-relational)
+    - sql: tables, join tables, less flexible (new attributes need to be
+        applied to all table entries)
+
+    - nosql: dont need tables (doesnt mean its better than sql), more flexible
+
+- what is mongodb
+
+
+- installing mongodb on c9
+    - https://community.c9.io/t/setting-up-mongodb/1717 
+
+    - reparing mongo crash (if left running and timed out)
+        cd ~
+        ./mongod --repair
+
+        # if still doesnt work
+        cd ~/data
+        rm mogod.lock
+        cd
+        ./mongod
+
+-mongo commands
+    -mongod
+    -mongo
+    -help
+    -show dbs
+    -use
+    -insert
+    -find
+    -update
+    -remove
+
+
+
+
+
 
 
 
