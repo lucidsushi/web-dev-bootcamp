@@ -1150,7 +1150,7 @@ request vs request&apikey=thewdb
 
 
 - installing mongodb on c9
-    - https://community.c9.io/t/setting-up-mongodb/1717 
+    - https://community.c9.io/t/setting-up-mongodb/1717
 
     - reparing mongo crash (if left running and timed out)
         cd ~
@@ -1163,15 +1163,39 @@ request vs request&apikey=thewdb
         ./mongod
 
 -mongo commands
+    # CRUD create/read/update/delete
     -mongod
+        - starts the mongo daemon (process)
+        # start it and leave it running in its own tab
     -mongo
+        - launches mongodb shell
     -help
     -show dbs
     -use
+        - sets current database or create it if it does not exist
+    # below probably most important
     -insert
+        - db.collection.insert(object)
+            # unique "_id": ObjectId("") gets assigned by mongodb
     -find
+        - db.collection.find() # shows the whole collection
+        - db.collection.find(object) # shows entries matching object
     -update
+        - db.collection.update(object_to_select, object_to_update)
+            # this wipes out all other keys in the object
+        - db.collection.update(object_to_select, {$set: object_to_update})
+            # this will not wipe out keys not in original object that is not in
+            # object to update
+        - db.collection.update(object_to_select, {$set: object_to_update}, {
+            multi: true})
+            # additional extra flags exist to support certain operations, in
+            # this case 'multi' needs to be set to true to actually update more
+            # than one
     -remove
+        - db.collection.remove(object_to_select) # removes all matching
+        - db.collection.remove(object_to_select, {justOne: true}) # removes 1 match
+
+
 
 
 
