@@ -921,7 +921,7 @@ node "filename.js" # running a .js file
 # packages we will be using:
     - mongoose, express, faker (exercise)
 
-    - install packcage in the same directory as the file that is calling it (probably ways around this)
+    - install package in the same directory as the file that is calling it (probably ways around this)
 
     - require() to include package :
       var faker = require('faker');
@@ -972,6 +972,10 @@ See `npm help json` for definitive documentation on these fields
 and exactly what they do.
 
 '''
+
+# npm check package
+npm list --depth=0 | grep package_name
+npm ls package_name
 
 
 # `*` route matcher will make everything
@@ -1213,7 +1217,7 @@ request vs request&apikey=thewdb
 
 
     ''' # 2
-    `open()` is deprecated in mongoose >= 4.11.0, use `openUri()` instead, 
+    `open()` is deprecated in mongoose >= 4.11.0, use `openUri()` instead,
     or set the `useMongoClient` option if using `connect()`
     or `createConnection()`
     '''
@@ -1284,9 +1288,13 @@ request vs request&apikey=thewdb
 
 
 # yelpcamp: data persistence
+-install/configurate mongoose
+-setup up campground model
+-use camground model inside of our routes
 
-
-
+'''random note
+https://stackoverflow.com/questions/694102/declaring-multiple-variables-in-javascript
+'''
 
 
 
