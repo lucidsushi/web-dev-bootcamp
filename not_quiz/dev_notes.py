@@ -1136,6 +1136,7 @@ request vs request&apikey=thewdb
 
 
 ### databases
+
 # intro to databases
 - what is a database
     - collection of information/data
@@ -1146,8 +1147,7 @@ request vs request&apikey=thewdb
 
     - nosql: dont need tables (doesnt mean its better than sql), more flexible
 
-- what is mongodb
-
+- what is mongodb (nosql)
 
 - installing mongodb on c9
     - https://community.c9.io/t/setting-up-mongodb/1717
@@ -1171,8 +1171,10 @@ request vs request&apikey=thewdb
         - launches mongodb shell
     -help
     -show dbs
-    -use
-        - sets current database or create it if it does not exist
+
+    -use (sets current database or create it if it does not exist)
+    -show collections (show collections in db)
+
     # below probably most important
     -insert
         - db.collection.insert(object)
@@ -1196,9 +1198,92 @@ request vs request&apikey=thewdb
         - db.collection.remove(object_to_select, {justOne: true}) # removes 1 match
 
 
+# intro to mongoose
+    object data maper, object modeling tool (js layer on top of mongodb)
+
+# some potential warnings
+    ''' # 1
+    Mongoose: mpromise (mongoose's default promise library) is deprecated,
+    plug in your own promise library instead:
+    http://mongoosejs.com/docs/promises.html
+    '''
+    # solution (after requiring mongoose):
+    # replace mongoose's default promise library with js' native promise lib
+    mongoose.Promise = global.Promise;
+
+
+    ''' # 2
+    `open()` is deprecated in mongoose >= 4.11.0, use `openUri()` instead, 
+    or set the `useMongoClient` option if using `connect()`
+    or `createConnection()`
+    '''
+    # solution (instead of the regular mongoose.connect() syntax)
+    mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
+
+# mongoose
+    - elegant mongodb object modeling for node.js
+
+
+    # creating schema
+    const catSchema = new mongoose.Schema({
+    name: String,
+    age: Number,
+    temperament: String
+    });
+
+
+    # compile to model (returns an object with useful methods)
+    const Cat = mongoose.model("Cat", catSchema);
+    "Cat" is the 'singular' version of the model, and collection 'Cats' gets
+    created if it does not exist (always feed in singular, and it creates
+        the plural somehow?)
+
+
+    # add cat to db
+    # method 1
+    const george = new Cat({
+        name: "SushiCat",
+        age: 2,
+        temperament: "Tasty"
+    });
+
+    george.save(function(err, cat){
+        if(err){
+            console.log("something went wrong");
+        } else {
+            console.log("we just saved a cat to the db:");
+            console.log(cat);
+        }
+    });
+
+    # method 2
+    Cat.create({
+    name: "Angerrr",
+    age: 10,
+    temperament: "Pissed"
+    }, function(err, cat){
+        if(err){
+            console.log(err);
+        } else {
+            console.log(cat);
+        }
+    });
+
+
+    # retrieve all cats
+    Cat.find({}, function(err, cats){
+        if(err){
+            console.log("oh no, ERROR");
+            console.log(err);
+        } else {
+            console.log("all the cats....");
+            console.log(cats);
+        }
+    });
 
 
 
+# yelpcamp: data persistence
 
 
 
