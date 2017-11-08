@@ -1296,6 +1296,23 @@ request vs request&apikey=thewdb
 https://stackoverflow.com/questions/694102/declaring-multiple-variables-in-javascript
 '''
 
+#show page
+- review RESTful routes
+
+    name      url         verb       description
+    =======================================
+    INDEX     /dogs       GET        Display a list of dog
+    NEW       /dogs/new   GET        Displays form to make a new dog
+    CREATE    /dogs       POST       Add new dog to DB
+    SHOW      /dogs/:id   GET        Shows info about one dog
+
+# https://expressjs.com/en/guide/routing.html
+# recall that /:parameter is convention for route parameters in express
+
+- add description to campground model
+- show db.collection.drop()
+    returns true when successfully drops a collection (removes collection)
+- add a show route/template
 
 
 
