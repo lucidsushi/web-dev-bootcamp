@@ -1287,7 +1287,7 @@ request vs request&apikey=thewdb
 
 
 
-# yelpcamp: data persistence
+### yelpcamp: data persistence
 -install/configurate mongoose
 -setup up campground model
 -use camground model inside of our routes
@@ -1314,6 +1314,14 @@ https://stackoverflow.com/questions/694102/declaring-multiple-variables-in-javas
     returns true when successfully drops a collection (removes collection)
 - add a show route/template
 
+
+
+### RESTful routing
+# Representational state transfer (REST)
+REST - a mapping between HTTP routes and CRUD
+
+# RESTful routes
+https://gist.github.com/alexpchin/09939db6f81d654af06b
 
 
 
