@@ -1296,7 +1296,16 @@ request vs request&apikey=thewdb
 https://stackoverflow.com/questions/694102/declaring-multiple-variables-in-javascript
 '''
 
+# show page
+- review RESTful routes weve seen
 
+name    url   verb  description.
+=============================================
+INDEX  /dogs  GET   Display a list of all dog
+
+- add description to campground model
+- show db.collection.drop()
+- add a show route/template
 
 
 
