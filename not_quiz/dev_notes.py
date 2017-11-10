@@ -1033,7 +1033,7 @@ Escaped output with <%= %> (escape function configurable)
 Control flow with <% %>
 
 # styles and partials
-- include public assets
+- include public assets / use public style sheet
     #tell express to serve the content of the "public" directory
     app.use(express.static("public"));
 
@@ -1324,6 +1324,33 @@ REST - a mapping between HTTP routes and CRUD
 https://gist.github.com/alexpchin/09939db6f81d654af06b
 
 
+# blog index
+- setup blog app
+    ''' general app.js set up recap
+
+    const express       = require("express"),
+          mongoose      = require("mongoose"),
+          bodyParser    = require("body-parser"),
+          app           = express();
+
+    // app config
+    mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
+    mongoose.Promise = global.Promise;
+    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(express.static("public"));
+    app.set("view engine", "ejs");
+
+
+    app.listen(process.env.PORT, process.env.IP, function(){
+        console.log("app.js running");
+    });
+
+    '''
+- create the blog model
+    - introduction to default value in mongoose schema:
+        ex: "created: {type: Date, default: Date.now}," vs "created: Date,"
+- add INDEX route and template
+- add simple nav bar
 
 
 
