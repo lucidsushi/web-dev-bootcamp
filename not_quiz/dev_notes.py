@@ -1249,7 +1249,7 @@ request vs request&apikey=thewdb
         the plural somehow?)
 
 
-    # add cat to db
+    # add data to db
     # method 1
     const george = new Cat({
         name: "SushiCat",
@@ -1356,7 +1356,6 @@ https://gist.github.com/alexpchin/09939db6f81d654af06b
         ex: "created: {type: Date, default: Date.now}," vs "created: Date,"
 - add INDEX route and template
 
-
 # basic layout
 - add header/footer partials
 - include semantic ui
@@ -1365,7 +1364,16 @@ https://gist.github.com/alexpchin/09939db6f81d654af06b
     - served public asset app.css to enlarge icon (very specific selector to
         overcome libarys specificity)
 
+# putting in the C in CRUD
+- add NEW route
+- add NEW template
+- add CREATE route
+- add CREATE template
 
+
+name="blog[title]" instead of name="image"/"url" so that items can be queried
+from one object only (convenient/clean), the syntax is needed for middleware
+body-parser to properly parse it
 
 
 
