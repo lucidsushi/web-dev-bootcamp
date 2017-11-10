@@ -1033,8 +1033,9 @@ Escaped output with <%= %> (escape function configurable)
 Control flow with <% %>
 
 # styles and partials
-- include public assets
-    #tell express to serve the content of the "public" directory
+- include/serve public assets (images, CSS files, and JavaScript files)
+    # https://expressjs.com/en/starter/static-files.html
+    # tell express to serve the content of the "public" directory
     app.use(express.static("public"));
 
 - configurate app to use ejs
@@ -1320,10 +1321,17 @@ https://stackoverflow.com/questions/694102/declaring-multiple-variables-in-javas
 # Representational state transfer (REST)
 REST - a mapping between HTTP routes and CRUD
 
+
 # RESTful routes
 https://gist.github.com/alexpchin/09939db6f81d654af06b
 
 
+# basic layout
+- add header/footer partials
+- include semantic ui
+    - similar to bootstrap + also has a bunch of icons (like fontawesome)
+- add simple nav
+    - served public asset app.css to enlarge icon (very specific selector to
+        overcome libarys specificity)
 
-
-
+    
