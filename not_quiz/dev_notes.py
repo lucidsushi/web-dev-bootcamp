@@ -1367,8 +1367,8 @@ https://gist.github.com/alexpchin/09939db6f81d654af06b
 
 # putting in the C in CRUD
 - add NEW route
-- add NEW template
-- add CREATE route
+- add NEW template (which has a form to trigger post req create route)
+- add CREATE route (creates then redirect to get INDEX)
 - add CREATE template (dont think this was created?)
 
 name="blog[title]" instead of name="image"/"url" so that items can be queried
@@ -1376,13 +1376,27 @@ from one object only (convenient/clean), the syntax is needed for middleware
 body-parser to properly parse it
 
 # showtime
-- add show route
+- add show route (leads to show template (GET))
 - add show template
-- add links to show page
+- add links to show page (leads to edit page (GET))
 - style show template
 
     - <%- %> (unescaped raw output)
         #used here to render html, but need to handle sanitizing <script> tags to avoid malicious input
     - Date.toDateString() for human readable date
     - String.substring(indexStart, indexEnd)
+
+# edit/update
+- add edit route (GET)
+- add edit form (same as update form)
+- add update route (POST/PUT)
+- add method-override
+    - because no put/delete method support for html forms?
+    # https://softwareengineering.stackexchange.com/questions/114156/why-are-there-are-no-put-and-delete-methods-on-html-forms
+    - https://www.npmjs.com/package/method-override
+    - method-override grabs defined "?_method" query string to override method
+        - app.use(methodOverride("_method"));
+        # <form action="/blogs/<%= blog._id %>?_method=put" method="post">
+    -
+
 
