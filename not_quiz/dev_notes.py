@@ -1204,6 +1204,7 @@ request vs request&apikey=thewdb
             # this case 'multi' needs to be set to true to actually update more
             # than one
     -remove
+        - db.collection.remove({}) #removes everything
         - db.collection.remove(object_to_select) # removes all matching
         - db.collection.remove(object_to_select, {justOne: true}) # removes 1 match
 
@@ -1368,12 +1369,20 @@ https://gist.github.com/alexpchin/09939db6f81d654af06b
 - add NEW route
 - add NEW template
 - add CREATE route
-- add CREATE template
-
+- add CREATE template (dont think this was created?)
 
 name="blog[title]" instead of name="image"/"url" so that items can be queried
 from one object only (convenient/clean), the syntax is needed for middleware
 body-parser to properly parse it
 
+# showtime
+- add show route
+- add show template
+- add links to show page
+- style show template
 
+    - <%- %> (unescaped raw output)
+        #used here to render html, but need to handle sanitizing <script> tags to avoid malicious input
+    - Date.toDateString() for human readable date
+    - String.substring(indexStart, indexEnd)
 
