@@ -1314,12 +1314,15 @@ https://stackoverflow.com/questions/694102/declaring-multiple-variables-in-javas
 # show page
 - review RESTful routes
 
-    name      url         verb       description
-    =======================================
-    INDEX     /dogs       GET        Display a list of dog
-    NEW       /dogs/new   GET        Displays form to make a new dog
-    CREATE    /dogs       POST       Add new dog to DB
-    SHOW      /dogs/:id   GET        Shows info about one dog
+name    url             verb    description                  mongoose
+==========================================================================
+INDEX   /dogs           GET     Display a list of dog        Dog.find()
+NEW     /dogs/new       GET     show new form                N/A
+CREATE  /dogs           POST    Add new dog to DB, redirect  Dog.create()
+SHOW    /dogs/:id       GET     Shows info about one dog     Dog.findById()
+EDIT    /dogs/:id/edit  GET     show edit form for one dog   Dog.findById()
+UPDATE  /dogs/:id       PUT     update the dog, redirect     Dog.findByIdAndUpdate()
+DESTROY /dogs/:id       DELETE  delete the dog, redirect     Dog.findByIdAndRemove()
 
 # https://expressjs.com/en/guide/routing.html
 # recall that /:parameter is convention for route parameters in express
@@ -1396,6 +1399,8 @@ body-parser to properly parse it
 
 # edit/update
 - add edit route (GET)
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){}
+
 - add edit form (same as update form)
 - add update route (POST/PUT)
 - add method-override
@@ -1408,8 +1413,16 @@ body-parser to properly parse it
 
 # destroy
 - add destroy route
+    Blog.findByIdAndRemove(req.params.id, callback)
+
 - add edit and destroy links
 
-test from PULLLLL
+# final touches
+- sanitize blog.body
+    npm install express-sanitizer --save
+    # expressSanitizer needs to be instantiated after `bodyParser`, and before anything that requires the sanitized input`
+- style index
+- update REST table
+
 
 
