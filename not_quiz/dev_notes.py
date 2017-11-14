@@ -1397,6 +1397,11 @@ body-parser to properly parse it
     - method-override grabs defined "?_method" query string to override method
         - app.use(methodOverride("_method"));
         # <form action="/blogs/<%= blog._id %>?_method=put" method="post">
-    -
+
+# destroy
+- add destroy route
+- add edit and destroy links
+
+
 
 
