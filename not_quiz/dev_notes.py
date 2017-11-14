@@ -1136,7 +1136,15 @@ request vs request&apikey=thewdb
         - <div class="row text-center" style="display: flex; flex-wrap: wrap;">
             - flex styling options used to make non-uniform images fit nicely
 
-- style the navbar and form
+- style the navbar and formsomehow renaming a local folder doesn't break the git repo, any idea how this works?
+
+
+1 /path/folder_name (master)
+
+2 renames folder_name
+
+3 /path/new_folder_name (master)
+i want to rename the folder name, but not affect the repository in any way, like pull/push..etc
     - add navbar to all template
 
     - style new campground form
@@ -1402,6 +1410,6 @@ body-parser to properly parse it
 - add destroy route
 - add edit and destroy links
 
-test
+test from PULLLLL
 
 
