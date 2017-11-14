@@ -1416,7 +1416,12 @@ body-parser to properly parse it
     Blog.findByIdAndRemove(req.params.id, callback)
 
 - add edit and destroy links
-
+    # hack to get destory link to submit to the form as an anchor
+        <a onclick="this.parentElement.submit(), false">Delete</a>
+    # css for pointer to change as it hovered over these anchorClicks
+        .anchorClick {
+            cursor: pointer;
+        }
 # final touches
 - sanitize blog.body
     npm install express-sanitizer --save
@@ -1425,4 +1430,15 @@ body-parser to properly parse it
 - update REST table
 
 
+# alans commentse on this
+'''
+Just FYI, this whole form sync calls business is outdated.
+its all AJAX now
 
+Right now youre using Express to give you back HTML pages to load when you
+submit a synchronous form call. Instead, AJAX submits asynchronously and gets
+back a result, then the front end navigates to the page programmatically
+
+Modern web pages are complicated.. it uses a hybrid of back end and front end
+rendered HTML
+'''
