@@ -1517,7 +1517,7 @@ rendered HTML
 # Module.Exports (helps refactor)
 - introduce module.exports (node.js)
 - move our models into separate files
-    
+
     # make post file
     const mongoose = require("mongoose");
     // POST - title, content
@@ -1529,5 +1529,21 @@ rendered HTML
 
     # require in other file
     const Post = require("./models/post");
+
+
+
+### yelpcamp: comments
+
+## refactor mongoose code             ------ yelpcamp v3
+- create module directory
+- use module.exports
+- require everything correctly
+
+## add seed file (seeding the database)
+- add seed.js file
+- run the seed file everytime server starts
+
+
+
 
 
