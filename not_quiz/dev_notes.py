@@ -1239,7 +1239,7 @@ i want to rename the folder name, but not affect the repository in any way, like
     # solution (instead of the regular mongoose.connect() syntax)
     mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
 
-# mongoose
+# using mongoose
     - elegant mongodb object modeling for node.js
 
 
@@ -1429,7 +1429,6 @@ body-parser to properly parse it
 - style index
 - update REST table
 
-
 # alans commentse on this
 '''
 Just FYI, this whole form sync calls business is outdated.
@@ -1442,3 +1441,93 @@ back a result, then the front end navigates to the page programmatically
 Modern web pages are complicated.. it uses a hybrid of back end and front end
 rendered HTML
 '''
+
+
+
+### data associations
+- define associations
+- discuss one:one, one:many, and many:many relationships
+
+## embedding data - db blog_demo
+    # embedding posts in user
+    - define an entry (posts) of `type array of postSchema` in userSchema
+                                        (this is the convention)
+      const userSchema = new mongoose.Schema({
+          email: String,
+          name: String,
+          posts: [postSchema]
+      });
+    - thus postSchema need to be created before userSchema
+
+    User.findOne({name: "Hermione Granger"}, function(err, user){
+        if(err){
+            console.log(err);
+        } else {
+            console.log(user);
+        }
+    });
+
+    .save() is necesary to actually save to the db (even if you have updated
+        the object locally in the script)
+
+## referencing data (object references) - db blog_demo_2
+    const userSchema = new mongoose.Schema({
+        email: String,
+        name: String,
+        posts: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Post"
+            }
+        ]
+    });
+
+    # create a bunch of posts (will be stored as ids in user)
+    Post.create({
+        title: "how to cook the best burger PART 3",
+        content: "part 3's content"
+    }, function(err, post){
+        User.findOne({email: "bob@gmail.com"}, function(err, foundUser){
+            if(err){
+                console.log(err);
+            } else {
+                foundUser.posts.push(post);
+                foundUser.save(function(err, data){
+                    if(err){
+                        console.log(err);
+                    } else {
+                        console.log("this is data: " + data);
+                    }
+                });
+            }
+        });
+    });
+
+    # find user and populate all posts with the actul post objects
+    User.findOne({email: "bob@gmail.com"})
+    .populate("posts")
+    .exec(function(err, user){
+        if(err){
+            console.log(err);
+        } else {
+            console.log(user);
+        }
+    });
+
+# Module.Exports (helps refactor)
+- introduce module.exports (node.js)
+- move our models into separate files
+    
+    # make post file
+    const mongoose = require("mongoose");
+    // POST - title, content
+    const postSchema = new mongoose.Schema({
+        title: String,
+        content: String
+    });
+    module.exports = mongoose.model("Post", postSchema);
+
+    # require in other file
+    const Post = require("./models/post");
+
+
