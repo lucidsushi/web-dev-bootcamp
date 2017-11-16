@@ -1461,14 +1461,23 @@ rendered HTML
 
     User.findOne({name: "Hermione Granger"}, function(err, user){
         if(err){
-            console.log(err);
+            // console.log(err);
         } else {
-            console.log(user);
+            user.posts.push({
+                title: "3 things i really hate.",
+                content: "voldermort, voldermort and voldermort"
+            });
+            user.save(function(err, user){
+                if(err){
+                    console.log(err);
+                } else {
+                    console.log(user);
+                }
+            });
         }
     });
-
-    .save() is necesary to actually save to the db (even if you have updated
-        the object locally in the script)
+    # .save() is necesary to actually save to the db (even if you have updated
+    #   the object locally in the script)
 
 ## referencing data (object references) - db blog_demo_2
     const userSchema = new mongoose.Schema({
@@ -1504,6 +1513,7 @@ rendered HTML
     });
 
     # find user and populate all posts with the actul post objects
+    # feed in database name?: "Post" -> "posts"
     User.findOne({email: "bob@gmail.com"})
     .populate("posts")
     .exec(function(err, user){
@@ -1543,6 +1553,8 @@ rendered HTML
 - add seed.js file
 - run the seed file everytime server starts
 
+## add comment model
+- display comment on campground show page
 
 
 
