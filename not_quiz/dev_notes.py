@@ -491,7 +491,7 @@ Array.from(Array(20).keys())
 #Array.from(Array(20).keys()).map(i => i + 1)   <= goes till 20
 
 
-#array function syntax
+#arrow function syntax
 () => {}
 is equiv to
 function() {}
@@ -1312,7 +1312,7 @@ https://stackoverflow.com/questions/694102/declaring-multiple-variables-in-javas
 '''
 
 # show page
-- review RESTful routes
+- RESTful routes / rest table
 
 name    url             verb    description                  mongoose
 ==========================================================================
@@ -1427,7 +1427,7 @@ body-parser to properly parse it
     npm install express-sanitizer --save
     # expressSanitizer needs to be instantiated after `bodyParser`, and before anything that requires the sanitized input`
 - style index
-- update REST table
+
 
 # alans commentse on this
 '''
@@ -1556,6 +1556,13 @@ rendered HTML
 ## add comment model
 - display comment on campground show page
 
+# comment new/create                  ------ yelpcamp v4
+- nested routes
+    # need to nest under camground id as comments exists under there
+    NEW:    /campgrounds/:id/comments/new  #GET
+    CREATE: /campgrounds/:id/comments      #POST
+- add comment new/create routes
+- add comment new form
 
 
 
