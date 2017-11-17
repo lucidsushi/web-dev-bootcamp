@@ -1384,7 +1384,7 @@ https://gist.github.com/alexpchin/09939db6f81d654af06b
 
 name="blog[title]" instead of name="image"/"url" so that items can be queried
 from one object only (convenient/clean), the syntax is needed for middleware
-body-parser to properly parse it
+body parser to properly parse it (explained a bit later in lecture 280)
 
 # showtime
 - add show route (leads to show template (GET))
@@ -1556,7 +1556,7 @@ rendered HTML
 ## add comment model
 - display comment on campground show page
 
-# comment new/create                  ------ yelpcamp v4
+## comment new/create                  ------ yelpcamp v4
 - nested routes
     # need to nest under camground id as comments exists under there
     NEW:    /campgrounds/:id/comments/new  #GET
@@ -1564,5 +1564,8 @@ rendered HTML
 - add comment new/create routes
 - add comment new form
 
+## style show page
+- add side bar
+- make comments look nice
 
 
