@@ -1033,15 +1033,13 @@ Escaped output with <%= %> (escape function configurable)
 Control flow with <% %>
 
 # styles and partials
-<<<<<<< HEAD
-- include public assets / use public style sheet
-    #tell express to serve the content of the "public" directory
-=======
-- include/serve public assets (images, CSS files, and JavaScript files)
+- include public assets / serve public style sheet
+  (images, CSS files, and JavaScript files)
     # https://expressjs.com/en/starter/static-files.html
     # tell express to serve the content of the "public" directory
->>>>>>> 2c6fc51feae979899999f59eb192d087c5758b6e
+
     app.use(express.static("public"));
+    app.use(express.static(__dirname + "/public")) #safer alternative
 
 - configurate app to use ejs
     app.set("view engine", "ejs");# now no longer need to  put .ext for file
@@ -1136,7 +1134,7 @@ request vs request&apikey=thewdb
         - <div class="row text-center" style="display: flex; flex-wrap: wrap;">
             - flex styling options used to make non-uniform images fit nicely
 
-- style the navbar and formsomehow renaming a local folder doesn't break the git repo, any idea how this works?
+- style the navbar and formsomehow renaming a local folder doesnt break the git repo, any idea how this works?
 
 
 1 /path/folder_name (master)
@@ -1544,7 +1542,7 @@ rendered HTML
 
 ### yelpcamp: comments
 
-## refactor mongoose code             ------ yelpcamp v3
+## refactor mongoose code              ------ yelpcamp v3
 - create module directory
 - use module.exports
 - require everything correctly
@@ -1564,8 +1562,61 @@ rendered HTML
 - add comment new/create routes
 - add comment new form
 
-## style show page
+## style show page                     ------ yelpcamp v5
+# styling with bootstrap
 - add side bar
 - make comments look nice
+    - .well (adds greyish background)
+    - .caption ()
+
+
+
+### authentication
+# fyi colt source code: https://ide.c9.io/learnwithcolt/webdevbootcamp
+# missing "auth from scratch" lectures, watch this after series for extra info:
+  # https://www.youtube.com/watch?v=i7of02icPyQ
+- order of library inclusion will be important (to not run into errors)
+- tools:
+    - Passport (http://www.passportjs.org/)
+    - Passport Local (https://github.com/jaredhanson/passport-local)
+    - Passport Local Mongoose (https://github.com/saintedlama/passport-local-mongoose)
+- walk through auth flow
+    - "sessions" allow us to have state in http requests
+- discuss sessions
+    - express-session
+
+# auth code along part 1
+- set up folder structure
+- install packages
+- add root route and template
+- add secret route and template
+
+# auth code along part 2
+- create user model
+    - plugged in passport mongoose in user model:
+        const passportLocalMongoose = require("passport-local-mongoose");
+        UserSchema.plugin(passportLocalMongoose);
+
+- configure passport
+    app.use(passport.initialize());
+    app.use(passport.session());
+    passport.serializeUser(User.serializeUser());       #encoding
+    passport.deserializeUser(User.deserializeUser());   #decoding
+
+    # User in this case is model with plugin passportLocalMongoose,
+    # which already comes with serialize/deserialize, and we are just passing
+    # it in to passport in app.js
+
+- use and require express-session in one go:
+    app.use(require("express-session")({
+    secret: "all you can eat sushi",
+    resave: false,
+    saveUnitialized: false
+    }));
+
+
+
+
+
 
 
