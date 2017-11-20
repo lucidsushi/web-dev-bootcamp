@@ -1585,13 +1585,13 @@ rendered HTML
 - discuss sessions
     - express-session
 
-# auth code along part 1
+## auth code along part 1
 - set up folder structure
 - install packages
 - add root route and template
 - add secret route and template
 
-# auth code along part 2
+## auth code along part 2
 - create user model
     - plugged in passport mongoose in user model:
         const passportLocalMongoose = require("passport-local-mongoose");
@@ -1614,6 +1614,47 @@ rendered HTML
     saveUnitialized: false
     }));
 
+## auth code along part 3
+- add register route
+- add register form
+
+app.post("/register", function(req, res){
+    # create new userobject, password is fed in separate to not
+    #   be stored in db? (it will get turned into a hash, with "salt" to unhash?)
+
+    # if all goes well we get a user object with the hash password in it
+    User.register(new User({username: req.body.username}),
+                  req.body.password, function(err, user){
+        # if some error happens, return user to register page
+        if(err){
+            console.log(err);
+            return res.render("register");
+        }
+        # no error, authenticate using chosen strategy (local in this case), and redirect to the page past authentication
+        passport.authenticate("local")(req, res, function(){
+            res.redirect("/secret");
+        });
+    });
+});
+
+## auth code along part 4
+- add login route
+    login post:
+        # login logic
+        # middleware - runs before hitting the function associated with app.post("/login")
+        # will check password
+        app.post("/login", passport.authenticate("local", {
+            successRedirect: "/secret",
+            failureRedirect: "/login:"
+        }), function(req, res){
+        });
+
+- add login form
+- local strategy (why did we need this?)
+    # creating a new local strategy using authenticate that is coming from passportLocalMongoose
+    # so we don't actually have to write the authenticate method either
+    # then tell password for the local strategy, use this method
+    passport.use(new LocalStrategy(User.authenticate()));
 
 
 
