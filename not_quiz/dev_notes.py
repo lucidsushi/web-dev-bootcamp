@@ -1632,6 +1632,8 @@ app.post("/register", function(req, res){
             return res.render("register");
         }
         # no error, authenticate using chosen strategy (local in this case), and redirect to the page past authentication
+
+        # this LOGS the user in
         passport.authenticate("local")(req, res, function(){
             res.redirect("/secret");
         });
