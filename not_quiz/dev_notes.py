@@ -1575,6 +1575,7 @@ rendered HTML
 # fyi colt source code: https://ide.c9.io/learnwithcolt/webdevbootcamp
 # missing "auth from scratch" lectures, watch this after series for extra info:
   # https://www.youtube.com/watch?v=i7of02icPyQ
+
 - order of library inclusion will be important (to not run into errors)
 - tools:
     - Passport (http://www.passportjs.org/)
@@ -1656,6 +1657,31 @@ app.post("/register", function(req, res){
     # then tell password for the local strategy, use this method
     passport.use(new LocalStrategy(User.authenticate()));
 
+## auth code along part 5
+- add logout route
+    # logout logic
+    app.get("/logout", function(req, res){
+        req.logout(); # exposed on req by passport.js ?
+        res.redirect("/");
+    })
+- add isloggedin middleware
+    # standard middleware definition pattern
+    function isLoggedIn(req, res, next){
+        # middleware for secret index(get) route
+        if(req.isAuthenticated()){
+            # knows to run the next function which is the callback for the route
+            return next();
+        }
+        res.redirect("/login");
+    }
+
+
+# WATCH THIS ON AUTHENTICATION FOR IN-DEPTH AUTHENTICAION LEARNING
+# ********* https://www.youtube.com/watch?v=i7of02icPyQ **********
+
+
+
+### yelpcamp : adding authentication
 
 
 
