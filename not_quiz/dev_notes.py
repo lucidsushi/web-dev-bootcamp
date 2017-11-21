@@ -1655,7 +1655,7 @@ app.post("/register", function(req, res){
 - add login form
 - local strategy (why did we need this?)
     # creating a new local strategy using authenticate that is coming from passportLocalMongoose
-    # so we don't actually have to write the authenticate method either
+    # (so we don't actually have to write the authenticate method either)
     # then tell password for the local strategy, use this method
     passport.use(new LocalStrategy(User.authenticate()));
 
@@ -1683,9 +1683,18 @@ app.post("/register", function(req, res){
 
 
 
-### yelpcamp : adding authentication
+### yelpcamp : adding authentication  ------ yelpcamp v6
 
+# adding authentication1
+- install packages needed for auth
+- define user model
 
+# adding authentication2
+- configure passport
+- add register route/template
+
+# adding authentication3
+- add login route/template
 
 
 
