@@ -1719,5 +1719,25 @@ app.post("/register", function(req, res){
 
 
 
-### yelpcamp: cleaning up
+### yelpcamp: cleaning up           ------ yelpcamp v7
+
+# refactor routes
+- use express router to reorganize all routes
+    - move all routes into routes/some_name.js
+        - campgrounds, comments, index (more general: "/" and auth)
+        - dry out routes names in routes files by supplying the common portion
+          in app.js:
+            app.use("/campgrounds/:id/comments", commentRoutes);
+
+          - however you need to supply/preserve the parent route /campgrounds/:id
+            req.params or else comments file will error, thus in comments file:
+
+            router = express.Router({mergeParams: true})
+
+# user / comments
+- associate users and comments
+- save authors name to a comment automatically
+
+
+
 
