@@ -1696,5 +1696,28 @@ app.post("/register", function(req, res){
 # adding authentication3
 - add login route/template
 
+# adding authentication4
+- add logout route
+- prevent user from adding comment if not signed in
+    - add isLoggedIn middleware to routes leading to the comment form
+- add links to navbar
 
+# adding authentication5
+- show/hide auth links correctly
+    - `req.user` is created by passport when you log in, which gives you
+    `username`
+    - included files also get access to variables passed into the file including it
+      (in terms of a page including partials/header)
+    - to pass in a variable to every route in one go, define and use a middleware
+      http://expressjs.com/en/api.html#res.locals
+
+        app.use(function(req, res, next){
+            #pass in `currentUser`
+            res.locals.currentUser = req.user;
+            next();
+        });
+
+
+
+### yelpcamp: cleaning up
 
