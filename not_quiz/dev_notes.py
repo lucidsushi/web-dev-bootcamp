@@ -1734,9 +1734,34 @@ app.post("/register", function(req, res){
 
             router = express.Router({mergeParams: true})
 
-# user / comments
+# user / comments                   ------ yelpcamp v8
 - associate users and comments
+    - use objectId in comments model instead of just type string:
+        const commentSchema = new mongoose.Schema({
+            text: String,
+            author: {
+                id: {
+                    type:  mongoose.Schema.Types.ObjectId,
+                    ref: "User"
+                },
+                username: String
+            }
+        });
+
 - save authors name to a comment automatically
+    - sneak it in part of comment creation:
+        newComment.author.id = req.user._id;
+        newComment.author.username = req.user.username;
+        newComment.save()
+
+
+# user / campgrounds              ------ yelpcamp v9
+- prevent unauthenticated user to create campground
+    - isLoggedIn in campground create/post routes
+
+- save username / id to newly created campground
+    - update the same author object to campground model like done in comment
+
 
 
 
