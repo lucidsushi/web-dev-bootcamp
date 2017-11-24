@@ -1763,6 +1763,30 @@ app.post("/register", function(req, res){
     - update the same author object to campground model like done in comment
 
 
+### TODO
+    confused why currentUser cant be used in routes/campgrounds.js, but can
+    be used by partials/header.ejs, HUH?!
 
 
+
+
+### yelpcamp: update and destroy
+
+# editing/update campgrounds
+- add method-override
+- add edit route for campgrounds
+- add link to edit page
+- add upadate route
+- fix $set problem
+
+# deleting campgrounds
+- add destroy route
+- add delete button
+
+# authorization
+- user can only edit his/her campgrounds
+- user can only delete his/her campgrounds
+- hide/show edit and delete buttons
+
+# refactoring middleware
 
