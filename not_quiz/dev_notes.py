@@ -1322,6 +1322,9 @@ EDIT    /dogs/:id/edit  GET     show edit form for one dog   Dog.findById()
 UPDATE  /dogs/:id       PUT     update the dog, redirect     Dog.findByIdAndUpdate()
 DESTROY /dogs/:id       DELETE  delete the dog, redirect     Dog.findByIdAndRemove()
 
+# where in our examples update/destory use "post" by default, and method-override
+# to correct verbs put/delete
+
 # https://expressjs.com/en/guide/routing.html
 # recall that /:parameter is convention for route parameters in express
 
@@ -1711,6 +1714,8 @@ app.post("/register", function(req, res){
     - to pass in a variable to every route in one go, define and use a middleware
       http://expressjs.com/en/api.html#res.locals
 
+        # views get to use currentUser now .. (beacuse res.locals?)
+        # route files cant just call currentUser
         app.use(function(req, res, next){
             #pass in `currentUser`
             res.locals.currentUser = req.user;
@@ -1777,7 +1782,6 @@ app.post("/register", function(req, res){
 - add edit route for campgrounds
 - add link to edit page
 - add upadate route
-- fix $set problem
 
 # deleting campgrounds
 - add destroy route
@@ -1786,7 +1790,51 @@ app.post("/register", function(req, res){
 # authorization
 - user can only edit his/her campgrounds
 - user can only delete his/her campgrounds
+    
+    -create a middelware
+
+    function authorization(req, res, next){
+        if(req.isAuthenticated()){
+            Campground.findById(req.params.id, function(err, foundCampground){
+                if(err){
+                    res.redirect("back");
+                } else {
+                    if(foundCampground.author.id.equals(req.user._id)){
+                        next();
+                    } else {
+                        res.redirect('back');
+                    }
+                }    
+            });
+        } else {
+            res.redirect("back");
+        }
+    }
+    # foundCampground.author.id.equals(req.user._id)
+    .equals() is an express method to help compare id object to id string,
+    or else using === comparison between model.author.id and req.user._id would
+    fail
+
+    # res.redirect("back")
+    manually typing in the url to go to an edit route gives me the missing
+    referer, but if i click  a button that makes the request, the refer is
+    present, going to ask in Q&A ##TODO##
+
+    # A back redirection redirects the request back to the referer,
+    # defaulting to / when the referer is missing.
+    keeps going back to '/'
+
 - hide/show edit and delete buttons
 
-# refactoring middleware
+    if(currentUser && campground.author.username === currentUser.username)
 
+    if(currentUser && campground.author.id.equals(currentUser._id)
+
+# editing comments
+- add edit route for comments
+- add edit button
+- add update route
+
+
+
+- fix $set problem
