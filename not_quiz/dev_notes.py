@@ -1835,6 +1835,15 @@ app.post("/register", function(req, res){
 - add edit button
 - add update route
 
+# deleting comments
+- add destroy route / button
+
+# authorization comments
+- user can only edit their comments
+- user can only delete their comments
+- hide/show edit/delete buttons
+- refactor middleware
+
 
 
 - fix $set problem
