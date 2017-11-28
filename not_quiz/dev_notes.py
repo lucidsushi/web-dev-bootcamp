@@ -1790,7 +1790,7 @@ app.post("/register", function(req, res){
 # authorization
 - user can only edit his/her campgrounds
 - user can only delete his/her campgrounds
-    
+
     -create a middelware
 
     function authorization(req, res, next){
@@ -1804,7 +1804,7 @@ app.post("/register", function(req, res){
                     } else {
                         res.redirect('back');
                     }
-                }    
+                }
             });
         } else {
             res.redirect("back");
@@ -1842,8 +1842,9 @@ app.post("/register", function(req, res){
 - user can only edit their comments
 - user can only delete their comments
 - hide/show edit/delete buttons
+
+
+
+### yelpcamp : ui improvements
 - refactor middleware
-
-
-
 - fix $set problem
