@@ -1847,4 +1847,12 @@ app.post("/register", function(req, res){
 
 ### yelpcamp : ui improvements
 - refactor middleware
+    - put into middleware/index.js, and assign funtions to a middleware object
+      to be exported
+
+    - index.js is a special name in the sense that if you require a directory,
+      it automatically requires the index file:
+        thus require("express") = require("express/index")
+
+
 - fix $set problem
