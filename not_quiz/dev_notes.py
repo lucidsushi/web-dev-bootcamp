@@ -1846,13 +1846,25 @@ app.post("/register", function(req, res){
 
 
 ### yelpcamp : ui improvements
-- refactor middleware
+# refactor middleware
     - put into middleware/index.js, and assign funtions to a middleware object
       to be exported
 
     - index.js is a special name in the sense that if you require a directory,
       it automatically requires the index file:
         thus require("express") = require("express/index")
+
+# adding in flash text
+    - install and configure connect-flash
+        - install: npm install connect-flash --save
+        - flash = require("...");
+        - app.use(flash());
+        - in middleware req.flash("key", "message") # BEFORE the redirect
+        - in route feed {var_name: req.flash("key")} # HOW to feed multiple?
+
+
+    - add bootstrap alerts to header
+
 
 
 - fix $set problem
