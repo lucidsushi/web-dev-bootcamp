@@ -1860,10 +1860,31 @@ app.post("/register", function(req, res){
         - flash = require("...");
         - app.use(flash());
         - in middleware req.flash("key", "message") # BEFORE the redirect
-        - in route feed {var_name: req.flash("key")} # HOW to feed multiple?
+        - in route locations:
+            app.get('/flash', function(req, res){
+            # Set a flash message by passing the key, followed by the value, to req.flash().
+            req.flash('info', 'Flash is back!')
+            res.redirect('/');
+            });
 
+            app.get('/', function(req, res){
+            # Get an array of flash messages by passing the key to req.flash()
+            res.render('index', { messages: req.flash('info') });
+            });
 
     - add bootstrap alerts to header
+        <div class="container">
+            <% if(flashSuccess && flashSuccess.length > 0){ %>
+                <div class="alert alert-success" role="alert">
+                    <h4><%= flashSuccess %></h4>
+                </div>
+            <% } %>
+            <% if(flashError && flashError.length > 0){ %>
+                <div class="alert alert-danger" role="alert">
+                    <h4><%= flashError %></h4>
+                </div>
+            <% } %>
+        </div>
 
 
 
