@@ -1872,6 +1872,9 @@ app.post("/register", function(req, res){
             res.render('index', { messages: req.flash('info') });
             });
 
+            # also this?...
+            return res.render("register", {"error": err.message});
+
     - add bootstrap alerts to header
         <div class="container">
             <% if(flashSuccess && flashSuccess.length > 0){ %>
@@ -1886,6 +1889,16 @@ app.post("/register", function(req, res){
             <% } %>
         </div>
 
+# extra notes on error handling
+    if(err || !foundCampground){
+
+    apparently you can change the id manually in the url and break the whole
+    app (if changed id length is the same), so adding a foundCampground check
+    in error catching resolves this
+
+# landing page refactor
+    # ian's stuff
+    https://github.com/nax3t/background-slider
 
 
 - fix $set problem
