@@ -1816,9 +1816,8 @@ app.post("/register", function(req, res){
     fail
 
     # res.redirect("back")
-    manually typing in the url to go to an edit route gives me the missing
-    referer, but if i click  a button that makes the request, the refer is
-    present, going to ask in Q&A ##TODO##
+    manually typing in the url to go to an edit route does not give referer
+        -christine yu
 
     # A back redirection redirects the request back to the referer,
     # defaulting to / when the referer is missing.
@@ -1900,5 +1899,123 @@ app.post("/register", function(req, res){
     # ian's stuff
     https://github.com/nax3t/background-slider
 
+    - cutting out require header in the landing page (dont need navbar)
+    - create separate landing.css stylesheet
+    - source modernizer js (superfast tests that helps deliever tiered
+        experience base on browser?..)
+    - install/use `nodemon` if you want the ability to listen to file changes
+    without restarting and run `node app.js` yourself
 
-- fix $set problem
+    - new css stuff..
+        #landing-header {
+          z-index: 1; # puts stuff in front of other items with lower z index
+          position: relative; #default is static, needs to be relative to use z index
+          text-align: center;
+          padding-top: 40vh; # 40% view height? used to place header around middle
+        }
+
+    - using list items to be the changing background
+      # https://developer.mozilla.org/en-US/docs/Web/CSS/position
+
+        .slideshow { 
+          position: fixed; #doesn't move? 
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          z-index: 0;
+          list-style: none; #remove bullet points
+          margin: 0;
+          padding: 0;
+        }
+
+        .slideshow li { 
+          width: 100%;
+          height: 100%;
+          position: absolute; # why absolute now? try changing it..
+          top: 0;
+          left: 0;
+          background-size: cover;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          opacity: 0;
+          z-index: 0;
+          animation: imageAnimation 50s linear infinite; 
+          # imageAnimation is the name of the animation, linear speed,
+          # 50s repeat forever
+        }
+
+
+        .slideshow li:nth-child(1) { 
+          background-image: url(http://i.imgur.com/K3mPv14.jpg) 
+        }
+        .slideshow li:nth-child(2) { 
+          background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+          animation-delay: 10s; #starts after 10s delay
+        }
+        .slideshow li:nth-child(3) { 
+          background-image: url(http://i.imgur.com/emvhOnb.jpg);
+          animation-delay: 20s; 
+        }
+        .slideshow li:nth-child(4) { 
+          background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+          animation-delay: 30s; 
+        }
+        .slideshow li:nth-child(5) { 
+          background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+          animation-delay: 40s; 
+        }
+
+        # The @keyframes CSS at-rule controls the intermediate steps in a CSS
+        #　animation sequence by defining styles for keyframes
+        #  https://developer.mozilla.org/en-US/docs/Web/CSS/%40keyframes
+
+        # 100% = 50s
+        # so 5 s to fade in
+        # hold for 5 s
+
+        # can't really tell what animation-timing-function is DOING..
+
+    @keyframes imageAnimation { 
+      0% { 
+        opacity: 0; 
+        animation-timing-function: ease-in;
+      }
+      10% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+      }
+      20% {
+        opacity: 1
+      }
+      30% {
+        opacity: 0
+      }
+    }
+
+    # css animation intro:
+    https://webdesign.tutsplus.com/tutorials/a-beginners-introduction-to-css-animation--cms-21068
+
+# dynamic price feature
+https://github.com/nax3t/dynamic-price
+    - add 'price' as string in the campground model, but in new route/form,
+      add price as input type of number (this allows input to be number but
+        preserves the formatting?)
+
+
+- fix $set problem #never end up addressing this one?
+
+# TODO implement more refactoring
+#  https://www.udemy.com/the-web-developer-bootcamp/learn/v4/questions/2078848
+# TODO implement req.originalUrl
+#  https://www.udemy.com/the-web-developer-bootcamp/learn/v4/questions/1886146
+
+
+
+### Git and Github
+- check if git is intalled on c9 (it is)
+    git --version
+
+- git init
+     - in directory level you want to track your repo
+     - `rm -rf .git` if you want to remove it
