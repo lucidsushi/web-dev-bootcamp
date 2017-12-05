@@ -2075,9 +2075,9 @@ commandline:
     - host www.davidsushi.com : check alias for "CNAME"?
 
 # environment variables
-    - export DATABASEURL = 
+    - export DATABASEURL =
         - mongoose.connect(process.env.DATABASEURL)
-    
+
     - add var on heroku:
         - setting -> config variables -> add key/value
         or heroku config: set KEY=VALUE
@@ -2085,4 +2085,43 @@ commandline:
 
 
 ### JavaScript: the tricky stuff (intermediate)
+
+# this - and four ways of looking at it
+    - reserved JavaScript keyword
+    - usually determined by the excecution context (how a function is called)
+    - determined by 4 rules (global, object/implicit, explicit, new)
+
+    - `global` (when this is not inside a declared object)
+        - this would equal to `window`, which is the global object variables
+            are attached to
+
+        - when assigning this.var in a function, var is in turn a global variable
+            attached to the window, this can be bad if you declare global variables
+            by mistake
+
+        - "use strict" phrase at the top of the code makes `this` undefined in
+            functions instead of being the `window` object
+
+    - `implicit`
+        - the value of this will be the "closest" parent object
+        - so if an object holds another object, the `this` within the second
+            object will not be refering to the first object
+
+    - `explicit` (use call, apply or bind to choose context of this?)
+        # invoke immediately
+            - Call (thisArg, a, b, c, d, ...)
+            - Apply(thisArg, [a, b, c, d, ...])
+        # returns function definition, can invoke later
+            - Bind (thisArg, a, b, c, d, ...)
+
+    # setTimeout() is a method of the window object
+        - setTimeout doesnt run right away, so a call to this inside can end up
+        getting the execution context of window instead of a parent object should
+        you have call it from that object, in this case bind can solve the issue
+
+        setTimeout(function().bind(this), delay)
+
+
+
+
 
