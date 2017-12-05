@@ -2121,7 +2121,9 @@ commandline:
 
         setTimeout(function().bind(this), delay)
 
-
-
+    - `new` keyword
+        - new keyword creates a new object out of thin air
+        - in the function the keyword this refers to the new object created by new
+        - an implicit return this is added to the function
 
 
