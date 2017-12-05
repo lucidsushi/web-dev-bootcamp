@@ -2019,3 +2019,19 @@ https://github.com/nax3t/dynamic-price
 - git init
      - in directory level you want to track your repo
      - `rm -rf .git` if you want to remove it
+- git add . #all files
+- git commit -m
+- git log
+- git checkout
+
+HEAD (current pointer, pointer in time)
+
+- reverting commit
+    git revert --no-commit hashcode..head
+
+# TODO ian's full git course (1hour?)
+
+
+
+### Deploying
+
