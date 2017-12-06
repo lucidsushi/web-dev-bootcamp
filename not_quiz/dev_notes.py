@@ -2125,8 +2125,13 @@ commandline:
         - new keyword creates a new empty object out of thin air
         - in the function the keyword this refers to the new object created by new
         - an implicit `return this` is added to the end of the function
-        - adds a property __proto__ (which links the prototype on the constructor
-            function to the empty object)
+
+        -(1) adds a property __proto__ (which links the prototype on the constructor
+              function to the empty object)
+        -(2) creates a link (which we can access as __proto__) between the object
+              created and the prototype property of the constructor function
+
+              # prototype property is an object
 
 
 # OOP (object oriented programming)
@@ -2151,11 +2156,60 @@ commandline:
     Object {0: 2, 1: 3, 2: 4, length: 3…}
 
 # OOP prototypes
-    - understand prototype object
-    - describe and diagram relationshp between __proto__, prototype,
-        and constructor
+    - understand prototype property(object)
+    - describe and diagram relationshp between __proto__, prototype, constructor
+
+        (object created by new + constructor can access the prototype
+         property/object of the constructor via __proto__?)
+        (but how/when did the constructor function get/create the prototype property?)
+
+
+    Person(construc function) <--.constructor-- Person(.prototype object)
+                              -- .prototype -->
+                                                     ^            ^
+                                                     | .__proto__ |
+                                                     |            |
+                                                    elie         colt
+
+     # prototype chain
+     when a method is not found in object A, JavaScript will go look for it in
+     its __proto__ section, until theres no more __proto__ to look into, and
+     return undefine
+
     - add methods and properties on the prototype object to write more efficient
         code
+
+         Person.prototype.isIntructor = True;
+         elie.isIntructor (True)
+         cold.isIntructor (True)
+
+    #example
+    function Vehicle(make, model, year){
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.isRunning = false;
+    }
+
+    Vehicle.prototype.turnOn = function(){
+        this.isRunning = true;
+    }
+
+    Vehicle.prototype.turnOff = function(){
+        this.isRunning = false;
+    }
+
+    Vehicle.prototype.honk = function(){
+        if(this.isRunning){
+            return "beep"
+        }
+    }
+
     - explain difference between adding methods and properties to the prototype
         versus the constructor function
+
+        - method add to prototype should be expected to be used/shared by all
+            objects that link to the prototype
+
+
 
