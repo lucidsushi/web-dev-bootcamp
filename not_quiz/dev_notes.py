@@ -2121,9 +2121,41 @@ commandline:
 
         setTimeout(function().bind(this), delay)
 
-    - `new` keyword
-        - new keyword creates a new object out of thin air
+    - `new` keyword (must be used with a function)
+        - new keyword creates a new empty object out of thin air
         - in the function the keyword this refers to the new object created by new
-        - an implicit return this is added to the function
+        - an implicit `return this` is added to the end of the function
+        - adds a property __proto__ (which links the prototype on the constructor
+            function to the empty object)
 
+
+# OOP (object oriented programming)
+    - use constructor functions to reduce duplication in our code
+    - use call and apply to refactor constructor functions
+        function Dog()
+        function Cat(){
+            Dog.call(this, arguments)
+        }
+
+    # oop
+    - construct object from classes (blueprint)
+    - call objects created from classes `instances`
+
+    # The arguments object is an Array-like object corresponding to the
+    # arguments passed to a function.
+    function blah(){
+        console.log(arguments);
+    }
+
+    blah(1,2,3,4)
+    Object {0: 2, 1: 3, 2: 4, length: 3…}
+
+# OOP prototypes
+    - understand prototype object
+    - describe and diagram relationshp between __proto__, prototype,
+        and constructor
+    - add methods and properties on the prototype object to write more efficient
+        code
+    - explain difference between adding methods and properties to the prototype
+        versus the constructor function
 
