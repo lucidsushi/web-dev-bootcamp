@@ -2211,5 +2211,36 @@ commandline:
         - method add to prototype should be expected to be used/shared by all
             objects that link to the prototype
 
+# closures (the variable now lives in the closed space?)
+- understand what closure is and what it is not
+    - a closure is a function that makes use of variables defined in outer
+        functions that have previously returned
+
+    notes:
+    - have to `return` the inner function for this to work
+    - can either call inner function right away ()(), or store result from
+        function in a variable, an call it later (similar to bind)
+    - do NOT have to give inner fuction a name, could be anonymous
+
+# example1
+    function outer(){
+        var data = "closures are ";
+        return function inner(){
+            var innerData = "awesome";
+            return data + innerData;
+        }
+    }
+
+    outer() - returns the function inner defintion
+    outer()() - "closures are awesome" (using variables defined outside)
+
+- use closure to emulate private variables
+    - in above case `data` can no longer be called, but its running/used within
+        the closure function
+
+- list use cases for closures in real world
+
+
+### END OF BOOTCAMP WHATTT   DEC.06.2017
 
 
