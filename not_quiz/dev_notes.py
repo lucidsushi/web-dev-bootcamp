@@ -270,7 +270,7 @@ div - collapse navbar-collapse
 ul - nav navbar-nav
 ul - nav navbar-nav navbar-right
 
-the grid system:
+the grid system: (12 column)
 - has to be in a "container" class
 - set size for parents: (example shows lg does not need to be set if you want it to be
     3 as well)
