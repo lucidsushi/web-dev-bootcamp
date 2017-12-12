@@ -1214,6 +1214,11 @@ i want to rename the folder name, but not affect the repository in any way, like
         - db.collection.remove(object_to_select) # removes all matching
         - db.collection.remove(object_to_select, {justOne: true}) # removes 1 match
 
+# TODO (look into database migration)
+# changing the db schema, like adding a property, and then looping through
+# existing rows to update them all is called database migration.
+# if you google mongodb db migration might help ya out
+
 
 # intro to mongoose
     object data maper, object modeling tool (js layer on top of mongodb)
@@ -1722,6 +1727,11 @@ app.post("/register", function(req, res){
             next();
         });
 
+- confused why currentUser cant be used in routes/campgrounds.js, but can
+  be used by partials/header.ejs
+  - in route files with "res", can still be accessed via res.locals.varName,
+    versus in rendered files you can just access it as varName
+
 
 
 ### yelpcamp: cleaning up           ------ yelpcamp v7
@@ -1766,11 +1776,6 @@ app.post("/register", function(req, res){
 
 - save username / id to newly created campground
     - update the same author object to campground model like done in comment
-
-
-### TODO
-    confused why currentUser cant be used in routes/campgrounds.js, but can
-    be used by partials/header.ejs, HUH?!
 
 
 
@@ -2019,8 +2024,7 @@ https://github.com/nax3t/dynamic-price
 - git init
      - in directory level you want to track your repo
      - `rm -rf .git` if you want to remove it
-
-- git add . #all files
+- git add . #all files (working -> staging)
 - git commit -m
 - git log
 - git checkout
@@ -2031,6 +2035,20 @@ HEAD (current pointer, pointer in time)
     git revert --no-commit hashcode..head
 
 # TODO ian's full git course (1hour?)
+# Ian's Intro to Git Course (https://www.udemy.com/intro-to-git/learn/v4/content)
+
+# three states
+working         staging      .git directory(repository)
+    |              |                     |
+    |<-------check-out-the-project-------|
+    |              |                     |
+    |-stage-fixes->|                     |
+    |              |-------commit------->|
+
+working       : where files/changes/directories live
+staging       : files/directories explicitly added
+git repository: where all snapshots are stored
+
 
 
 check directory size:
