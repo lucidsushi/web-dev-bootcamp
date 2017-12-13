@@ -2024,7 +2024,8 @@ https://github.com/nax3t/dynamic-price
 - git init
      - in directory level you want to track your repo
      - `rm -rf .git` if you want to remove it
-- git add . #all files (working -> staging)
+- git add . # all files/dirs in current directory (working -> staging)
+- git add -A # all files/dirs but also includes those in HIGHER directories
 - git commit -m
 - git log
 - git checkout
