@@ -2018,9 +2018,10 @@ https://github.com/nax3t/dynamic-price
 
 
 ### Git and Github
-- check if git is intalled on c9 (it is)
-    git --version
+# Ian's Intro to Git Course (https://www.udemy.com/intro-to-git/learn/v4/content)
 
+- HEAD (current pointer, pointer in time)
+- git --version # check if git is intalled on c9 (it is)
 - git init
      - in directory level you want to track your repo
      - `rm -rf .git` if you want to remove it
@@ -2028,15 +2029,9 @@ https://github.com/nax3t/dynamic-price
 - git add -A # all files/dirs but also includes those in HIGHER directories
 - git commit -m
 - git log
-- git checkout
-
-HEAD (current pointer, pointer in time)
-
-- reverting commit
-    git revert --no-commit hashcode..head
-
-# TODO ian's full git course (1hour?)
-# Ian's Intro to Git Course (https://www.udemy.com/intro-to-git/learn/v4/content)
+- git revert --no-commit hashcode..head # reverting commit
+- git branch
+- git checkout -b branch_name
 
 # three states
 working         staging      .git directory(repository)
@@ -2049,6 +2044,9 @@ working         staging      .git directory(repository)
 working       : where files/changes/directories live
 staging       : files/directories explicitly added
 git repository: where all snapshots are stored
+
+# ignoring files and folders
+- .gitignore
 
 
 
