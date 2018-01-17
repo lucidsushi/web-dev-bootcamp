@@ -2261,3 +2261,6 @@ commandline:
 ### END OF BOOTCAMP WHATTT   DEC.06.2017
 
 
+
+# sushi image credit
+<a href='https://www.freepik.com/free-vector/black-sushi-icons_761041.htm'>Designed by Freepik</a>
