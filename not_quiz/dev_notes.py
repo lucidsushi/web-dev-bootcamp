@@ -2277,9 +2277,11 @@ commandline:
 ### ALAN'S EVENT LOOP LESSONS ###  Jan.16.2018
 ''' https://alanthai.github.io/event-loop-lessons/#introduction '''
 
-- JavaScript runs asynchronously through an event loop
+- "JavaScript runs asynchronously through an event loop"
 
 - "Assigning a new value to a variable that hasn't yet been declared with let/const/var will automatically declare it in the global scope. Never do this."
+
+- "Despite being inside a method, normal function calls have a context of `window`. Don't forget!"
 
 
 
