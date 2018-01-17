@@ -2030,7 +2030,7 @@ https://github.com/nax3t/dynamic-price
 - git commit -m
 - git log
 - git revert --no-commit hashcode..head # reverting commit
-- git branch
+- git branch -d branch_name # delete branch -D to HARD delete none merged
 - git checkout -b branch_name
 
 # three states
@@ -2048,6 +2048,12 @@ git repository: where all snapshots are stored
 # ignoring files and folders
 - .gitignore
 
+# connecting c9 to github
+- make a repo on github
+- add c9 ssh key to github
+- git remote add origin <url> # connect from c9 (sets up origin)
+- got remote -v # check remote origin
+- git push -u origin master
 
 
 check directory size:
@@ -2261,6 +2267,26 @@ commandline:
 ### END OF BOOTCAMP WHATTT   DEC.06.2017
 
 
-
 # sushi image credit
 <a href='https://www.freepik.com/free-vector/black-sushi-icons_761041.htm'>Designed by Freepik</a>
+#
+
+
+
+
+### ALAN'S EVENT LOOP LESSONS ###  Jan.16.2018
+''' https://alanthai.github.io/event-loop-lessons/#introduction '''
+
+- JavaScript runs asynchronously through an event loop
+
+- "Assigning a new value to a variable that hasn't yet been declared with let/const/var will automatically declare it in the global scope. Never do this."
+
+
+
+### THE ADVANCED WEB DEVELOPER BOOTCAMP ###
+
+# picking js/react route, but going to fit in time to look at AJAX w/Fetch
+# + play flexbox frog
+
+
+
