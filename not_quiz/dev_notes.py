@@ -1,15 +1,3 @@
-You can share your code with us in a Q&A thread by using the {...} code block button (first write your code, select it, then press the button
-
-
-
-- Introduce yourself on the discussion boards and chatrooms
-- Ask questions
-- Help answer other students’ questions
-- Post your own solutions to projects and exercises
-- Share links to helpful articles and tutorials
-- Share your own blog posts (shoutout to Jamal Yusef for some great content)
-- Share your personal projects
-- Share feedback on individual lessons, sections, and the course in general
 
 
 Sharecode?
@@ -487,7 +475,7 @@ Array.from({ length: 5 }, (_, i) => i);
 // => [0, 1, 2, 3, 4]
 
 Array.from(Array(20).keys())
-// =. [0, 1, ..., 20]
+// => [0, 1, ..., 20]
 #Array.from(Array(20).keys()).map(i => i + 1)   <= goes till 20
 
 
@@ -2282,6 +2270,20 @@ commandline:
 - "Assigning a new value to a variable that hasn't yet been declared with let/const/var will automatically declare it in the global scope. Never do this."
 
 - "Despite being inside a method, normal function calls have a context of `window`. Don't forget!"
+###
+
+
+### MODERN JS CHEATSHEET ###
+# https://github.com/mbeaudru/modern-js-cheatsheet#function-default-parameter-value
+
+
+### Interview Prep on Tech Basics
+
+
+### How the internet works for Developers p1 overview/frontend
+# https://www.youtube.com/watch?v=e4S8zfLdLgQ&feature=youtu.be&list=PLoYCgNOIyGAB_8_iq1cL8MVeun7cB6eNc
+
+
 
 
 
