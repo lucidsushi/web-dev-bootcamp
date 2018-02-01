@@ -2343,6 +2343,9 @@ var willIGetNewPhone = new Promise(
 
 
 
+### How the internet works for Developers p1 overview/frontend
+
+
 
 
 ### THE ADVANCED WEB DEVELOPER BOOTCAMP ###
