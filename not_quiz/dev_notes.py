@@ -2312,6 +2312,12 @@ new Promise(/* executor*/ function (resolve, reject) { ... } );
 var isMomHappy = false;
 
 # Promise
+'''
+lets asynchronous methods return values like synchronous methods: instead of
+immediately returning the final value, the asynchronous method returns a promise
+to supply the value at some point in the future.
+'''
+# promise create
 var willIGetNewPhone = new Promise(
     function (resolve, reject) {
         if (isMomHappy) {
@@ -2327,6 +2333,111 @@ var willIGetNewPhone = new Promise(
     }
 );
 
+# promise consume
+# call our promise
+var askMom = function () {
+    willIGetNewPhone
+        .then(function (fulfilled) {
+            // yay, you got a new phone
+            console.log(fulfilled);
+         // output: { brand: 'Samsung', color: 'black' }
+        })
+        .catch(function (error) {
+            # oops, mom don't buy it
+            console.log(error.message);
+         # output: 'mom is not happy'
+        });
+};
+askMom();
+
+# chain promise
+# 2nd promise
+var showOff = function (phone) {
+    return new Promise(
+        function (resolve, reject) {
+            var message = 'Hey friend, I have a new ' +
+                phone.color + ' ' + phone.brand + ' phone';
+
+            resolve(message);
+        }
+    );
+};
+
+# reject is optional and example can be shortened using Promose.resolve()
+# if reject is not run, the .catch() handler is just not attached to the promise
+
+# 2nd promise
+var showOff = function (phone) {
+    var message = 'Hey friend, I have a new ' +
+                phone.color + ' ' + phone.brand + ' phone';
+
+    return Promise.resolve(message);
+};
+
+# chain (note promise is asynchronous, put it in .then() if you want it to
+#    run after promise)
+var askMom = function () {
+    console.log('promises are async')
+    willIGetNewPhone
+    .then(showOff) # chain it here (first resolve return passes into here)
+    .then(function (fulfilled) {
+            console.log(fulfilled);
+         # showOff fulfilled pass into here
+         # output: 'Hey friend, I have a new black Samsung phone.'
+        })
+        .catch(function (error) {
+            # oops, mom don't buy it
+            console.log(error.message);
+         # output: 'mom is not happy'
+        });
+    console.log('promises are async so this runs before "fufilled" message')
+};
+
+
+# ES6 ####################################################
+/* ES6 */
+const isMomHappy = true;
+
+# Promise
+const willIGetNewPhone = new Promise(
+    (resolve, reject) => { // fat arrow
+        if (isMomHappy) {
+            const phone = {
+                brand: 'Samsung',
+                color: 'black'
+            };
+            resolve(phone);
+        } else {
+            const reason = new Error('mom is not happy');
+            reject(reason);
+        }
+    }
+);
+
+# second promise
+const showOff = function (phone) {
+    const message = 'Hey friend, I have a new ' +
+                phone.color + ' ' + phone.brand + ' phone';
+    return Promise.resolve(message);
+};
+
+# call our promise
+const askMom = function () {
+    willIGetNewPhone
+        .then(showOff)
+        .then(fulfilled => console.log(fulfilled)) // fat arrow
+        .catch(error => console.log(error.message)); // fat arrow
+};
+
+askMom();
+# ES6 ####################################################
+
+# async and await
+- prepend async whenever function returns a promise
+    async function showOff(phone)
+- prepend await whenever you need to call a promise
+    let phone = await willIGetNewPhone; and let message = await showOff(phone);
+- use try { ... } catch(error) { ... } to catch promise error, the rejected promise.
 
 # class
 - syntatic sugar for existing prototype based inheritance
