@@ -2097,7 +2097,7 @@ commandline:
 
 ### JavaScript: the tricky stuff (intermediate)
 
-# this - and four ways of looking at it
+# keyword this - and four ways of looking at it
     - reserved JavaScript keyword
     - usually determined by the excecution context (how a function is called)
     - determined by 4 rules (global, object/implicit, explicit, new)
@@ -2276,6 +2276,64 @@ commandline:
 ### MODERN JS CHEATSHEET ###
 # https://github.com/mbeaudru/modern-js-cheatsheet#function-default-parameter-value
 
+# =================================================================== #
+
+### functional programming  ###
+# Compute total grade sum for students with grades 10 or above by
+# composing map, filter and reduce
+students = [
+  { 'name': "Nick", 'grade': 10 },
+  { 'name': "John", 'grade': 15 },
+  { 'name': "Julia", 'grade': 19 },
+  { 'name': "Nathalie", 'grade': 9 }
+]
+
+grades        = map(lambda student: student['grade'], students)
+grades_ten_up = filter(lambda grade: grade > 10, grades)
+grades_total  = reduce(lambda x, y: x + y, grades_ten_up)
+
+print grades_total
+
+sum_grades_higher_than_ten = sum(
+    grade for grade in (
+        student['grade'] for student in students
+    )
+    if grade >10
+)
+print sum_grades_higher_than_ten
+
+# promises (https://scotch.io/tutorials/javascript-promises-for-dummies)
+- 3 states: pending, resolved, rejected
+
+# promise syntax look like this
+new Promise(/* executor*/ function (resolve, reject) { ... } );
+
+/* ES5 */
+var isMomHappy = false;
+
+# Promise
+var willIGetNewPhone = new Promise(
+    function (resolve, reject) {
+        if (isMomHappy) {
+            var phone = {
+                brand: 'Samsung',
+                color: 'black'
+            };
+            resolve(phone); # fulfilled
+        } else {
+            var reason = new Error('mom is not happy');
+            reject(reason); # reject
+        }
+    }
+);
+
+
+# class
+- syntatic sugar for existing prototype based inheritance
+- class declaration, class expression
+
+
+# =================================================================== #
 
 ### Interview Prep on Tech Basics
 
