@@ -2302,6 +2302,12 @@ sum_grades_higher_than_ten = sum(
 )
 print sum_grades_higher_than_ten
 
+
+# class
+- syntatic sugar for existing prototype based inheritance
+- class declaration, class expression
+
+
 # promises (https://scotch.io/tutorials/javascript-promises-for-dummies)
 - 3 states: pending, resolved, rejected
 
@@ -2432,6 +2438,44 @@ const askMom = function () {
 askMom();
 # ES6 ####################################################
 
+    let resultA, resultB, resultC;
+
+    function addAsync (num1, num2, callback) {
+        // use the famous jQuery getJSON callback API
+        return $.getJSON('http://www.example.com', {
+            num1: num1,
+            num2: num2
+        }, callback);
+    }
+
+    addAsync(1, 2, success => {
+        // callback 1
+        resultA = success; // you get result = 3 here
+
+        addAsync(resultA, 3, success => {
+            // callback 2
+            resultB = success; // you get result = 6 here
+
+            addAsync(resultB, 4, success => {
+                // callback 3
+                resultC = success; // you get result = 10 here
+
+                console.log('total' + resultC);
+                console.log(resultA, resultB, resultC);
+            });
+        });
+    });
+// rewrite above using promises
+`// add 1, 2, 3, 4
+    const AddTwo = (num1, num2) => {
+        return Promise.resolve(num1 + num2)
+    }
+
+    AddTwo(1, 2)
+        .then(success => AddTwo(success, 3))
+        .then(success => AddTwo(success, 4))
+        .then(success => console.log(success))
+
 # async and await
 - prepend async whenever function returns a promise
     async function showOff(phone)
@@ -2439,10 +2483,27 @@ askMom();
     let phone = await willIGetNewPhone; and let message = await showOff(phone);
 - use try { ... } catch(error) { ... } to catch promise error, the rejected promise.
 
-# class
-- syntatic sugar for existing prototype based inheritance
-- class declaration, class expression
 
+#### USING AYNC/AWAIT  ####
+// add 1, 2, 3, 4 two at a time
+// AddTwo = async(num1, num2) => {}
+async function AddTwo(num1, num2){
+    return Promise.resolve(num1 + num2);
+}
+
+async function AddNumbers(){
+  try {
+    let resultA = await AddTwo(1, 2);
+    let resultB = await AddTwo(resultA, 3);
+    let resultC = await AddTwo(resultB, 4);
+    console.log(resultC);
+  }
+  catch(error){
+    console.log(error.message);
+  }
+}
+
+AddNumbers();
 
 # =================================================================== #
 
