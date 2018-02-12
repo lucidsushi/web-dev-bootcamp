@@ -2303,12 +2303,8 @@ sum_grades_higher_than_ten = sum(
 print sum_grades_higher_than_ten
 
 
-# class
-- syntatic sugar for existing prototype based inheritance
-- class declaration, class expression
 
-
-# promises (https://scotch.io/tutorials/javascript-promises-for-dummies)
+# PROMISES (https://scotch.io/tutorials/javascript-promises-for-dummies)
 - 3 states: pending, resolved, rejected
 
 # promise syntax look like this
@@ -2341,6 +2337,10 @@ var willIGetNewPhone = new Promise(
 
 # promise consume
 # call our promise
+
+# The then() method returns a Promise. It takes up to two arguments: callback
+# functions for the success and failure cases of the Promise.
+
 var askMom = function () {
     willIGetNewPhone
         .then(function (fulfilled) {
@@ -2466,7 +2466,7 @@ askMom();
         });
     });
 // rewrite above using promises
-`// add 1, 2, 3, 4
+// add 1, 2, 3, 4
     const AddTwo = (num1, num2) => {
         return Promise.resolve(num1 + num2)
     }
@@ -2504,6 +2504,43 @@ async function AddNumbers(){
 }
 
 AddNumbers();
+
+# - await operator can only be used in async function
+# - await expressions needs to be wrapped in parentheses to call its resolved
+#   value's methods and properties on the same line:
+#   ex: const token = (await fetch('token_url')).json().token;
+
+
+# CLASS
+- syntatic sugar for existing prototype based inheritance
+- class declaration
+    class Rectangle {
+      constructor(height, width) {
+        this.height = height;
+        this.width = width;
+      }
+    }
+- class expression
+    // unnamed
+    var Rectangle = class {
+      constructor(height, width) {
+        this.height = height;
+        this.width = width;
+      }
+    };
+
+    // named
+    var Rectangle = class Rectangle {
+      constructor(height, width) {
+        this.height = height;
+        this.width = width;
+      }
+    };
+- super keyword must be used before the `this` keyword is used in constructor
+
+
+
+
 
 # =================================================================== #
 
