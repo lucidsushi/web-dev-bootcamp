@@ -362,6 +362,7 @@ while(condition) {doSomething}
 
 for(var init; condition; step) {doSomething}
 
+for(let variable of iterable) {doSomething}
 
 
 ###JS basic functions:
@@ -2509,6 +2510,7 @@ AddNumbers();
 # - await expressions needs to be wrapped in parentheses to call its resolved
 #   value's methods and properties on the same line:
 #   ex: const token = (await fetch('token_url')).json().token;
+# - without using try/catch, uncaught exceptions will reject the promise:
 
 
 # CLASS
@@ -2537,6 +2539,72 @@ AddNumbers();
       }
     };
 - super keyword must be used before the `this` keyword is used in constructor
+
+
+# iterator patterns
+
+#-------------PYTHON---------------------
+class makeinterator(object):
+  def __init__(self, some_list):
+    self.next_index = 0
+    self.some_list = some_list
+
+  #makes class iterable
+  def __iter__(self):
+    return self
+
+  def next(self):
+    if self.next_index < len(self.some_list):
+      next_num = self.some_list[self.next_index]
+      self.next_index += 1
+      return next_num
+    else:
+      raise StopIteration()
+
+iterator = makeinterator([1,2])
+
+print iterator.next()
+print iterator.next()
+print iterator.next()
+#---------https://stackoverflow.com/questions/4020419/why-arent-python-nested-functions-called-closures/23558809#23558809
+def make_iterator(n):
+    next_list = [0]
+
+    def next():
+        next_index, = next_list
+        if next_index >= len(n):
+          raise StopIteration
+        else:
+          next_num = n[next_index]
+          next_list[0] += 1
+          return next_num
+
+    return next
+
+iter = make_iterator([1,2,3])
+
+print(iter())
+print(iter())
+print(iter())
+print(iter())
+
+#-------------JavaScript-----------------
+function makeIterator(n){
+  nextIndex = 0;
+  return {'next': function(){
+    return nextIndex < n.length ?
+      {'value': n[nextIndex++], 'done': false} :
+      {'done': true};
+    }
+  };
+}
+
+iter = makeIterator([1,2]);
+
+console.log(iter.next())
+console.log(iter.next())
+console.log(iter.next())
+#----------------------------------------
 
 
 
