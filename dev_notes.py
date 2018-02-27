@@ -1,5 +1,3 @@
-<<<<<<< HEAD:not_quiz/dev_notes.py
-
 
 Sharecode?
 https://gist.github.com/
@@ -5200,4 +5198,3 @@ AddNumbers();
 
 
 
->>>>>>> b744acc7b64d47d0d0d4969209a8d90d2499d351:dev_notes.py
