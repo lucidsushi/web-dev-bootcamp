@@ -5172,6 +5172,39 @@ AddNumbers();
     };
 - super keyword must be used before the `this` keyword is used in constructor
 
+    class Polygon {
+      constructor(height, width) {
+        this.name = 'Polygon';
+        this.height = height;
+        this.width = width;
+      }
+
+      getHelloPhrase() {
+        return `Hi, I am a ${this.name}`;
+      }
+    }
+
+    class Square extends Polygon {
+      constructor(length) {
+        # Here, it calls the parent class' constructor with lengths
+        # provided for the Polygon's width and height
+        super(length, length);
+        # Note: In derived classes, super() must be called before you
+        # can use 'this'. Leaving this out will cause a reference error.
+        this.name = 'Square';
+        this.length = length;
+      }
+
+      getCustomHelloPhrase() {
+        const polygonPhrase = super.getHelloPhrase(); // accessing parent method with super.X() syntax
+        return `${polygonPhrase} with a length of ${this.length}`;
+      }
+
+      get area() {
+        return this.height * this.width;
+      }
+    }
+
 - static methods three ways to call (depending on context):
 
     (1) static method calling static method (this):
