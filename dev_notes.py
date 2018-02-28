@@ -5172,7 +5172,21 @@ AddNumbers();
     };
 - super keyword must be used before the `this` keyword is used in constructor
 
+- static methods three ways to call (depending on context):
 
+    (1) static method calling static method (this):
+        staticMethodA(){
+            this.staticMethodB();
+        }
+
+    (2) none-static method calling static method (className):
+        noneStatic(){
+            className.staticMethod();
+        }
+
+    (3) using constructor to call static method (this.constructor)
+        (as property of constructor):
+        console.log(this.constructor.staticMethod());
 
 
 
