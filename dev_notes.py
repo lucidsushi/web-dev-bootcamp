@@ -2722,3 +2722,130 @@ l68 setTimeout and setInterval
         }
     }, 1000);
 
+
+l70
+- define event loop and the queue
+    - the queue is an ordered list of functions waiting to be placed on the 
+    stack
+    - functions in the queue are processed first in first out
+    - the event loop is a functionality in the javascript runtime that checks
+    the queue when the stack is empty, if stack is empty, the front of the queue
+    is placed in the stack
+
+- describe how the event loop and the queue work with the stack
+
+- define javascript as a single threaded language
+    - code execution is linear, code that is running cannot be interrupted by
+    something else going on in the program
+
+
+l71 promise basics
+- define a promise
+    - an object that represents a task that will be completed in the future
+
+- add a .then callback to the promise
+- add a .catch callback to the promise
+
+    var p1 = new Promise(function(resolve, reject){
+        // resolve([1,2,3]);
+        reject("ERROR");
+        });
+    p1.then(function(arr){
+        console.log("promise p1 resolved with data:", arr);
+        }).catch(function(arr){
+        console.log("promise p1 was rejected with data:", arr);
+        });
+
+
+- wrap a setTimeout call in a promise
+
+
+    var promise = new Promise(function(resolve, reject){
+        setTimeout(function(){
+            var randomInt = Math.floor(Math.random() * 10);
+            resolve(randomInt);
+            }, 4000);
+        });
+
+    # can consome it later, after 4 seconds! but the work is already done
+    promise.then(function(data){
+        console.log("random int passed in to resolve is: ", data);
+        });
+
+l72 promise chaining
+
+    - describe advantage of using nested callbacks
+        - hard to read
+        - logic is difficult to reason about
+        - code is not modular
+
+    var counter = 0;
+    setTimeout(function() {
+        counter++;
+        console.log("Counter:", counter);
+        setTimeout(function() {
+            counter++;
+            console.log("Counter:", counter);
+            setTimeout(function() {
+                counter++;
+                console.log("Counter:", counter);
+            }, 3000);
+        }, 2000);
+    }, 1000);
+
+    - return a promise from a .then callback function
+    - use a promise to make asynchronous code seem sequential
+
+    var counter = 0;
+    function increaseCounter(){
+        counter++;
+        console.log(counter);
+    }
+
+    function runLater(callback, delay){
+        var counterPromise = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                var res = callback();
+                resolve(res);
+                }, delay);
+        });
+        return counterPromise;
+    }
+
+    runLater(increaseCounter, 1000).then(function(){
+            return runLater(increaseCounter, 2000);
+        }).then(function(){
+            return runLater(increaseCounter, 3000);
+        });
+
+
+l95 testing with jasmine
+- understand what jasmine and unit testing are
+    - unit tests test parts of an application (units), very commonly
+    each unit is tested individually and independently to ensure an application
+    is running as expected 
+
+    need: a framework to write tests, a way of describing the code we are
+    testing, a tool where we can make assertions or expectations about our code
+
+- define `describe`: "let me describe __ to you"
+         `it (inside describe)`: "let me tell you more about __ "
+            `expect (inside it)`: "here's what i expect"
+  `matchers` and `spies`
+- write better tests with before and after hooks
+- write asynchronous tests with `clocks` and `done` callbacks
+- compare and contrast TDD and BDD and diferentiate between unit and other
+kind of tests
+- write unit tests using jasmine
+    jasmine starter code: https://codepen.io/eschoppik/pen/ZybNdo
+
+l98 jasmine syntax and matchers
+    pseudo code:
+
+    describe("earth")
+        it("is round")
+            expect(earth.isRound.toBe(true))
+        it("is the third planet from the sum")
+            expect(earth.numberFromSun).toBe(3)
+
+    
