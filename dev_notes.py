@@ -2828,9 +2828,12 @@ l95 testing with jasmine
     need: a framework to write tests, a way of describing the code we are
     testing, a tool where we can make assertions or expectations about our code
 
-- define `describe`: "let me describe __ to you"
-         `it (inside describe)`: "let me tell you more about __ "
-            `expect (inside it)`: "here's what i expect"
+- define 
+
+         `describe`: "let me describe __ to you"
+            `it (inside describe)`: "let me tell you more about __ "
+                `expect (inside it)`: "here's what i expect"
+
   `matchers` and `spies`
 - write better tests with before and after hooks
 - write asynchronous tests with `clocks` and `done` callbacks
@@ -2840,12 +2843,18 @@ kind of tests
     jasmine starter code: https://codepen.io/eschoppik/pen/ZybNdo
 
 l98 jasmine syntax and matchers
-    pseudo code:
+    # pseudo code:
 
     describe("earth")
         it("is round")
             expect(earth.isRound.toBe(true))
         it("is the third planet from the sum")
             expect(earth.numberFromSun).toBe(3)
+
+    # expect() returns an object to us, which we can attach functions to, these
+    # functions are called `matchers`
+
+    # transformed to code (https://codepen.io/eschoppik/pen/jmgXXK)
+    
 
     
