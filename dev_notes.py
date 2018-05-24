@@ -2834,6 +2834,12 @@ l95 testing with jasmine
             `it (inside describe)`: "let me tell you more about __ "
                 `expect (inside it)`: "here's what i expect"
 
+        describe("A suite", function() {
+            it("contains spec with an expectation", function() {
+                expect(true).toBe(true);
+                });
+            });
+
   `matchers` and `spies`
 - write better tests with before and after hooks
 - write asynchronous tests with `clocks` and `done` callbacks
@@ -2851,10 +2857,79 @@ l98 jasmine syntax and matchers
         it("is the third planet from the sum")
             expect(earth.numberFromSun).toBe(3)
 
-    # expect() returns an object to us, which we can attach functions to, these
-    # functions are called `matchers`
-
     # transformed to code (https://codepen.io/eschoppik/pen/jmgXXK)
+
+
+    # MATCHERS
+    # functions we attach to the object expect() returns
+    # (describe, it, expect and matchers are provided by Jasmine)
+    https://jasmine.github.io/api/2.6/matchers.html
+    https://jasmine.github.io/2.2/introduction
+
+    toBe / not.toBe
+    toBeCloseTo
+    toBeDefined
+    toBeFalsey / toBeTruthy
+    toBeGreaterThan / toBeLessThan
+    toContain
+    toEqual (deep equality ~ objects)
+    jasmine.any()
     
+    # actual examples with explanations
+    https://codepen.io/eschoppik/pen/zwgeRr
+
+l99 writing better tests with hooks
+    # https://jasmine.github.io/2.2/introduction
+    # every "it" is a spec?
+
+    ** beforeEach ** # runs before each "it" callback
+
+    ex:
+    describe("Arrays", function(){
+        var arr;
+        beforeEach(function(){
+            arr = [1, 3, 4];
+            });
+        it("...", function(){
+            # use arr here without defining it repeatedly for each "it"
+            }
+        }
+
+    ** afterEach ** # runs after each "it" callback - useful for teardown
+
+    describe("counting", function(){
+        var count = 0;
+        beforeEach(function(){
+            count++;
+        });
+
+        afterEach(function(){
+            count = 0;
+        });
+
+        it("has a counter that increments", function(){
+            expect(count).toBe(1);
+        });
+
+        it("gets reset", function(){
+            expect(count).toBe(1);
+        })
+    });
+
+    - beforeAll/afterAll (only runs one before or after all specs, need to
+        care about not messing up states if they exists between specs)
+
+    - "describe" can be nested (nest "unshift" and "push" under "array")
+
+    - three ways to make tests "pending":
+        - put x in front of it  (xit)
+        - dont have a callback function in "it" (so pure spec string only)
+        - end last line of spec ("it") with `pending();`
+
+    
+
+
+
+
 
     
