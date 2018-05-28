@@ -2866,7 +2866,7 @@ l98 jasmine syntax and matchers
     https://jasmine.github.io/api/2.6/matchers.html
     https://jasmine.github.io/2.2/introduction
 
-    toBe / not.toBe
+    toBe (===)/ not.toBe
     toBeCloseTo
     toBeDefined
     toBeFalsey / toBeTruthy
@@ -2925,6 +2925,13 @@ l99 writing better tests with hooks
         - put x in front of it  (xit)
         - dont have a callback function in "it" (so pure spec string only)
         - end last line of spec ("it") with `pending();`
+
+    - number of "expect" functions in "it":
+        okay to have more than one expect, but should group similar expect
+        functions under the proper it
+
+l100 Spies
+
 
     
 
