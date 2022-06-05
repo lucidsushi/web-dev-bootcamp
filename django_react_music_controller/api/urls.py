@@ -1,8 +1,8 @@
 """api.urls URL Configuration
 """
 from django.urls import path
-from .views import main
+from .views import RoomView
 
 urlpatterns = [
-    path('', main) # blank URL calls "main"
+    path('room', RoomView.as_view())
 ]
