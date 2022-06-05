@@ -952,7 +952,7 @@ meta data which also includes what other packages are needed for it to run
 
 # use `npm init` to create a new package.json
 
- '''
+'''
 This utility will walk you through creating a package.json file.
 It only covers the most common items, and tries to guess sensible defaults.
 
