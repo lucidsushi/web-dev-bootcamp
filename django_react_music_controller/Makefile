@@ -6,3 +6,7 @@ db-migrate:
 
 run-server:
 	./manage.py runserver
+
+start-app:
+# make start-app name=frontend
+	django-admin startapp $(name)

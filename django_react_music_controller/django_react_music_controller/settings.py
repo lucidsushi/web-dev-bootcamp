@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',  # added during tutorial
-    'rest_framework' # added during tutorial
+    'rest_framework', # added during tutorial
+    'frontend.apps.FrontendConfig',  # added during tutorial
 ]
 
 MIDDLEWARE = [

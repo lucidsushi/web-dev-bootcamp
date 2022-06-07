@@ -1,5 +1,9 @@
+# Javascript
+node_modules/
+
 # Python
 Pipfile
 
 # VsCode
 settings.json
+.vscode
