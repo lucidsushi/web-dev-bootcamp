@@ -10,3 +10,7 @@ run-server:
 start-app:
 # make start-app name=frontend
 	django-admin startapp $(name)
+
+
+run-frontend-dev:
+	npm --prefix frontend/ run dev
