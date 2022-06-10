@@ -1,7 +1,5 @@
-db-make-migrations:
+update-db-django:
 	./manage.py makemigrations
-
-db-migrate:
 	./manage.py migrate
 
 run-server:

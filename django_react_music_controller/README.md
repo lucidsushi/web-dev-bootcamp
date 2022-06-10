@@ -195,7 +195,24 @@ urlpatterns = [
 ]
 ```
 
--
+### 5. API View to Create Room on POST
+
+- Import more stuff from rest_framework in views.py of API
+- Create a new serializer -- CreateRoomSerializer
+  - "whenever you are handling different requests, it's a good idea to create an incoming or outgoing serializer" - Tim
+- Import CreateRoomSerializer in views.py and create CreateRoomView(APIView) (class-based view)
+- Fix api.models to use generate_unique_code as default of "code" field
+- Users won't POST us what the "host" is, instead we want to use a session key -- an established connection between two devices
+  - identified by a unique key
+  - session will be lost for now if our server crashes
+- Draft post() in CreateRoomView to find session
+  - does current user have session
+  - create session if not
+
+```
+~ Random Internet Search ~
+What is the difference between forms and serializers? Forms are if you want Django templates to render it out. Serializers if you need a REST API and the frontend can be nearly anything. I got this error here: raise TypeError('view must be a callable or a list/tuple in the case of include().')
+```
 
 ## How-To
 
