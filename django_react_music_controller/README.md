@@ -40,6 +40,13 @@
 └── README.md
 ```
 
+Material UI
+Grid
+  Grid is used to align things vertically or horizontally
+    - spacing{#} is #*8 pixels spacing between items in grid
+    - breakpoint (xs, sm, md, lg, and xl) -- " value given to a breakpoint applies to all the other breakpoints wider than it (unless overridden, as you can read later in this page). For example, xs={12} sizes a component to occupy the whole viewport width regardless of its size."
+Typography
+  - nicely styled/maintained header in material-UI
 ## Tutorial
 
 ### 1. Setting up a Hello World Page
@@ -49,7 +56,7 @@
 - Start Django Project
   `django-admin startproject project_name`
 - Put App in Project (folder)
-  `djanog-admin startapp app_name`
+  `django-admin startapp app_name`
 - Register App
   setting.py.INSTALLED_APPS = [
   ...,
@@ -213,7 +220,27 @@ urlpatterns = [
 ~ Random Internet Search ~
 What is the difference between forms and serializers? Forms are if you want Django templates to render it out. Serializers if you need a REST API and the frontend can be nearly anything. I got this error here: raise TypeError('view must be a callable or a list/tuple in the case of include().')
 ```
+### 6.  Material UI Components + onChange functions to handle votes/guests-can-pause/room-button
+```
+"Material Design, which was not asked in the question, is a specification released by Google (as some of these answers correctly state).
 
+Material UI, on the other hand, is a library that uses Facebook’s react framework and exports a set of react components that that follow the principals of Material Design -- Quora"
+```
+==== UI Changes ====
+- Import a bunch of things from material-ui in CreateRoomPage.js
+  - http://127.0.0.1:8000/create
+- Set default votes value
+- Add a Grid Container and a Grid Item (using a max value of xs=12) of Typograhpy
+- Add radio buttons using Grid/FormControl/RadioGroup/FormControlLabel 
+  - Use FormControlLabel so we can label(name?) our buttons?
+- Add number-of-votes text fields with Grid/FormControl/TextField/FormHelperText
+- Add button to submit/go-back with Grid/Button
+  - Button with component as link and to url for back button
+==== Backend Changes ====
+- Set this.state of constructor for CreateRoomPage.js
+  - "remember when state changes it forces React components to refresh"
+  - create handleVotesChange/handleGuestCanPauseChange functions below contructor
+- Add onChange attribute to RadioGroup of Play/Pause, NoControl radio buttons
 ## How-To
 
 ## References

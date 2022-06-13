@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/index.js",  // entry point of the application
   output: {
     path: path.resolve(__dirname, "./static/frontend"),
-    filename: "[name].js", // name of the file that will be outputed
+    filename: "main.js", // [name].js  will be outputed -- default = main?
   },
   // show more error diffs
   // stats: {
