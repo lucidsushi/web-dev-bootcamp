@@ -17,11 +17,35 @@ from .models import Room
 # https://www.django-rest-framework.org/api-guide/generic-views/#generic-views
 
 
-class RoomView(generics.ListAPIView):
+class AllRooms(generics.ListAPIView):
     ''' Class-based view
     '''
     queryset = Room.objects.all()  # get all rooms
     serializer_class = RoomSerializer  # use to serialize data
+
+
+class GetRoom(APIView):
+    serialier_class = RoomSerializer
+    lookup_url_kwarg = 'code'  # does this have to be code??..
+
+    def get(self, request, format=None):
+        code = request.GET.get(self.lookup_url_kwarg)
+        if code:
+            room = Room.objects.filter(code=code)
+            if len(room) > 0:
+                data = RoomSerializer(room[0]).data
+                data['is_host'] = self.request.session.session_key == room[0].host
+                return Response(data, status=status.HTTP_200_OK)
+
+            return Response(
+                {f'Room Not Found: Invalid Room Code: {code}'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        else:
+            return Response(
+                {'Bad Request': f'Parameter {self.lookup_url_kwarg} is not found in request'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class CreateRoomView(APIView):
@@ -41,14 +65,21 @@ class CreateRoomView(APIView):
             votes_to_skip = serializer.data.get('votes_to_skip')
             host = self.request.session.session_key
             queryset = Room.objects.filter(host=host)
-            if queryset.exists():
+            queryset_exists = queryset.exists()
+            if queryset_exists:
                 room = queryset[0]
                 room.guest_can_pause = guest_can_pause
                 room.votes_to_skip = votes_to_skip
                 room.save(update_fields=['guest_can_pause', 'votes_to_skip'])
-            else:
+                res = Response(RoomSerializer(room).data,
+                               status=status.HTTP_201_CREATED)
+            elif not queryset_exists:
                 room = Room(host=host, guest_can_pause=guest_can_pause,
                             votes_to_skip=votes_to_skip)
                 room.save()
-            return Response(RoomSerializer(room).data, status=status.HTTP_201_CREATED)
-        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+                res = Response(RoomSerializer(room).data,
+                               status=status.HTTP_201_CREATED)
+            else:
+                res = Response({'Bad Request': 'Invalid data...'},
+                               status=status.HTTP_400_BAD_REQUEST)
+        return res

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
+
 import HomePage from './HomePage';
-import RoomJoinPage from './RoomJoinPage';
-import CreateRoomPage from './CreateRoomPage';
 
 export default class App extends Component {
     constructor(props) {
         super(props);
     }
-
     render() {
         return (
             <div>
@@ -16,11 +15,13 @@ export default class App extends Component {
             </div>
 
         );
-        // return <h1>Testing React</h1>;
         // return <h1>Testing React Code: {this.props.name}</h1>;
     }
 }
 
 const appDiv = document.getElementById('app');
-render(<App />, appDiv);
+const root = createRoot(appDiv);
+root.render(<App />);
+// https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis
+// render(<App />, appDiv);
 // render(<App name="this is a prop" />, appDiv);

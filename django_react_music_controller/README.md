@@ -42,11 +42,11 @@
 
 Material UI
 Grid
-  Grid is used to align things vertically or horizontally
-    - spacing{#} is #*8 pixels spacing between items in grid
-    - breakpoint (xs, sm, md, lg, and xl) -- " value given to a breakpoint applies to all the other breakpoints wider than it (unless overridden, as you can read later in this page). For example, xs={12} sizes a component to occupy the whole viewport width regardless of its size."
+Grid is used to align things vertically or horizontally - spacing{#} is #\*8 pixels spacing between items in grid - breakpoint (xs, sm, md, lg, and xl) -- " value given to a breakpoint applies to all the other breakpoints wider than it (unless overridden, as you can read later in this page). For example, xs={12} sizes a component to occupy the whole viewport width regardless of its size."
 Typography
-  - nicely styled/maintained header in material-UI
+
+- nicely styled/maintained header in material-UI
+
 ## Tutorial
 
 ### 1. Setting up a Hello World Page
@@ -220,29 +220,65 @@ urlpatterns = [
 ~ Random Internet Search ~
 What is the difference between forms and serializers? Forms are if you want Django templates to render it out. Serializers if you need a REST API and the frontend can be nearly anything. I got this error here: raise TypeError('view must be a callable or a list/tuple in the case of include().')
 ```
-### 6.  Material UI Components + onChange functions to handle votes/guests-can-pause/room-button
+
+### 6. Material UI Components + onChange functions to handle votes/guests-can-pause/room-button
+
 ```
 "Material Design, which was not asked in the question, is a specification released by Google (as some of these answers correctly state).
 
 Material UI, on the other hand, is a library that uses Facebook’s react framework and exports a set of react components that that follow the principals of Material Design -- Quora"
 ```
+
 ==== UI Changes ====
+
 - Import a bunch of things from material-ui in CreateRoomPage.js
   - http://127.0.0.1:8000/create
 - Set default votes value
 - Add a Grid Container and a Grid Item (using a max value of xs=12) of Typograhpy
-- Add radio buttons using Grid/FormControl/RadioGroup/FormControlLabel 
+- Add radio buttons using Grid/FormControl/RadioGroup/FormControlLabel
   - Use FormControlLabel so we can label(name?) our buttons?
 - Add number-of-votes text fields with Grid/FormControl/TextField/FormHelperText
 - Add button to submit/go-back with Grid/Button
   - Button with component as link and to url for back button
-==== Backend Changes ====
+    ==== Backend Changes ====
 - Set this.state of constructor for CreateRoomPage.js
   - "remember when state changes it forces React components to refresh"
   - create handleVotesChange/handleGuestCanPauseChange functions below contructor
 - Add onChange attribute to RadioGroup of Play/Pause, NoControl radio buttons
+
+### 7. /create leads to an actual room/:roomId page
+
+- Create room component -- src/components/Room.js
+  - add states of votesToSkip, guestCanPause, and isHost
+- Add route/:roomId in HomePage to room/code
+  - Use props.match.params.roomId as roomId
+  - Add room/<str:roomId> to urlpatterns
+- Change class component Room to function component to bypass v6 router issue (no props.match)
+  https://stackoverflow.com/questions/69967745/react-router-v6-access-a-url-parameter
+  https://reactrouter.com/docs/en/v6/getting-started/tutorial#reading-url-params
+  https://reactrouter.com/docs/en/v6/upgrading/reach#update-route-components-to-use-hooks
+- Add GetRoom APIView
+  - find "code" from request?
+  - check if room exist using "code"
+  - overide data with host information before returning response
+- Add get-room url pattern to api
+- Add getRoomDetails function to set state of Room.js <-- need to confirm this is actually working
+- Route /api/create-room
+  ...
+- Summary:
+  - Unclear if Router/Route needs to be so many components away from index.js
+    - index.js vs index.js -> app.js -> homepage.js
+  - Probably better to use function component/react hooks than class components
+    - but useful to know how to work around this with a higher order component
+
 ## How-To
 
 ## References
+
+- Using Function component from Class Component
+  https://stackoverflow.com/questions/37516919/react-router-getting-this-props-location-in-child-components
+  https://stackoverflow.com/questions/69967745/react-router-v6-access-a-url-parameter
+  https://reactrouter.com/docs/en/v6/upgrading/reach#update-route-components-to-use-hooks
+  https://reactrouter.com/docs/en/v6/getting-started/tutorial#reading-url-params
 
 - [Database/Model Migration](https://docs.djangoproject.com/en/4.0/topics/migrations/#:~:text=Migrations%20are%20Django's%20way%20of,problems%20you%20might%20run%20into.)
