@@ -271,7 +271,45 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
   - Probably better to use function component/react hooks than class components
     - but useful to know how to work around this with a higher order component
 
+### 8.
+
+- Align HomePage to the center
+  - and it's children? -- because centering is done on the <div>
+- Add RoomJoinPage.js MUI
+  - textfield for RoomCode
+  - Buttons
+- Hook up method handleRoomCodeChange and handleJoinRoomButtonClicked
+
+
 ## How-To
+
+- Center a <div> horizontally and vertically
+  - use css class <div className='center'>
+- [Center NOT a <div> when using MUI](https://medium.com/@tsubasakondo_36683/4-ways-to-center-a-component-in-material-ui-a4bcafe6688e)
+  - [One-off override component style](https://mui.com/material-ui/customization/how-to-customize/#the-sx-prop)
+- Use JSX element when wanting an arbitrary parent
+  - Use Fragment to wrap the JSX element
+    - https://reactjs.org/docs/fragments.html
+
+```
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+- Fetch state to update function component
+
+```
+One of the popular cases that using useState inside of useEffect will not cause an infinite loop is when you pass an empty array as a second argument to useEffect like useEffect(() => {....}, []) which means that the effect function should be called once: after the first mount/render only.
+```
+
+https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-hook
+
+- Preserve previous state when updating a entry in state
+`setState(state => ({...state, keyToChange: newValue}));`
 
 ## References
 
@@ -280,5 +318,8 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
   https://stackoverflow.com/questions/69967745/react-router-v6-access-a-url-parameter
   https://reactrouter.com/docs/en/v6/upgrading/reach#update-route-components-to-use-hooks
   https://reactrouter.com/docs/en/v6/getting-started/tutorial#reading-url-params
+  https://www.freecodecamp.org/news/how-to-use-react-router-version-6/
 
 - [Database/Model Migration](https://docs.djangoproject.com/en/4.0/topics/migrations/#:~:text=Migrations%20are%20Django's%20way%20of,problems%20you%20might%20run%20into.)
+
+- [What are Sessions](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Sessions)

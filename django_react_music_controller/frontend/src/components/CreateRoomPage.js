@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
+import { TextField, Button, Grid, Typography, Box } from "@material-ui/core";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,25 +8,22 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const CreateRoomPage = (props) => {
-    const defaultVotes = 2;
 
     const intialState = {
-        votesToSkip: defaultVotes,
+        votesToSkip: 2,
         guestCanPause: true,
     };
     const [state, setState] = React.useState(intialState);
     let navigate = useNavigate();
 
     const handleVotesChange = (e) => {
-        setState({
-            votesToSkip: e.target.value
-        });
+        setState(state => ({...state, votesToSkip: e.target.value}));
+        // setState({...state, votesToSkip: e.target.value}); // this is the same as the above line?
+
     }
 
     const handleGuestCanPauseChange = (e) => {
-        setState({
-            guestCanPause: e.target.value === "true" ? true : false,
-        });
+        setState(state => ({...state, guestCanPause: e.target.value === "true" ? true : false}));
     }
 
     const createRoomButtonClicked = () => {
@@ -44,13 +38,12 @@ const CreateRoomPage = (props) => {
         fetch("/api/create-room", request)
             .then(response => response.json())
             .then(data => navigate(`/room/${data.code}`));
-        // .then(data => console.log(data));
-        // .then((data) => this.props.history.push("/room/" + data.code));
+        // .then((data) => this.props.history.push("/room/" + data.code)); // old way of doing it from a class
     }
 
     return (
-        <div>
-            <Grid container spacing={1}>
+        <>
+            <Grid container spacing={1} >
                 <Grid item xs={12} align="center">
                     <Typography component="h4" variant="h4">
                         Create Room
@@ -58,9 +51,11 @@ const CreateRoomPage = (props) => {
                 </Grid>
                 <Grid item xs={12} align="center">
                     <FormControl component="fieldset">
-                        <FormHelperText>
-                            <div align="center">Guest Control of Playback State</div>
-                        </FormHelperText>
+                        <Box display="flex" alignItems="center" justifyContent="center">
+                            <FormHelperText>
+                                Guest Control of Playback State
+                            </FormHelperText>
+                        </Box>
                         <RadioGroup
                             row
                             defaultValue="true"
@@ -87,7 +82,7 @@ const CreateRoomPage = (props) => {
                             required={true}
                             type="number"
                             onChange={handleVotesChange}
-                            defaultValue={defaultVotes}
+                            defaultValue={state.votesToSkip}
                             inputProps={
                                 {
                                     min: "1",
@@ -95,9 +90,11 @@ const CreateRoomPage = (props) => {
                                 }
                             }
                         />
-                        <FormHelperText>
-                            <div align="center">Votes Required to Skip Song</div>
-                        </FormHelperText>
+                        <Box display="flex" alignItems="center" justifyContent="center">
+                            <FormHelperText>
+                                Votes Required to Skip Song
+                            </FormHelperText>
+                        </Box>
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} align="center">
@@ -115,7 +112,7 @@ const CreateRoomPage = (props) => {
                     </Button>
                 </Grid>
             </Grid>
-        </div >
+        </>
     );
 }
 

@@ -24,7 +24,42 @@ class AllRooms(generics.ListAPIView):
     serializer_class = RoomSerializer  # use to serialize data
 
 
+class JoinRoom(APIView):
+    """Creates a session, why?
+    """
+    lookup_url_kwarg = 'code'  # does this have to be code??..
+
+    def post(self, request):
+        if not self.request.session.exists(self.request.session.session_key):
+            self.request.session.create()
+
+        code = request.data.get(self.lookup_url_kwarg)
+        if not code:
+            res = Response(
+                {'Bad Request': f'POST data missing the key: {self.lookup_url_kwarg}'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        elif code and not len(Room.objects.filter(code=code)):
+            # room_result = Room.objects.filter(code=code)
+            # if not len(room_result):
+            res = Response(
+                {'Bad Request': f'Room Code: {code} does not exist'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        else:
+            # room = room_result[0]
+            # session['room_code'] = code -- why do we even need this?
+            self.request.session['room_code'] = code
+            res = Response(
+                {'message': f'Successfully joined room: {code}'}, status=status.HTTP_200_OK
+            )
+
+        return res
+
+
 class GetRoom(APIView):
+    """Can always assume sessions exists, why?
+    """
     serialier_class = RoomSerializer
     lookup_url_kwarg = 'code'  # does this have to be code??..
 
@@ -71,12 +106,16 @@ class CreateRoomView(APIView):
                 room.guest_can_pause = guest_can_pause
                 room.votes_to_skip = votes_to_skip
                 room.save(update_fields=['guest_can_pause', 'votes_to_skip'])
+                # why do we even need this?
+                self.request.session['room_code'] = room.code
                 res = Response(RoomSerializer(room).data,
                                status=status.HTTP_201_CREATED)
             elif not queryset_exists:
                 room = Room(host=host, guest_can_pause=guest_can_pause,
                             votes_to_skip=votes_to_skip)
                 room.save()
+                # why do we even need this?
+                self.request.session['room_code'] = room.code
                 res = Response(RoomSerializer(room).data,
                                status=status.HTTP_201_CREATED)
             else:

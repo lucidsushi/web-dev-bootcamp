@@ -13,10 +13,8 @@ const Room = (props) => {
     const [state, setState] = React.useState(intialState);
     let { roomCode } = useParams();
 
-    // is this even working?
-    const getRoomDetails = () => {
-        // fetch(`/api/room/${roomCode}`)
-        fetch(`/api/get-room/?code=${roomCode}`)
+    React.useEffect(() => {
+        fetch(`/api/get-room?code=${roomCode}`)
             .then(response => response.json())
             .then(data => {
                 setState({
@@ -25,8 +23,7 @@ const Room = (props) => {
                     isHost: data.is_host,
                 });
             });
-    }
-    getRoomDetails();
+    }, []);
 
     return (
         <div>
