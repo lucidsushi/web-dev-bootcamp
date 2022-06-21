@@ -271,14 +271,29 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
   - Probably better to use function component/react hooks than class components
     - but useful to know how to work around this with a higher order component
 
-### 8.
+### 8. JoinRoom page that navigates to existing room
 
 - Align HomePage to the center
   - and it's children? -- because centering is done on the <div>
 - Add RoomJoinPage.js MUI
   - textfield for RoomCode
   - Buttons
-- Hook up method handleRoomCodeChange and handleJoinRoomButtonClicked
+- Hook up method CreateRoomPage： handleRoomCodeChange and handleJoinRoomButtonClicked
+  - When room is created, now navigates to Room page
+- .............. summary ..............
+- Get Room always assumes sessions exist, but create/join room needs to check and create sessions, why is this the case?
+
+### 9. something about being about to re-join a joint room is user closes page
+- import MUI stuff in HomePage.js to create function that renders what the homepage looks like?
+- Create HomePageReal component that shows join/create room buttons linking to /create and /join
+- Using a React lifecycle component to help redirect user to a room when they land on a homepage
+  - instead of componentDidMount() (class component), achieve the same result with useEffect() in our function component
+  - add UserInRoom view: returns room_code of session via JsonResponse
+  - add user-in-room path in api.urls
+  - set up "redirect" like behavior using Navigate to determine of state.roomCode is set
+- .............. summary ..............
+  - Use JsonResponse when do not require custom serializer for django models
+  - Route element can navigate to another
 
 
 ## How-To
@@ -311,6 +326,8 @@ https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-
 - Preserve previous state when updating a entry in state
 `setState(state => ({...state, keyToChange: newValue}));`
 
+- [Navigate to another component using a ternary operator (condition)](https://stackoverflow.com/a/70738182/2812257)
+
 ## References
 
 - Using Function component from Class Component
@@ -319,6 +336,8 @@ https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-
   https://reactrouter.com/docs/en/v6/upgrading/reach#update-route-components-to-use-hooks
   https://reactrouter.com/docs/en/v6/getting-started/tutorial#reading-url-params
   https://www.freecodecamp.org/news/how-to-use-react-router-version-6/
+
+- [States and componentDidMount() in function components with Hooks](https://medium.com/@timtan93/states-and-componentdidmount-in-functional-components-with-hooks-cac5484d22ad)
 
 - [Database/Model Migration](https://docs.djangoproject.com/en/4.0/topics/migrations/#:~:text=Migrations%20are%20Django's%20way%20of,problems%20you%20might%20run%20into.)
 

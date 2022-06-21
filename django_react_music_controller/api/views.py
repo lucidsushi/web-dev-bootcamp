@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import JsonResponse
 
 from .serializers import RoomSerializer, CreateRoomSerializer
 from .models import Room
@@ -30,9 +31,7 @@ class JoinRoom(APIView):
     lookup_url_kwarg = 'code'  # does this have to be code??..
 
     def post(self, request):
-        if not self.request.session.exists(self.request.session.session_key):
-            self.request.session.create()
-
+        create_session_if_missing(self)
         code = request.data.get(self.lookup_url_kwarg)
         if not code:
             res = Response(
@@ -92,8 +91,7 @@ class CreateRoomView(APIView):
     serializer_class = CreateRoomSerializer
 
     def post(self, request, format=None):
-        if not self.request.session.exists(self.request.session.session_key):
-            self.request.session.create()
+        create_session_if_missing(self)
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             guest_can_pause = serializer.data.get('guest_can_pause')
@@ -122,3 +120,20 @@ class CreateRoomView(APIView):
                 res = Response({'Bad Request': 'Invalid data...'},
                                status=status.HTTP_400_BAD_REQUEST)
         return res
+
+class UserInRoom(APIView):
+    def get(self, request, format=None):
+        create_session_if_missing(self)
+        # if a session is missing, how does a newly created session have the key 'room_code'?
+        data = {
+            'code': self.request.session.get('room_code')
+        }
+        # does not need rest framework object/serializer therefore use django response?
+        return JsonResponse(data, status=status.HTTP_200_OK)
+
+
+def create_session_if_missing(api_view):
+    if api_view.request.session.exists(api_view.request.session.session_key):
+        return
+    else:
+        api_view.request.session.create()

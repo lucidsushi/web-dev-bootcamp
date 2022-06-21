@@ -16,7 +16,7 @@ const RoomJoinPage = (props) => {
         setState({
             roomCode: e.target.value
         });
-        console.log(`room code set as ${e.target.value}`);
+        // console.log(`room code set as ${e.target.value}`);
     };
     
     const handleJoinRoomButtonClicked = () => {
