@@ -295,6 +295,12 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
   - Use JsonResponse when do not require custom serializer for django models
   - Route element can navigate to another
 
+### 10. Leaving a room
+- .............. summary ..............
+  - First time we're using a callback function as a prop for a children component to change the state of the parent component (Homepage)
+  - Most clear moment why we store room_code in sessions (used to determine user already "joined" a room)
+    - Navigate to a room from / (base on checking if that user's session shows it has a room_code)
+    - Remove room_code from session when user leaves room
 
 ## How-To
 
@@ -329,6 +335,8 @@ https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-
 - [Navigate to another component using a ternary operator (condition)](https://stackoverflow.com/a/70738182/2812257)
 
 ## References
+
+- [React Router](https://reactrouter.com/docs/en/v6/getting-started/concepts)
 
 - Using Function component from Class Component
   https://stackoverflow.com/questions/37516919/react-router-getting-this-props-location-in-child-components

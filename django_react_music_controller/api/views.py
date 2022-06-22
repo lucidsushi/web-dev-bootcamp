@@ -19,15 +19,17 @@ from .models import Room
 
 
 class AllRooms(generics.ListAPIView):
-    ''' Class-based view
-    '''
+    '''Class-based view'''
+
     queryset = Room.objects.all()  # get all rooms
     serializer_class = RoomSerializer  # use to serialize data
 
 
 class JoinRoom(APIView):
-    """Creates a session, why?
+    """Associates the roomcode with the session
+    (so we know user has joined the room before)
     """
+
     lookup_url_kwarg = 'code'  # does this have to be code??..
 
     def post(self, request):
@@ -36,29 +38,32 @@ class JoinRoom(APIView):
         if not code:
             res = Response(
                 {'Bad Request': f'POST data missing the key: {self.lookup_url_kwarg}'},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
         elif code and not len(Room.objects.filter(code=code)):
             # room_result = Room.objects.filter(code=code)
             # if not len(room_result):
             res = Response(
                 {'Bad Request': f'Room Code: {code} does not exist'},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
         else:
             # room = room_result[0]
-            # session['room_code'] = code -- why do we even need this?
             self.request.session['room_code'] = code
             res = Response(
-                {'message': f'Successfully joined room: {code}'}, status=status.HTTP_200_OK
+                {'message': f'Successfully joined room: {code}'},
+                status=status.HTTP_200_OK,
             )
 
         return res
 
 
 class GetRoom(APIView):
-    """Can always assume sessions exists, why?
     """
+    - Also shows if the user is also the host of the room
+    - Can have a session key without a session?
+    """
+
     serialier_class = RoomSerializer
     lookup_url_kwarg = 'code'  # does this have to be code??..
 
@@ -73,12 +78,14 @@ class GetRoom(APIView):
 
             return Response(
                 {f'Room Not Found: Invalid Room Code: {code}'},
-                status=status.HTTP_404_NOT_FOUND
+                status=status.HTTP_404_NOT_FOUND,
             )
         else:
             return Response(
-                {'Bad Request': f'Parameter {self.lookup_url_kwarg} is not found in request'},
-                status=status.HTTP_400_BAD_REQUEST
+                {
+                    'Bad Request': f'Parameter {self.lookup_url_kwarg} is not found in request'
+                },
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
 
@@ -87,7 +94,11 @@ class CreateRoomView(APIView):
     1. does session exist
     2. does room exist -- create
     3. return reponse
+    4. associates the roomcode with the session,
+       as user also "joins" the room on creation
+      (so we know user has joined the room before)
     '''
+
     serializer_class = CreateRoomSerializer
 
     def post(self, request, format=None):
@@ -104,32 +115,54 @@ class CreateRoomView(APIView):
                 room.guest_can_pause = guest_can_pause
                 room.votes_to_skip = votes_to_skip
                 room.save(update_fields=['guest_can_pause', 'votes_to_skip'])
-                # why do we even need this?
                 self.request.session['room_code'] = room.code
-                res = Response(RoomSerializer(room).data,
-                               status=status.HTTP_201_CREATED)
+                res = Response(RoomSerializer(room).data, status=status.HTTP_201_CREATED)
             elif not queryset_exists:
-                room = Room(host=host, guest_can_pause=guest_can_pause,
-                            votes_to_skip=votes_to_skip)
+                room = Room(
+                    host=host,
+                    guest_can_pause=guest_can_pause,
+                    votes_to_skip=votes_to_skip,
+                )
                 room.save()
-                # why do we even need this?
                 self.request.session['room_code'] = room.code
-                res = Response(RoomSerializer(room).data,
-                               status=status.HTTP_201_CREATED)
+                res = Response(RoomSerializer(room).data, status=status.HTTP_201_CREATED)
             else:
-                res = Response({'Bad Request': 'Invalid data...'},
-                               status=status.HTTP_400_BAD_REQUEST)
+                res = Response(
+                    {'Bad Request': 'Invalid data...'},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
         return res
+
 
 class UserInRoom(APIView):
     def get(self, request, format=None):
         create_session_if_missing(self)
         # if a session is missing, how does a newly created session have the key 'room_code'?
-        data = {
-            'code': self.request.session.get('room_code')
-        }
+        data = {'code': self.request.session.get('room_code')}
         # does not need rest framework object/serializer therefore use django response?
         return JsonResponse(data, status=status.HTTP_200_OK)
+
+
+class LeaveRoom(APIView):
+    """
+    - Removes room_code from active Session
+    - Delete room if host leaves
+    """
+
+    def post(self, request, format=None):
+        if 'room_code' in self.request.session:
+            self.request.session.pop('room_code')
+            host_id = self.request.session.session_key
+            room_results = Room.objects.filter(host=host_id)
+            host_is_leaving = len(room_results) > 0
+            if host_is_leaving:
+                room = room_results[0]
+                room.delete()
+
+        return Response(
+            {'message': 'leave-room end point successfully called'},
+            status=status.HTTP_200_OK,
+        )
 
 
 def create_session_if_missing(api_view):

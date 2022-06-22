@@ -14,3 +14,8 @@ run-server:
 run-frontend-dev:
 # always need
 	npm --prefix frontend/ run dev
+
+lint:
+	black --line-length 90 -vS .
+	flake8 --max-line-length 90 .
+
