@@ -26,3 +26,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* why doesn't sx prop work? */
+/* why is the alert text MOVING on first show as if its trying to center? */
+/* try out MiniCssExtractPlugin to output multiple .css on build? */
+.MuiSnackbar-root {
+  transform: translate(0%, -140%);
+}
+

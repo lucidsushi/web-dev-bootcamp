@@ -2,19 +2,22 @@ import React, { Component } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Grid, Button, Typography } from "@material-ui/core";
 
+import CreateRoomPage from "./CreateRoomPage";
+
 
 // https://reactrouter.com/docs/en/v6/getting-started/tutorial#reading-url-params
 const Room = (props) => {
     const intialState = {
-        votesToSkip: 2,
         guestCanPause: false,
+        votesToSkip: 2,
         isHost: false,
+        roomIsSettings: false
     };
     const [state, setState] = React.useState(intialState);
     let navigate = useNavigate();
     let { roomCode } = useParams();
 
-    React.useEffect(() => {
+    const triggerRoomStateUpdate = () => {
         fetch(`/api/get-room?code=${roomCode}`)
             .then(response => {
                 if (!response.ok) {
@@ -26,12 +29,21 @@ const Room = (props) => {
             })
             .then(data => {
                 setState({
-                    votesToSkip: data.votes_to_skip,
+                    ...state,
                     guestCanPause: data.guest_can_pause,
+                    votesToSkip: data.votes_to_skip,
                     isHost: data.is_host,
+                    roomIsSettings: false
                 });
             });
+    }
+    React.useEffect(() => {
+        triggerRoomStateUpdate();
     }, []);
+
+    const setRoomIsSettings = (value) => {
+        setState({...state, roomIsSettings: value});
+    }
 
     const leaveButtonPressed = () => {
         const requestOptions = {
@@ -45,47 +57,67 @@ const Room = (props) => {
             });
     }
 
-    return (
-        <Grid container spacing={1}>
-            <Grid item xs={12}>
-                <Typography variant="h4" component="h4">
-                    Room Code: {roomCode}
-                </Typography>
+    if (state.roomIsSettings) {
+        return (
+            // <Grid container spacing={1}>
+            //     <Grid item xs={12} align="center">
+            <CreateRoomPage
+                mode={"Update"}
+                roomCode={roomCode}
+                state={{...state, errorMsg: "", successMsg: ""}}
+                toggleRoomIsSettingsCallback={setRoomIsSettings}
+                triggerRoomStateUpdateCallback={triggerRoomStateUpdate}
+            />
+            //     </Grid>
+            // </Grid>
+        );
+    } else {
+        return (
+            <Grid container spacing={1}>
+                <Grid item xs={12} align="center">
+                    <Typography variant="h5" component="h5">
+                        Room Code: {roomCode}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} align="center">
+                    <Typography variant="h6" component="h6">
+                        Votes to Skip: {state.votesToSkip}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} align="center">
+                    <Typography variant="h6" component="h6">
+                        Guest Can Pause: {state.guestCanPause.toString()}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} align="center">
+                    <Typography variant="h6" component="h6">
+                        Host: {state.isHost.toString()}
+                    </Typography>
+                </Grid>
+                { state.isHost ? (
+                        <Grid item xs={12} align="center">
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={() => setRoomIsSettings(true)}
+                            >
+                                Settings
+                            </Button>
+                        </Grid>
+                    ): null
+                }
+                <Grid item xs={12} align="center">
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={leaveButtonPressed}
+                    >
+                        Leave Room
+                    </Button>
+                </Grid>
             </Grid>
-            <Grid item xs={12}>
-                <Typography variant="h6" component="h6">
-                    Votes to Skip: {state.votesToSkip}
-                </Typography>
-            </Grid>
-            <Grid item xs={12}>
-                <Typography variant="h6" component="h6">
-                    Guest Can Pause: {state.guestCanPause.toString()}
-                </Typography>
-            </Grid>
-            <Grid item xs={12}>
-                <Typography variant="h6" component="h6">
-                    Host: {state.isHost.toString()}
-                </Typography>
-            </Grid>
-            <Grid item xs={12} align="center">
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={leaveButtonPressed}
-                >
-                    Leave Room
-                 </Button>
-            </Grid>
-        </Grid>      
-    );
-    // return (
-    //     <div>
-    //         <h3>Room: {roomCode}</h3>
-    //         <p>Votes: {state.votesToSkip}</p>
-    //         <p>Guest Can Pause: {state.guestCanPause.toString()}</p>
-    //         <p>Is Host: {state.isHost.toString()}</p>
-    //     </div>
-    // );
+        );
+    }
 }
 
 export default Room;

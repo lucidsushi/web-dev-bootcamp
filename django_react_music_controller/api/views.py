@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
 
-from .serializers import RoomSerializer, CreateRoomSerializer
+from .serializers import RoomSerializer, CreateRoomSerializer, UpdateRoomSerializer
 from .models import Room
 
 # Create your views (endpoints) here.
@@ -163,6 +163,40 @@ class LeaveRoom(APIView):
             {'message': 'leave-room end point successfully called'},
             status=status.HTTP_200_OK,
         )
+
+
+class UpdateRoom(APIView):
+    serializer_class = UpdateRoomSerializer
+
+    def patch(self, request, format=None):
+        create_session_if_missing(self)
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            room_code = serializer.data.get('code')
+            queryset = Room.objects.filter(code=room_code)
+            if not queryset.exists():
+                res = Response(
+                    {'msg': f'Room {room_code} not found.'}, status=status.HTTP_404_NOT_FOUND
+                )
+            else:
+                room = queryset[0]
+                user_id = self.request.session.session_key
+                if room.host != user_id:
+                    res = Response(
+                        {'Forbidden': 'You are not the host of this room.'},
+                        status=status.HTTP_403_FORBIDDEN,
+                    )
+                else:
+                    room.guest_can_pause = serializer.data.get('guest_can_pause')
+                    room.votes_to_skip = serializer.data.get('votes_to_skip')
+                    room.save(update_fields=['guest_can_pause', 'votes_to_skip'])
+                    res = Response(RoomSerializer(room).data, status=status.HTTP_200_OK)
+        else:
+            res = Response(
+                {'Bad Request': "Invalid Data..."}, status=status.HTTP_400_BAD_REQUEST
+            )
+
+        return res
 
 
 def create_session_if_missing(api_view):

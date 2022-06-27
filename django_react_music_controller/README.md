@@ -302,6 +302,22 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
     - Navigate to a room from / (base on checking if that user's session shows it has a room_code)
     - Remove room_code from session when user leaves room
 
+### 11. Creation of a Settings page for host to adjust fields
+- create and endpoint for update-room
+  - we want to "patch" room, therefore we'd want to deserialize request data into a room object(?)
+  - "code" was defined as unique in model so they every room has a unique code, but we want to update the SAME room, therefore we're going to overide the "code" field in UpdateRoomSerializer
+
+### 12.
+- install material-ui/lab for Alert
+- .............. summary ..............
+  - Always try to use prop directly from parent, trying to maintain the same state between childre/parent is bad pattern?
+    - but using parent.callback in children to "lift state?" up to parent seems okay
+  - Used defaultProp and prop expansion in CreateRoomPage.js to do unholy things about reusing component render structure for both Create and Update
+  - sx prop not working for repositioning a Snackbar was soul crushing -- hacked with index.css for now
+
+
+
+
 ## How-To
 
 - Center a <div> horizontally and vertically
@@ -321,6 +337,7 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
 }
 ```
 
+- [Lifting shared state up](https://reactjs.org/docs/lifting-state-up.html)
 - Fetch state to update function component
 
 ```
@@ -334,6 +351,19 @@ https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-
 
 - [Navigate to another component using a ternary operator (condition)](https://stackoverflow.com/a/70738182/2812257)
 
+- Alter a model's field validation for serializer instance
+  - Given "code" is unique, allow a serializer to treat as not unique
+  ```python
+  class UpdateRoomSerializer(serializers.ModelSerializer):
+    code = serializers.CharField(validators=[])  # so code doesn't have to be unique
+
+    class Meta:
+        model = Room
+        fields = ('guest_can_pause', 'votes_to_skip', 'code')
+  ```
+- ["Run UseEffect()" before render](https://stackoverflow.com/a/56818036/2812257)
+
+
 ## References
 
 - [React Router](https://reactrouter.com/docs/en/v6/getting-started/concepts)
@@ -345,8 +375,10 @@ https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-
   https://reactrouter.com/docs/en/v6/getting-started/tutorial#reading-url-params
   https://www.freecodecamp.org/news/how-to-use-react-router-version-6/
 
-- [States and componentDidMount() in function components with Hooks](https://medium.com/@timtan93/states-and-componentdidmount-in-functional-components-with-hooks-cac5484d22ad)
+- [React: States and componentDidMount() in function components with Hooks](https://medium.com/@timtan93/states-and-componentdidmount-in-functional-components-with-hooks-cac5484d22ad)
 
-- [Database/Model Migration](https://docs.djangoproject.com/en/4.0/topics/migrations/#:~:text=Migrations%20are%20Django's%20way%20of,problems%20you%20might%20run%20into.)
+- [Django: Database/Model Migration](https://docs.djangoproject.com/en/4.0/topics/migrations/#:~:text=Migrations%20are%20Django's%20way%20of,problems%20you%20might%20run%20into.)
 
-- [What are Sessions](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Sessions)
+- [Django: Object Filter vs Get](https://docs.djangoproject.com/en/4.0/topics/db/queries/#retrieving-a-single-object-with-get)
+
+- [Django: What are Sessions](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Sessions)

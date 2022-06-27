@@ -20,6 +20,10 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.css$/i,
+        use: ["css-loader"],
+      },
     ],
   },
   optimization: {

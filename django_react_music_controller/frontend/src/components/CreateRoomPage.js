@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import { TextField, Button, Grid, Typography, Box } from "@material-ui/core";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
+import { 
+    TextField, Button, Grid, Typography, Box,
+    Collapse, FormHelperText, FormControl,
+    RadioGroup, FormControlLabel, Radio, Snackbar 
+} from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 import { Link, useNavigate } from "react-router-dom";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const CreateRoomPage = (props) => {
 
     const intialState = {
-        votesToSkip: 2,
-        guestCanPause: true,
+        ...props.state
+        // guestCanPause: true,
+        // votesToSkip: 2,
     };
     const [state, setState] = React.useState(intialState);
     let navigate = useNavigate();
@@ -19,13 +20,12 @@ const CreateRoomPage = (props) => {
     const handleVotesChange = (e) => {
         setState(state => ({...state, votesToSkip: e.target.value}));
         // setState({...state, votesToSkip: e.target.value}); // this is the same as the above line?
-
+        
     }
-
     const handleGuestCanPauseChange = (e) => {
         setState(state => ({...state, guestCanPause: e.target.value === "true" ? true : false}));
     }
-
+    
     const createRoomButtonClicked = () => {
         const request = {
             method: "POST",
@@ -36,17 +36,88 @@ const CreateRoomPage = (props) => {
             })
         };
         fetch("/api/create-room", request)
-            .then(response => response.json())
-            .then(data => navigate(`/room/${data.code}`));
+        .then(response => response.json())
+        .then(data => navigate(`/room/${data.code}`));
         // .then((data) => this.props.history.push("/room/" + data.code)); // old way of doing it from a class
     }
 
+    const updateRoomButtonClicked = () => {
+        const request = {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                guest_can_pause: state.guestCanPause,
+                votes_to_skip: state.votesToSkip,
+                code: props.roomCode
+            })
+        };
+        fetch("/api/update-room", request)
+        .then((response) => {
+            if (response.ok) {
+                setState({
+                    ...state,
+                    successMsg: "Room updated successfully!",
+                });
+            } else {
+                setState({
+                    ...state,
+                    errorMsg: "Error updating room...",
+                });
+            }
+        });
+    }
+    
+    const modeEventMap = {
+        "Create": {
+            "primaryButton1": createRoomButtonClicked,
+            "secondaryButton1": () => navigate("/")
+
+        },
+        "Update": {
+            "primaryButton1": updateRoomButtonClicked,
+            "secondaryButton1": () => props.toggleRoomIsSettingsCallback(false)
+        }
+    };
+    
     return (
         <>
-            <Grid container spacing={1} >
+            <Grid container spacing={1}>
                 <Grid item xs={12} align="center">
-                    <Typography component="h4" variant="h4">
-                        Create Room
+                    <Snackbar
+                        // sx = {{
+                        //     '& .MuiSnackbar-root': {
+                        //         transform: 'translate(0%, -150%) !important',
+                        //     },
+                        // }}
+                        open={state.errorMsg != "" || state.successMsg != ""}
+                        autoHideDuration={50000}
+                        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                        onClose={
+                            () => {
+                                // setState({...state, errorMsg: "", successMsg: ""});
+                                props.triggerRoomStateUpdateCallback();
+                            }
+                        }
+                    >
+                        {state.successMsg != "" ? (
+                                <Alert
+                                    severity="success"
+                                    // onClose={() => {setState({...state, successMsg: "" });}}
+                                >
+                                    {state.successMsg}
+                                </Alert>
+                            ) : (
+                                <Alert
+                                    severity="error"
+                                    // onClose={() => {setState({...state, errorMsg: "" });}}
+                                >
+                                    {state.errorMsg}
+                                </Alert>
+                            )
+                        }
+                    </Snackbar>
+                    <Typography sx={{color: '#00f'}} component="h4" variant="h4">
+                        {props.mode} Room
                     </Typography>
                 </Grid>
                 <Grid item xs={12} align="center">
@@ -58,17 +129,18 @@ const CreateRoomPage = (props) => {
                         </Box>
                         <RadioGroup
                             row
-                            defaultValue="true"
+                            value={state.guestCanPause.toString()}
+                            // defaultValue="false"
                             onChange={handleGuestCanPauseChange}
                         >
                             <FormControlLabel
-                                value='true'
+                                value="true"
                                 control={<Radio color='primary' />}
                                 label="Play/Pause"
                                 labelPlacement="end"
                             />
                             <FormControlLabel
-                                value='false'
+                                value="false"
                                 control={<Radio color='secondary' />}
                                 label="No Control"
                                 labelPlacement="end"
@@ -101,19 +173,36 @@ const CreateRoomPage = (props) => {
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={createRoomButtonClicked}
+                        onClick={modeEventMap[props.mode].primaryButton1}
                     >
-                        Create a Room
+                        {props.mode} Room
                     </Button>
                 </Grid>
                 <Grid item xs={12} align="center">
-                    <Button variant="contained" color="secondary" to="/" component={Link} >
-                        Back
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={modeEventMap[props.mode].secondaryButton1}
+                        // to="/"
+                        // component={Link} >
+                        >
+                        {props.secondaryButton1}
                     </Button>
                 </Grid>
             </Grid>
         </>
     );
+}
+
+CreateRoomPage.defaultProps = {
+    mode: "Create",
+    state: {
+        guestCanPause: false,
+        votesToSkip: 2,
+        errorMsg: "",
+        successMsg: ""
+    },
+    secondaryButton1: "Back",
 }
 
 export default CreateRoomPage;
