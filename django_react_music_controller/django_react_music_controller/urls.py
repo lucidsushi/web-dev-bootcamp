@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),  # dispatch to api.urls
     path('', include('frontend.urls')),
+    path('spotify/', include('spotify.urls')),
 ]

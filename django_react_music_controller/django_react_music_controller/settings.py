@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',  # added during tutorial
     'rest_framework',  # added during tutorial
     'frontend.apps.FrontendConfig',  # added during tutorial
+    'spotify.apps.SpotifyConfig',  # added during tutorial
 ]
 
 MIDDLEWARE = [

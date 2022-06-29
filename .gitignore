@@ -10,3 +10,10 @@ settings.json
 
 # Database
 db.sqlite3
+
+# Secrets
+credentials.py
+# /workspaces/web-dev-bootcamp/django_react_music_controller/spotify/credentials.py
+# CLIENT_ID = "***"
+# CLIENT_SECRET = "***"
+# REDIRECT_URI = "http://127.0.0.1:8000/spotify/redirect"

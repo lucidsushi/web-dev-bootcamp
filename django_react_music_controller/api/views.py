@@ -33,7 +33,7 @@ class JoinRoom(APIView):
     lookup_url_kwarg = 'code'  # does this have to be code??..
 
     def post(self, request):
-        create_session_if_missing(self)
+        create_session_if_missing(self.request)
         code = request.data.get(self.lookup_url_kwarg)
         if not code:
             res = Response(
@@ -102,7 +102,7 @@ class CreateRoomView(APIView):
     serializer_class = CreateRoomSerializer
 
     def post(self, request, format=None):
-        create_session_if_missing(self)
+        create_session_if_missing(self.request)
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             guest_can_pause = serializer.data.get('guest_can_pause')
@@ -136,7 +136,7 @@ class CreateRoomView(APIView):
 
 class UserInRoom(APIView):
     def get(self, request, format=None):
-        create_session_if_missing(self)
+        create_session_if_missing(self.request)
         # if a session is missing, how does a newly created session have the key 'room_code'?
         data = {'code': self.request.session.get('room_code')}
         # does not need rest framework object/serializer therefore use django response?
@@ -169,14 +169,15 @@ class UpdateRoom(APIView):
     serializer_class = UpdateRoomSerializer
 
     def patch(self, request, format=None):
-        create_session_if_missing(self)
+        create_session_if_missing(self.request)
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             room_code = serializer.data.get('code')
             queryset = Room.objects.filter(code=room_code)
             if not queryset.exists():
                 res = Response(
-                    {'msg': f'Room {room_code} not found.'}, status=status.HTTP_404_NOT_FOUND
+                    {'msg': f'Room {room_code} not found.'},
+                    status=status.HTTP_404_NOT_FOUND,
                 )
             else:
                 room = queryset[0]
@@ -199,8 +200,10 @@ class UpdateRoom(APIView):
         return res
 
 
-def create_session_if_missing(api_view):
-    if api_view.request.session.exists(api_view.request.session.session_key):
+def create_session_if_missing(request):
+    # django request
+    # https://github.com/encode/django-rest-framework/blob/master/rest_framework/views.py#L493
+    if request.session.exists(request.session.session_key):
         return
     else:
-        api_view.request.session.create()
+        request.session.create()

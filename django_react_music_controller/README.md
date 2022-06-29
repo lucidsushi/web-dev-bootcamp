@@ -284,6 +284,7 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
 - Get Room always assumes sessions exist, but create/join room needs to check and create sessions, why is this the case?
 
 ### 9. something about being about to re-join a joint room is user closes page
+
 - import MUI stuff in HomePage.js to create function that renders what the homepage looks like?
 - Create HomePageReal component that shows join/create room buttons linking to /create and /join
 - Using a React lifecycle component to help redirect user to a room when they land on a homepage
@@ -296,6 +297,7 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
   - Route element can navigate to another
 
 ### 10. Leaving a room
+
 - .............. summary ..............
   - First time we're using a callback function as a prop for a children component to change the state of the parent component (Homepage)
   - Most clear moment why we store room_code in sessions (used to determine user already "joined" a room)
@@ -303,11 +305,13 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
     - Remove room_code from session when user leaves room
 
 ### 11. Creation of a Settings page for host to adjust fields
+
 - create and endpoint for update-room
   - we want to "patch" room, therefore we'd want to deserialize request data into a room object(?)
   - "code" was defined as unique in model so they every room has a unique code, but we want to update the SAME room, therefore we're going to overide the "code" field in UpdateRoomSerializer
 
-### 12.
+### 12. Host can udpate a room
+
 - install material-ui/lab for Alert
 - .............. summary ..............
   - Always try to use prop directly from parent, trying to maintain the same state between childre/parent is bad pattern?
@@ -315,8 +319,58 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
   - Used defaultProp and prop expansion in CreateRoomPage.js to do unholy things about reusing component render structure for both Create and Update
   - sx prop not working for repositioning a Snackbar was soul crushing -- hacked with index.css for now
 
+### 13. Check if User is authenticated when entering Room (Spotify API integration)
 
+- create app on [developer.spotify/dashboard](https://developer.spotify.com/dashboard/applications/310822416fcf4ed9a85cfb0a693a002f)
+- make new django app for spotify api `make start-app name=spotify`
 
+  - add SpotifyConfig to settings
+
+- set up [spotify authentication flow](https://developer.spotify.com/documentation/general/guides/authorization/code-flow/)
+
+  - credentials.py
+
+    - add client_id, client_secret, redirect_uri
+      (for convenience, not good practice vs say storing in environment variables)
+
+  - component
+
+    - Room
+      - on entering room, if user is host, then authenticate to spotify?（how about non-hosts?
+        - if not authenticated, redirect to spotify auth url (which redirects back if authed)
+
+  - urls.py
+
+    - controller
+      - dispatch to spotify.urls
+    - frontend
+      - for using django.shortcuts.redirect() back to frontend, path needs to be named
+        - add app_name = 'frontend'
+        - add name='' to path('')
+    - spotify
+      - add spotify-token-exists/get-spotify-auth-url/redirect end points
+
+  - models.py
+
+    - add SpotifyToken model + make migrations
+
+  - views.py
+    - spotify
+      - add view: getSpotifyAuthURL (scopes, pypi-requests to prep request url
+        - include spotify.urls in controller/urls.py
+      - add redirect_from_spotify_auth(view.request)
+        - redirect to "frontend:" (named in frontend.urls) after token update/creation
+      - add view: spotifyTokenExists
+      - util.py
+        - is_spotify_authenticated
+        - get_user_token
+        - refresh_spotify_token
+        - update_or_create_user_token
+        - create_session_if_missing
+
+- .............. summary ..............
+- so far tutorial has interacted with models from views but in this case there's logic in the new utils.py
+  - felt like it would be a better idea to have logic in views itself, having to reference util to fix views was pretty annoying
 
 ## How-To
 
@@ -347,12 +401,14 @@ One of the popular cases that using useState inside of useEffect will not cause 
 https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-hook
 
 - Preserve previous state when updating a entry in state
-`setState(state => ({...state, keyToChange: newValue}));`
+  `setState(state => ({...state, keyToChange: newValue}));`
 
 - [Navigate to another component using a ternary operator (condition)](https://stackoverflow.com/a/70738182/2812257)
 
 - Alter a model's field validation for serializer instance
+
   - Given "code" is unique, allow a serializer to treat as not unique
+
   ```python
   class UpdateRoomSerializer(serializers.ModelSerializer):
     code = serializers.CharField(validators=[])  # so code doesn't have to be unique
@@ -361,8 +417,11 @@ https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-
         model = Room
         fields = ('guest_can_pause', 'votes_to_skip', 'code')
   ```
+
 - ["Run UseEffect()" before render](https://stackoverflow.com/a/56818036/2812257)
 
+- Django: List all values of one field in a model
+  - `list(ModelClassName.objects.all().values_list("field_name", flat=True))`
 
 ## References
 
@@ -377,8 +436,11 @@ https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-
 
 - [React: States and componentDidMount() in function components with Hooks](https://medium.com/@timtan93/states-and-componentdidmount-in-functional-components-with-hooks-cac5484d22ad)
 
+- [Django: Model View Template](https://www.geeksforgeeks.org/django-project-mvt-structure/#:~:text=Django%20is%20based%20on%20MVT,for%20developing%20a%20web%20application.&text=View%3A%20The%20View%20is%20the,CSS%2FJavascript%20and%20Jinja%20files.)
 - [Django: Database/Model Migration](https://docs.djangoproject.com/en/4.0/topics/migrations/#:~:text=Migrations%20are%20Django's%20way%20of,problems%20you%20might%20run%20into.)
 
 - [Django: Object Filter vs Get](https://docs.djangoproject.com/en/4.0/topics/db/queries/#retrieving-a-single-object-with-get)
 
 - [Django: What are Sessions](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Sessions)
+
+- [Spotify: Auth Flow](https://developer.spotify.com/documentation/general/guides/authorization/code-flow/)

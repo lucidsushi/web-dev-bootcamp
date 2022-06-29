@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { 
+import {
     TextField, Button, Grid, Typography, Box,
     Collapse, FormHelperText, FormControl,
-    RadioGroup, FormControlLabel, Radio, Snackbar 
+    RadioGroup, FormControlLabel, Radio, Snackbar
 } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,14 +18,14 @@ const CreateRoomPage = (props) => {
     let navigate = useNavigate();
 
     const handleVotesChange = (e) => {
-        setState(state => ({...state, votesToSkip: e.target.value}));
+        setState(state => ({ ...state, votesToSkip: e.target.value }));
         // setState({...state, votesToSkip: e.target.value}); // this is the same as the above line?
-        
+
     }
     const handleGuestCanPauseChange = (e) => {
-        setState(state => ({...state, guestCanPause: e.target.value === "true" ? true : false}));
+        setState(state => ({ ...state, guestCanPause: e.target.value === "true" ? true : false }));
     }
-    
+
     const createRoomButtonClicked = () => {
         const request = {
             method: "POST",
@@ -36,8 +36,8 @@ const CreateRoomPage = (props) => {
             })
         };
         fetch("/api/create-room", request)
-        .then(response => response.json())
-        .then(data => navigate(`/room/${data.code}`));
+            .then(response => response.json())
+            .then(data => navigate(`/room/${data.code}`));
         // .then((data) => this.props.history.push("/room/" + data.code)); // old way of doing it from a class
     }
 
@@ -52,21 +52,21 @@ const CreateRoomPage = (props) => {
             })
         };
         fetch("/api/update-room", request)
-        .then((response) => {
-            if (response.ok) {
-                setState({
-                    ...state,
-                    successMsg: "Room updated successfully!",
-                });
-            } else {
-                setState({
-                    ...state,
-                    errorMsg: "Error updating room...",
-                });
-            }
-        });
+            .then((response) => {
+                if (response.ok) {
+                    setState({
+                        ...state,
+                        successMsg: "Room updated successfully!",
+                    });
+                } else {
+                    setState({
+                        ...state,
+                        errorMsg: "Error updating room...",
+                    });
+                }
+            });
     }
-    
+
     const modeEventMap = {
         "Create": {
             "primaryButton1": createRoomButtonClicked,
@@ -78,7 +78,7 @@ const CreateRoomPage = (props) => {
             "secondaryButton1": () => props.toggleRoomIsSettingsCallback(false)
         }
     };
-    
+
     return (
         <>
             <Grid container spacing={1}>
@@ -90,7 +90,7 @@ const CreateRoomPage = (props) => {
                         //     },
                         // }}
                         open={state.errorMsg != "" || state.successMsg != ""}
-                        autoHideDuration={50000}
+                        autoHideDuration={500}
                         anchorOrigin={{ vertical: "top", horizontal: "center" }}
                         onClose={
                             () => {
@@ -100,23 +100,23 @@ const CreateRoomPage = (props) => {
                         }
                     >
                         {state.successMsg != "" ? (
-                                <Alert
-                                    severity="success"
-                                    // onClose={() => {setState({...state, successMsg: "" });}}
-                                >
-                                    {state.successMsg}
-                                </Alert>
-                            ) : (
-                                <Alert
-                                    severity="error"
-                                    // onClose={() => {setState({...state, errorMsg: "" });}}
-                                >
-                                    {state.errorMsg}
-                                </Alert>
-                            )
+                            <Alert
+                                severity="success"
+                            // onClose={() => {setState({...state, successMsg: "" });}}
+                            >
+                                {state.successMsg}
+                            </Alert>
+                        ) : (
+                            <Alert
+                                severity="error"
+                            // onClose={() => {setState({...state, errorMsg: "" });}}
+                            >
+                                {state.errorMsg}
+                            </Alert>
+                        )
                         }
                     </Snackbar>
-                    <Typography sx={{color: '#00f'}} component="h4" variant="h4">
+                    <Typography sx={{ color: '#00f' }} component="h4" variant="h4">
                         {props.mode} Room
                     </Typography>
                 </Grid>
@@ -183,9 +183,9 @@ const CreateRoomPage = (props) => {
                         variant="contained"
                         color="secondary"
                         onClick={modeEventMap[props.mode].secondaryButton1}
-                        // to="/"
-                        // component={Link} >
-                        >
+                    // to="/"
+                    // component={Link} >
+                    >
                         {props.secondaryButton1}
                     </Button>
                 </Grid>

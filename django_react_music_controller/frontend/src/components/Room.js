@@ -14,6 +14,7 @@ const Room = (props) => {
         roomIsSettings: false
     };
     const [state, setState] = React.useState(intialState);
+
     let navigate = useNavigate();
     let { roomCode } = useParams();
 
@@ -33,16 +34,43 @@ const Room = (props) => {
                     guestCanPause: data.guest_can_pause,
                     votesToSkip: data.votes_to_skip,
                     isHost: data.is_host,
-                    roomIsSettings: false
+                    roomIsSettings: false,
                 });
             });
     }
+    const handleHostSpotifyAuth = () => {
+        // check if token exists/is-fresh or direct to spotify sign-in
+        fetch("/spotify/spotify-token-exists")
+            .then((response) => response.json())
+            .then((data) => {
+                if (!data.status) {
+                    fetch("/spotify/get-spotify-auth-url")
+                        .then((response) => response.json())
+                        .then((data) => {
+                            // may be stuck in a redirect loop if spotify-token-exists is not working
+                            window.location.replace(data.url); // goes to sign in at Spotify
+                        });
+                }
+            });
+    }
+
     React.useEffect(() => {
         triggerRoomStateUpdate();
+        // state NOT updated yet from triggerRoomStateUpdate
     }, []);
 
+    React.useEffect(() => {
+        if (state === intialState) {
+            return;
+        } else if (state.isHost) {
+            // state IS updated from triggerRoomStateUpdate
+            handleHostSpotifyAuth();
+        }
+    }, [state]);
+
+
     const setRoomIsSettings = (value) => {
-        setState({...state, roomIsSettings: value});
+        setState({ ...state, roomIsSettings: value });
     }
 
     const leaveButtonPressed = () => {
@@ -64,7 +92,7 @@ const Room = (props) => {
             <CreateRoomPage
                 mode={"Update"}
                 roomCode={roomCode}
-                state={{...state, errorMsg: "", successMsg: ""}}
+                state={{ ...state, errorMsg: "", successMsg: "" }}
                 toggleRoomIsSettingsCallback={setRoomIsSettings}
                 triggerRoomStateUpdateCallback={triggerRoomStateUpdate}
             />
@@ -94,17 +122,17 @@ const Room = (props) => {
                         Host: {state.isHost.toString()}
                     </Typography>
                 </Grid>
-                { state.isHost ? (
-                        <Grid item xs={12} align="center">
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={() => setRoomIsSettings(true)}
-                            >
-                                Settings
-                            </Button>
-                        </Grid>
-                    ): null
+                {state.isHost ? (
+                    <Grid item xs={12} align="center">
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => setRoomIsSettings(true)}
+                        >
+                            Settings
+                        </Button>
+                    </Grid>
+                ) : null
                 }
                 <Grid item xs={12} align="center">
                     <Button
