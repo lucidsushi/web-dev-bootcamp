@@ -47,6 +47,15 @@ Typography
 
 - nicely styled/maintained header in material-UI
 
+- [Django Admin](https://docs.djangoproject.com/en/4.1/ref/django-admin/): django admin commands are useful to run many administrative tasks for a Django project, such as:
+
+  `manage.py makemigrations` -- prepare SQL to propagate schema changes, great when you're migrations are up to date and you've made Model changes
+  `manage.py migrate` -- apply/unapply (execute SQL to propagate schema changes) migrations, can be used to check if your local is in-sync with latest state of rep
+  `manage.py runserver` -- Starts a lightweight development web server on the local machine
+  ...etc
+
+You can also [add custom commands to manage.py](https://docs.djangoproject.com/en/4.1/howto/custom-management-commands/)
+
 ## Tutorial
 
 ### 1. Setting up a Hello World Page
@@ -133,8 +142,10 @@ Typography
     - Load frontend/main.js -- bundled JS so React can take over?
 
 ```
+
 When you prepare a React application for production deployment, it gets compiled down into a set of static html, css, and javascript files. Django can serve these production files just like it can serve any other web page, so that’
 s no problem.
+
 ```
 
 - Create index function in frontend/views.py to request frontend/index.html
@@ -176,17 +187,20 @@ s no problem.
 - To show routing, creating another two components RoomJoinPage and CreateRoomPage
 - Put all components in a <div> in App.js
 
-```
- render() {
-        return (
-            <div>
-                <HomePage />
-                <RoomJoinPage />
-                <CreateRoomPage />
-            </div>
+````
+
+render() {
+return (
+
+<div>
+<HomePage />
+<RoomJoinPage />
+<CreateRoomPage />
+</div>
 
         );
     }
+
 ```
 
 - Router: import components in Homepage instead of putting them in <div>
@@ -195,11 +209,13 @@ s no problem.
 - Need to add routes to Django as well, but can all point to index to let React take over -- THERE's A WAY to AVOID THIS
 
 ```
+
 urlpatterns = [
-    path('', index),
-    path('join', index),
-    path('create', index)
+path('', index),
+path('join', index),
+path('create', index)
 ]
+
 ```
 
 ### 5. API View to Create Room on POST
@@ -217,16 +233,20 @@ urlpatterns = [
   - create session if not
 
 ```
+
 ~ Random Internet Search ~
 What is the difference between forms and serializers? Forms are if you want Django templates to render it out. Serializers if you need a REST API and the frontend can be nearly anything. I got this error here: raise TypeError('view must be a callable or a list/tuple in the case of include().')
+
 ```
 
 ### 6. Material UI Components + onChange functions to handle votes/guests-can-pause/room-button
 
 ```
+
 "Material Design, which was not asked in the question, is a specification released by Google (as some of these answers correctly state).
 
 Material UI, on the other hand, is a library that uses Facebook’s react framework and exports a set of react components that that follow the principals of Material Design -- Quora"
+
 ```
 
 ==== UI Changes ====
@@ -383,20 +403,24 @@ Material UI, on the other hand, is a library that uses Facebook’s react framew
     - https://reactjs.org/docs/fragments.html
 
 ```
+
 .center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
+
 ```
 
 - [Lifting shared state up](https://reactjs.org/docs/lifting-state-up.html)
 - Fetch state to update function component
 
 ```
+
 One of the popular cases that using useState inside of useEffect will not cause an infinite loop is when you pass an empty array as a second argument to useEffect like useEffect(() => {....}, []) which means that the effect function should be called once: after the first mount/render only.
-```
+
+````
 
 https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-hook
 
@@ -417,6 +441,8 @@ https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-
         model = Room
         fields = ('guest_can_pause', 'votes_to_skip', 'code')
   ```
+
+```
 
 - ["Run UseEffect()" before render](https://stackoverflow.com/a/56818036/2812257)
 
@@ -444,3 +470,4 @@ https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-
 - [Django: What are Sessions](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Sessions)
 
 - [Spotify: Auth Flow](https://developer.spotify.com/documentation/general/guides/authorization/code-flow/)
+```
