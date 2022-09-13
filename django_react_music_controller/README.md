@@ -449,6 +449,18 @@ https://stackoverflow.com/questions/53715465/can-i-set-state-inside-a-useeffect-
 - Django: List all values of one field in a model
   - `list(ModelClassName.objects.all().values_list("field_name", flat=True))`
 
+- Leverage Redis Cache
+  - Redis Basics
+    - [Instal linux(?) Redis](https://redis.io/docs/getting-started/installation/install-redis-on-linux/)
+    - redis-server
+    - redis-cli
+      - show keys:  `keys *`
+      - set keys: `set key value`
+      - get value: `get key`
+      - delete key: `del key`
+
+
+
 ## References
 
 - [React Router](https://reactrouter.com/docs/en/v6/getting-started/concepts)
